@@ -2,10 +2,10 @@
   "date": "2026-07-30",
   "date_kr": "2026년 7월 30일",
   "indices": [
-    {"name": "나스닥", "value": "25,122.18", "change_pct": "2.78", "direction": "up"},
-    {"name": "S&P500", "value": "7,437.63", "change_pct": "1.66", "direction": "up"},
-    {"name": "다우존스", "value": "52,208.06", "change_pct": "1.19", "direction": "up"},
-    {"name": "러셀2000", "value": "2,946.10", "change_pct": "1.37", "direction": "up"}
+    {"name": "Nasdaq", "value": "25,122.18", "change_pct": "2.78", "direction": "up"},
+    {"name": "S&P 500", "value": "7,437.63", "change_pct": "1.66", "direction": "up"},
+    {"name": "Dow Jones", "value": "52,208.06", "change_pct": "1.19", "direction": "up"},
+    {"name": "Russell 2000", "value": "2,946.10", "change_pct": "1.37", "direction": "up"}
   ],
   "news_pool": [
     {"tag": "뉴스", "text": "마이크로소프트가 애저(Azure) 클라우드 매출이 분기 최초로 1000억 달러를 돌파했다고 발표하며 주가가 급등, 나스닥과 S&P500 랠리를 견인했다.", "url": "https://www.fool.com/coverage/stock-market-today/2026/07/30/stock-market-midday-july-30-microsoft-soars-15-boosting-tech-stocks/"},
