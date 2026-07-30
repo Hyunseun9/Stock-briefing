@@ -7,9 +7,37 @@ import json
 import sys
 import glob
 import os
+import re
+from datetime import date as _date
 from jinja2 import Environment, FileSystemLoader
 
 REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
+_DATE_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})")
+
+
+def add_dday_to_earnings_dates(data):
+    """Append a computed (D-N)/(D-DAY)/(D+N) suffix to any '다음 실적발표일' row
+    value, based on the report's own date. Daily data JSON only needs the plain
+    date string; the rendered site always shows an accurate day-count."""
+    report_date = _date.fromisoformat(data["date"])
+    for t in data.get("tickers", []):
+        for tab in t.get("tabs", []):
+            for row in tab.get("rows", []):
+                if row.get("label") != "다음 실적발표일":
+                    continue
+                m = _DATE_RE.match(row.get("value", ""))
+                if not m:
+                    continue
+                target = _date.fromisoformat(m.group(1))
+                delta = (target - report_date).days
+                if delta > 0:
+                    dday = f"D-{delta}"
+                elif delta == 0:
+                    dday = "D-DAY"
+                else:
+                    dday = f"D+{abs(delta)}"
+                row["value"] = f"{row['value']} ({dday})"
+    return data
 
 
 def build_history():
@@ -29,6 +57,8 @@ def main():
 
     with open(sys.argv[1], encoding="utf-8") as f:
         data = json.load(f)
+
+    data = add_dday_to_earnings_dates(data)
 
     date = data["date"]  # e.g. "2026-07-30"
 

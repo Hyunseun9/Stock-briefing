@@ -17,6 +17,7 @@
   "tickers": [
     {
       "ticker": "NVDA",
+      "type": "stock",
       "company": "NVIDIA Corporation",
       "price": "195.04",
       "change_pct": "2.65",
@@ -73,7 +74,8 @@
             {"label": "순이익(TTM)", "value": "$159.61B"},
             {"label": "애널리스트 의견", "value": "Strong Buy (61명)"},
             {"label": "목표주가", "value": "$302.83 (+55.3%)"},
-            {"label": "다음 실적발표일", "value": "2026-08-26"}
+            {"label": "다음 실적발표일", "value": "2026-08-26"},
+            {"label": "다음 분기 예상 실적", "value": "EPS $1.65 · 매출 $86.4B (컨센서스, 2027 Q2)"}
           ],
           "quarters": [
             {"period": "2027 Q1", "eps_actual": "$1.87", "eps_est": "$1.76", "eps_result": "beat", "rev_actual": "$81.62B", "rev_est": "$78.42B", "rev_result": "beat"},
@@ -95,6 +97,7 @@
     },
     {
       "ticker": "IONQ",
+      "type": "stock",
       "company": "IonQ, Inc.",
       "price": "35.77",
       "change_pct": "11.82",
@@ -133,7 +136,8 @@
             {"label": "순이익(TTM)", "value": "$327.23M"},
             {"label": "애널리스트 의견", "value": "Strong Buy"},
             {"label": "목표주가", "value": "$69.11 (+93.2%)"},
-            {"label": "다음 실적발표일", "value": "2026-08-05"}
+            {"label": "다음 실적발표일", "value": "2026-08-05"},
+            {"label": "다음 분기 예상 실적", "value": "EPS -$0.51 · 매출 $54.9M (컨센서스)"}
           ],
           "quarters": [
             {"period": "2026 Q1", "eps_actual": "-$0.34", "eps_est": "-$0.26", "eps_result": "miss", "rev_actual": "$64.67M", "rev_est": "$49.75M", "rev_result": "beat"},
@@ -157,6 +161,7 @@
     },
     {
       "ticker": "QQQ",
+      "type": "etf",
       "company": "Invesco QQQ Trust",
       "price": "683.55",
       "change_pct": "3.30",
@@ -217,6 +222,7 @@
     },
     {
       "ticker": "JEPQ",
+      "type": "etf",
       "company": "JPMorgan Nasdaq Equity Premium Income ETF",
       "price": "56.14",
       "change_pct": "1.85",
@@ -277,6 +283,7 @@
     },
     {
       "ticker": "JEPI",
+      "type": "etf",
       "company": "JPMorgan Equity Premium Income ETF",
       "price": "56.92",
       "change_pct": "0.97",
@@ -337,6 +344,7 @@
     },
     {
       "ticker": "IMVT",
+      "type": "stock",
       "company": "Immunovant, Inc.",
       "price": "39.41",
       "change_pct": "0.10",
@@ -375,7 +383,8 @@
             {"label": "순이익(TTM)", "value": "-$505.61M"},
             {"label": "애널리스트 의견", "value": "Buy (16명)"},
             {"label": "목표주가", "value": "$47.53 (+20.6%)"},
-            {"label": "다음 실적발표일", "value": "2026-08-06 (개장 전)"}
+            {"label": "다음 실적발표일", "value": "2026-08-06 (개장 전)"},
+            {"label": "다음 분기 예상 실적", "value": "EPS -$0.78 (컨센서스)"}
           ],
           "quarters": [
             {"period": "FY26 Q4 (2026-03 마감)", "eps_actual": "-$0.73", "eps_est": "-$0.60", "eps_result": "miss", "rev_actual": "N/A", "rev_est": "N/A", "rev_result": "N/A"},
@@ -395,6 +404,7 @@
     },
     {
       "ticker": "BMNR",
+      "type": "stock",
       "company": "Bitmine Immersion Technologies, Inc.",
       "price": "16.59",
       "change_pct": "5.58",
@@ -443,7 +453,8 @@
             {"label": "순이익(TTM)", "value": "-$8.77B"},
             {"label": "애널리스트 의견", "value": "Strong Buy (3-4명)"},
             {"label": "목표주가", "value": "$31.87 (+92.1%)"},
-            {"label": "다음 실적발표일", "value": "2026-11-20 (예상, 회계연도 8월 결산)"}
+            {"label": "다음 실적발표일", "value": "2026-11-20 (예상, 회계연도 8월 결산)"},
+            {"label": "다음 분기 예상 실적", "value": "N/A (분석 커버리지 부족)"}
           ],
           "quarters": [
             {"period": "FQ 2026-05 마감", "eps_actual": "-$0.15", "eps_est": "-$0.04", "eps_result": "miss", "rev_actual": "$46.5M", "rev_est": "N/A", "rev_result": "N/A"},

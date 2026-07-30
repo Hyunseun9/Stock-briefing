@@ -73,18 +73,27 @@
   }
   h1 { font-size: 22px; font-weight: 700; margin: 0 0 16px; line-height: 1.3; }
 
-  .index-row { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 10px; }
+  .index-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 10px; }
   .index-tile {
-    display: flex; flex-direction: column; gap: 3px;
+    display: flex; flex-direction: column; gap: 2px;
     background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
-    padding: 7px 10px; min-width: 0;
+    padding: 6px 7px; min-width: 0;
   }
-  .index-name { font-size: 11px; color: var(--text-muted); }
-  .index-nums { display: flex; align-items: baseline; gap: 6px; min-width: 0; overflow: hidden; }
-  .index-value { font-size: 13.5px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .index-delta { font-size: 12px; font-weight: 600; flex-shrink: 0; white-space: nowrap; }
+  .index-name { font-size: 10px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .index-nums { display: flex; align-items: baseline; gap: 2px 5px; min-width: 0; flex-wrap: wrap; }
+  .index-value { font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .index-delta { font-size: 10px; font-weight: 600; flex-shrink: 0; white-space: nowrap; }
   .index-delta.up { color: var(--good); }
   .index-delta.down { color: var(--critical); }
+
+  .section-divider {
+    display: flex; align-items: center; gap: 10px;
+    margin: 18px 0 10px; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.05em; color: var(--text-muted);
+  }
+  .section-divider::before, .section-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--gridline);
+  }
 
   .card {
     background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px;
@@ -92,12 +101,16 @@
   }
 
   .card-head {
-    display: flex; flex-wrap: wrap; align-items: center;
-    margin-bottom: 0; gap: 12px; row-gap: 8px;
+    display: grid;
+    grid-template-columns: 132px 1fr auto auto;
+    grid-template-areas: "tkr fg price news";
+    align-items: center;
+    gap: 10px; row-gap: 8px;
   }
   .ticker-block {
+    grid-area: tkr;
     display: flex; flex-direction: column; gap: 1px;
-    flex: 0 0 132px; width: 132px; overflow: hidden;
+    min-width: 0; overflow: hidden;
     cursor: pointer;
   }
   .ticker { font-size: 18px; font-weight: 700; line-height: 1.2; }
@@ -106,24 +119,25 @@
     font-size: 11.5px; color: var(--text-muted); line-height: 1.25;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-  .price-block { text-align: right; margin-left: auto; flex-shrink: 0; }
-  .price { font-size: 19px; font-weight: 700; font-variant-numeric: proportional-nums; }
+  .price-block { grid-area: price; text-align: right; min-width: 0; }
+  .price { font-size: 19px; font-weight: 700; font-variant-numeric: proportional-nums; white-space: nowrap; }
   .delta {
     display: inline-flex; align-items: center; gap: 3px; font-size: 12px; font-weight: 600;
-    padding: 1px 7px; border-radius: 999px; margin-top: 3px;
+    padding: 1px 7px; border-radius: 999px; margin-top: 3px; white-space: nowrap;
   }
   .delta.up { color: var(--good); background: var(--good-bg); }
   .delta.down { color: var(--critical); background: var(--critical-bg); }
 
   .fg-strip {
-    display: inline-flex; align-items: center;
+    grid-area: fg;
+    display: inline-flex; align-items: center; justify-self: start;
     gap: 7px;
     background: var(--page);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 4px 9px;
     max-width: 100%;
-    flex-shrink: 0;
+    min-width: 0;
   }
   .fg-left { display: flex; align-items: center; gap: 8px; }
   .fg-gauge-svg { flex-shrink: 0; line-height: 0; display: flex; }
@@ -149,8 +163,9 @@
 
   .news-toggle { position: absolute; opacity: 0; width: 1px; height: 1px; }
   .news-btn {
+    grid-area: news;
     display: inline-flex; align-items: center; justify-content: center;
-    width: 28px; height: 28px; flex-shrink: 0; margin-left: auto;
+    width: 28px; height: 28px; flex-shrink: 0;
     border: 1px solid var(--border); border-radius: 50%;
     background: var(--page); color: var(--text-muted);
     cursor: pointer; user-select: none;
@@ -256,15 +271,17 @@
   }
 
   @media (max-width: 480px) {
-    .ticker-block { width: auto; flex: 1 1 auto; min-width: 0; order: 1; }
-    .price-block { order: 2; }
-    .news-btn { order: 3; margin-left: 0; }
-    .fg-strip { order: 4; width: 100%; padding: 3px 8px; gap: 6px; }
-    .fg-gauge-svg svg { width: 42px; height: 24px; }
-    .fg-text-score { font-size: 16px; }
-    .fg-text-zone { font-size: 11.5px; }
-    .fg-stats { gap: 1px; }
-    .stat-line { font-size: 11px; gap: 8px; }
+    .card-head {
+      grid-template-columns: 1fr auto auto;
+      grid-template-areas: "tkr price news" "fg fg fg";
+    }
+    .fg-strip { justify-self: stretch; width: 100%; padding: 3px 8px; gap: 5px; }
+    .fg-gauge-svg svg { width: 36px; height: 21px; }
+    .fg-text-score { font-size: 14px; }
+    .fg-text-zone { font-size: 10.5px; }
+    .fg-stats { gap: 0px; }
+    .stat-line { font-size: 10px; gap: 6px; }
+    .stat-label { font-size: 10px; }
   }
 </style>
 </head>
@@ -285,27 +302,8 @@
         <div class="cal-grid" id="calGrid"></div>
       </div>
     </div>
-    <header>
-      <p class="eyebrow">일일 주식 브리핑</p>
-      <h1>미국주식 — {{ date_kr }}</h1>
-      <div class="index-row">
-        {% for idx in indices %}
-        <div class="index-tile">
-          <span class="index-name">{{ idx.name }}</span>
-          <span class="index-nums">
-            <span class="index-value">{{ idx.value }}</span>
-            <span class="index-delta {{ idx.direction }}">{{ '▲' if idx.direction == 'up' else '▼' }}{{ idx.change_pct }}%</span>
-          </span>
-        </div>
-        {% endfor %}
-      </div>
-      <div class="headline-block">
-        <div class="headline-row" id="hlRow0"></div>
-        <div class="headline-row" id="hlRow1"></div>
-      </div>
-    </header>
 
-    {% for t in tickers %}
+    {% macro ticker_card(t) %}
     <div class="card">
       <input type="checkbox" id="news-{{ t.ticker|lower }}" class="news-toggle">
       <div class="card-head">
@@ -350,6 +348,38 @@
         {% endfor %}
       </div>
     </div>
+    {% endmacro %}
+
+    <header>
+      <p class="eyebrow">일일 주식 브리핑</p>
+      <h1>미국주식 — {{ date_kr }}</h1>
+      <div class="index-row">
+        {% for idx in indices %}
+        <div class="index-tile">
+          <span class="index-name">{{ idx.name }}</span>
+          <span class="index-nums">
+            <span class="index-value">{{ idx.value }}</span>
+            <span class="index-delta {{ idx.direction }}">{{ '▲' if idx.direction == 'up' else '▼' }}{{ idx.change_pct }}%</span>
+          </span>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="headline-block">
+        <div class="headline-row" id="hlRow0"></div>
+        <div class="headline-row" id="hlRow1"></div>
+      </div>
+    </header>
+
+    {% for t in tickers if t.type != 'etf' %}
+    {{ ticker_card(t) }}
+    {% endfor %}
+
+    {% if tickers|selectattr('type', 'equalto', 'etf')|list %}
+    <div class="section-divider"><span>ETF</span></div>
+    {% endif %}
+
+    {% for t in tickers if t.type == 'etf' %}
+    {{ ticker_card(t) }}
     {% endfor %}
   </div>
 
