@@ -2,28 +2,29 @@
   "date": "2026-07-30",
   "date_kr": "2026년 7월 30일",
   "indices": [
-    {"name": "나스닥", "value": "25,015.87", "change_pct": "2.34", "direction": "up"},
-    {"name": "다우존스", "value": "52,058.95", "change_pct": "0.90", "direction": "up"},
-    {"name": "러셀2000", "value": "2,930.07", "change_pct": "0.82", "direction": "up"}
+    {"name": "나스닥", "value": "25,122.18", "change_pct": "2.78", "direction": "up"},
+    {"name": "S&P500", "value": "7,437.63", "change_pct": "1.66", "direction": "up"},
+    {"name": "다우존스", "value": "52,208.06", "change_pct": "1.19", "direction": "up"},
+    {"name": "러셀2000", "value": "2,933.18", "change_pct": "0.92", "direction": "up"}
   ],
   "news_pool": [
-    {"tag": "뉴스", "text": "마이크로소프트 +16% - 애저 클라우드 매출 첫 1000억달러 돌파, 시장 반등 견인", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"},
-    {"tag": "뉴스", "text": "IONQ +8.83% - 벤치마크 매수의견 재개·블랙록 5.3% 지분 공시", "url": "https://stockanalysis.com/stocks/ionq/"},
-    {"tag": "뉴스", "text": "메타 -9% - AI 투자 회수 우려에 실적 부진, 빅테크 실적 시즌 변동성 확대", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"},
-    {"tag": "뉴스", "text": "전일 연준 매파적 동결로 급락했던 증시, 하루만에 낙폭 대부분 만회", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"},
-    {"tag": "뉴스", "text": "IONQ, SkyWater 인수 7/31 거래 종결 예정 - 8/5 2분기 실적 발표 예고", "url": "https://stockanalysis.com/stocks/ionq/"}
+    {"tag": "뉴스", "text": "마이크로소프트가 애저(Azure) 클라우드 매출이 분기 최초로 1000억 달러를 돌파했다고 발표하며 주가가 급등, 나스닥과 S&P500 랠리를 견인했다.", "url": "https://www.fool.com/coverage/stock-market-today/2026/07/30/stock-market-midday-july-30-microsoft-soars-15-boosting-tech-stocks/"},
+    {"tag": "뉴스", "text": "메타는 2분기 주당순이익이 시장 예상치를 크게 밑돌고 최대 1450억 달러에 달하는 연간 AI 설비투자 가이던스를 제시하며 주가가 급락, 빅테크 내 희비가 엇갈렸다.", "url": "https://www.fxleaders.com/news/2026/07/30/meta-shares-tumble-to-540-range-as-earnings-miss-sparks-selloff/"},
+    {"tag": "뉴스", "text": "연준이 전날(29일) 기준금리를 동결하며 30년물 국채금리가 다년 최고치인 5.20%까지 치솟았음에도, 빅테크 실적 호재에 힘입어 증시는 강세를 이어갔다.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-082255995.html"},
+    {"tag": "뉴스", "text": "아이온큐(IonQ)가 18억 달러 규모의 스카이워터(SkyWater) 인수에 대한 최종 규제 승인을 받았다는 소식에 양자컴퓨팅 관련주 전반이 강세를 보였다.", "url": "https://www.techtimes.com/articles/322085/20260729/ionq-clears-last-regulatory-hurdle-skywater-closes-friday-ending-foreign-chip-dependency.htm"},
+    {"tag": "뉴스", "text": "이날 장 마감 후 아마존과 애플의 실적 발표가 예정된 가운데, 투자자들은 PCE 물가지표 및 2분기 GDP 발표도 함께 주시하고 있다.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-082255995.html"}
   ],
   "tickers": [
     {
       "ticker": "NVDA",
       "company": "NVIDIA Corporation",
-      "price": "194.82",
-      "change_pct": "2.22",
+      "price": "195.04",
+      "change_pct": "2.65",
       "direction": "up",
       "fg_score": 49,
       "fg_zone_class": "neutral",
       "fg_zone_label": "중립",
-      "rsi_d": "42.5",
+      "rsi_d": "43.1",
       "rsi_d_zone": "neutral",
       "rsi_d_arrow": "▲",
       "rsi_w": 47,
@@ -34,18 +35,35 @@
         {
           "key": "overview", "label": "개요",
           "rows": [
-            {"label": "PER", "value": "29.10"},
-            {"label": "EPS", "value": "$6.53"},
             {"label": "시가총액", "value": "$4.72T"},
+            {"label": "PER", "value": "29.10"},
+            {"label": "Forward PER", "value": "19.07"},
+            {"label": "EPS (TTM)", "value": "$6.53"},
             {"label": "52주 범위", "value": "$164.07 - $236.54"},
+            {"label": "금일 범위", "value": "$191.52 - $197.25"},
+            {"label": "시가", "value": "$193.45"},
+            {"label": "전일종가", "value": "$190.01"},
+            {"label": "거래량", "value": "127.48M"},
+            {"label": "발행주식수", "value": "24.22B"},
             {"label": "베타", "value": "2.21"}
           ]
         },
         {
           "key": "dividend", "label": "배당",
           "rows": [
-            {"label": "배당수익률", "value": "0.52%"},
-            {"label": "연간 배당금", "value": "$1.00"}
+            {"label": "배당수익률", "value": "0.51%"},
+            {"label": "연간 배당금", "value": "$1.00"},
+            {"label": "배당성향", "value": "4.29%"},
+            {"label": "배당주기", "value": "분기"},
+            {"label": "배당락일", "value": "2026-06-04"},
+            {"label": "지급일", "value": "2026-06-26"}
+          ],
+          "history": [
+            {"date": "2026-06-04", "amount": "$0.25"},
+            {"date": "2026-03-11", "amount": "$0.01"},
+            {"date": "2025-12-04", "amount": "$0.01"},
+            {"date": "2025-09-11", "amount": "$0.01"},
+            {"date": "2025-06-11", "amount": "$0.01"}
           ]
         },
         {
@@ -54,22 +72,32 @@
             {"label": "매출(TTM)", "value": "$253.49B"},
             {"label": "순이익(TTM)", "value": "$159.61B"},
             {"label": "애널리스트 의견", "value": "Strong Buy (61명)"},
-            {"label": "목표주가", "value": "$302.83 (+55.4%)"},
+            {"label": "목표주가", "value": "$302.83 (+55.3%)"},
             {"label": "다음 실적발표일", "value": "2026-08-26"}
+          ],
+          "quarters": [
+            {"period": "2027 Q1", "eps_actual": "$1.87", "eps_est": "$1.76", "eps_result": "beat", "rev_actual": "$81.62B", "rev_est": "$78.42B", "rev_result": "beat"},
+            {"period": "2026 Q4", "eps_actual": "$1.62", "eps_est": "$1.54", "eps_result": "beat", "rev_actual": "$68.13B", "rev_est": "$65.56B", "rev_result": "beat"},
+            {"period": "2026 Q3", "eps_actual": "$1.30", "eps_est": "$1.23", "eps_result": "beat", "rev_actual": "$57.01B", "rev_est": "$54.66B", "rev_result": "beat"},
+            {"period": "2026 Q2", "eps_actual": "$1.05", "eps_est": "$1.01", "eps_result": "beat", "rev_actual": "$46.74B", "rev_est": "$45.65B", "rev_result": "beat"},
+            {"period": "2026 Q1", "eps_actual": "$0.81", "eps_est": "$0.87", "eps_result": "miss", "rev_actual": "$44.06B", "rev_est": "$43.09B", "rev_result": "beat"},
+            {"period": "2025 Q4", "eps_actual": "$0.89", "eps_est": "$0.84", "eps_result": "beat", "rev_actual": "$39.33B", "rev_est": "$38.16B", "rev_result": "beat"},
+            {"period": "2025 Q3", "eps_actual": "$0.81", "eps_est": "$0.69", "eps_result": "beat", "rev_actual": "$35.08B", "rev_est": "$33.15B", "rev_result": "beat"},
+            {"period": "2025 Q2", "eps_actual": "$0.68", "eps_est": "$0.64", "eps_result": "beat", "rev_actual": "$30.04B", "rev_est": "$28.74B", "rev_result": "beat"}
           ]
         }
       ],
       "news": [
-        {"label": "오늘의 최대 뉴스", "text": "개별 뉴스보다 마이크로소프트 실적 훈풍에 동반 반등, +2.22%.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"},
-        {"label": "관련 업종 뉴스", "text": "전일 나스닥100 조정 국면 진입 우려를 딛고 반도체·빅테크 전반 하루만에 반등.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"},
-        {"label": "다가오는 일정", "text": "이번 주 아마존·애플 실적 발표 예정 - 클라우드/AI 인프라 지출 지속 여부 주목. NVDA 자체 실적은 8/26.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"}
+        {"label": "오늘의 최대 뉴스", "text": "마이크로소프트 등 빅테크의 AI·클라우드 실적 호조에 힘입어 엔비디아를 비롯한 반도체·AI 관련주가 일제히 반등, 지난주 낙폭(-9.5%)의 일부를 만회했다.", "url": "https://www.fxleaders.com/news/2026/07/30/nvidia-nvda-announces-q2-conference-call-as-stock-stabilizes/"},
+        {"label": "관련 업종 뉴스", "text": "중국이 엔비디아 H200 칩의 자국 기업 구매 승인 물량을 요청량의 절반 이하로 제한하기로 하면서 반도체 업종에는 여전히 정책 불확실성이 남아있다.", "url": "https://capital.com/en-int/analysis/nvidia-nvda-stock-forecast"},
+        {"label": "다가오는 일정", "text": "엔비디아는 오는 8월 26일 2분기 실적 발표 컨퍼런스콜을 진행할 예정이다.", "url": "https://www.fxleaders.com/news/2026/07/30/nvidia-nvda-announces-q2-conference-call-as-stock-stabilizes/"}
       ]
     },
     {
       "ticker": "IONQ",
       "company": "IonQ, Inc.",
-      "price": "34.82",
-      "change_pct": "8.83",
+      "price": "35.77",
+      "change_pct": "11.82",
       "direction": "up",
       "fg_score": 38,
       "fg_zone_class": "fear",
@@ -85,35 +113,53 @@
         {
           "key": "overview", "label": "개요",
           "rows": [
-            {"label": "PER", "value": "39.19"},
-            {"label": "EPS", "value": "$0.92"},
-            {"label": "시가총액", "value": "$13.44B"},
+            {"label": "시가총액", "value": "$13.35B"},
+            {"label": "PER", "value": "38.82"},
+            {"label": "EPS (TTM)", "value": "$0.92"},
             {"label": "52주 범위", "value": "$25.89 - $84.64"},
+            {"label": "금일 범위", "value": "$33.00 - $36.18"},
+            {"label": "시가", "value": "$33.17"},
+            {"label": "전일종가", "value": "$31.99"},
+            {"label": "거래량", "value": "23.03M"},
+            {"label": "평균거래량", "value": "18.31M"},
+            {"label": "발행주식수", "value": "373.27M"},
             {"label": "베타", "value": "3.23"}
           ]
         },
         {
           "key": "earnings", "label": "실적",
           "rows": [
-            {"label": "매출(TTM)", "value": "$187.12M (+334.6%)"},
-            {"label": "순이익", "value": "$308.51M"},
+            {"label": "매출(TTM)", "value": "$187.12M"},
+            {"label": "순이익(TTM)", "value": "$327.23M"},
             {"label": "애널리스트 의견", "value": "Strong Buy"},
-            {"label": "목표주가", "value": "$69.11 (+91.9%)"},
+            {"label": "목표주가", "value": "$69.11 (+93.2%)"},
             {"label": "다음 실적발표일", "value": "2026-08-05"}
-          ]
+          ],
+          "quarters": [
+            {"period": "2026 Q1", "eps_actual": "-$0.34", "eps_est": "-$0.26", "eps_result": "miss", "rev_actual": "$64.67M", "rev_est": "$49.75M", "rev_result": "beat"},
+            {"period": "2025 Q4", "eps_actual": "-$0.20", "eps_est": "-$0.31", "eps_result": "beat", "rev_actual": "$61.9M", "rev_est": "$40.38M", "rev_result": "beat"},
+            {"period": "2025 Q3", "eps_actual": "-$3.58", "eps_est": "-$0.44", "eps_result": "miss", "rev_actual": "$39.9M", "rev_est": "$26.99M", "rev_result": "beat"},
+            {"period": "2025 Q2", "eps_actual": "-$0.70", "eps_est": "-$0.13", "eps_result": "miss", "rev_actual": "$20.7M", "rev_est": "$17.23M", "rev_result": "beat"},
+            {"period": "2025 Q1", "eps_actual": "-$0.14", "eps_est": "-$0.28", "eps_result": "beat", "rev_actual": "$7.57M", "rev_est": "$7.51M", "rev_result": "beat"},
+            {"period": "2024 Q4", "eps_actual": "-$0.93", "eps_est": "-$0.23", "eps_result": "miss", "rev_actual": "$11.7M", "rev_est": "$10.6M", "rev_result": "beat"},
+            {"period": "2024 Q3", "eps_actual": "-$0.24", "eps_est": "-$0.22", "eps_result": "miss", "rev_actual": "$12.4M", "rev_est": "$10.56M", "rev_result": "beat"},
+            {"period": "2024 Q2", "eps_actual": "-$0.18", "eps_est": "-$0.22", "eps_result": "beat", "rev_actual": "$11.38M", "rev_est": "$8.66M", "rev_result": "beat"},
+            {"period": "2024 Q1", "eps_actual": "-$0.19", "eps_est": "-$0.26", "eps_result": "beat", "rev_actual": "$7.58M", "rev_est": "$7.08M", "rev_result": "beat"}
+          ],
+          "footnote": "TTM 순이익·EPS·PER은 워런트 공정가치 평가익 등 비영업적 요인의 영향이 커서 실제 흑자 전환을 의미하지 않는다. 핵심 영업손실은 지속 중이며, GAAP 기준 EPS로 일부 분기는 대규모 비경상 손익을 포함한다."
         }
       ],
       "news": [
-        {"label": "오늘의 최대 뉴스", "text": "벤치마크, 양자컴퓨팅 담당 커버리지 재개하며 매수(Buy) 의견·목표주가 $60 제시.", "url": "https://stockanalysis.com/stocks/ionq/"},
-        {"label": "관련 업종 뉴스", "text": "블랙록, IonQ 지분 5.3% 보유 공시 - 기관 매수세 부각.", "url": "https://stockanalysis.com/stocks/ionq/"},
-        {"label": "다가오는 일정", "text": "SkyWater 인수 7/31 거래 종결 예정, 8/5 2분기 실적 발표.", "url": "https://stockanalysis.com/stocks/ionq/"}
+        {"label": "오늘의 최대 뉴스", "text": "아이온큐가 18억 달러 규모 스카이워터(SkyWater) 파운드리 인수에 대한 최종 규제 승인을 받아 7월 31일 딜 종결을 앞두고 있다는 소식에 주가가 급등했다.", "url": "https://www.techtimes.com/articles/322085/20260729/ionq-clears-last-regulatory-hurdle-skywater-closes-friday-ending-foreign-chip-dependency.htm"},
+        {"label": "관련 업종 뉴스", "text": "리제티, D-웨이브 등 양자컴퓨팅 관련주들이 최근 한 달간 30% 급락한 뒤 이번 주 반등하는 등 업종 전반의 변동성이 매우 크게 나타나고 있다.", "url": "https://247wallst.com/investing/2026/07/29/ionq-rigetti-and-d-wave-quantum-are-down-30-in-a-month-is-more-pain-coming-for-quantum-computing-stocks/"},
+        {"label": "다가오는 일정", "text": "아이온큐는 스카이워터와의 합병 이후 첫 합동 실적 발표를 8월 5일에 진행할 예정이다.", "url": "https://www.techtimes.com/articles/322085/20260729/ionq-clears-last-regulatory-hurdle-skywater-closes-friday-ending-foreign-chip-dependency.htm"}
       ]
     },
     {
       "ticker": "QQQ",
       "company": "Invesco QQQ Trust",
-      "price": "681.81",
-      "change_pct": "3.03",
+      "price": "683.55",
+      "change_pct": "3.30",
       "direction": "up",
       "fg_score": 47,
       "fg_zone_class": "neutral",
@@ -139,7 +185,17 @@
           "key": "dividend", "label": "배당",
           "rows": [
             {"label": "배당수익률", "value": "0.44%"},
-            {"label": "배당락일", "value": "2026-06-22"}
+            {"label": "배당주기", "value": "분기"},
+            {"label": "배당락일", "value": "2026-06-22"},
+            {"label": "지급일", "value": "2026-07-10"}
+          ],
+          "history": [
+            {"date": "2026-06-22", "amount": "$0.81349"},
+            {"date": "2026-03-23", "amount": "$0.73282"},
+            {"date": "2025-12-22", "amount": "$0.79408"},
+            {"date": "2025-09-22", "amount": "$0.69395"},
+            {"date": "2025-06-23", "amount": "$0.59111"},
+            {"date": "2025-03-24", "amount": "$0.71571"}
           ]
         },
         {
@@ -148,31 +204,32 @@
             {"label": "RSI(14일)", "value": "41.82"},
             {"label": "20일 이동평균", "value": "$713.32"},
             {"label": "50일 이동평균", "value": "$718.75"},
+            {"label": "100일 이동평균", "value": "$670.89"},
             {"label": "200일 이동평균", "value": "$642.79"}
           ]
         }
       ],
       "news": [
-        {"label": "오늘의 최대 뉴스", "text": "마이크로소프트 +16% 급등(애저 매출 첫 1000억달러 돌파)에 힘입어 구성종목 전반 강세.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"},
-        {"label": "관련 업종 뉴스", "text": "전일 연준 매파적 동결로 급락했던 기술주, 하루만에 낙폭 대부분 만회.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"},
-        {"label": "다가오는 일정", "text": "아마존·애플 실적 발표 대기 중(이번 주).", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"}
+        {"label": "오늘의 최대 뉴스", "text": "마이크로소프트의 애저 매출이 분기 최초로 1000억 달러를 돌파했다는 소식에 나스닥100을 추종하는 QQQ가 강하게 상승했다.", "url": "https://www.fool.com/coverage/stock-market-today/2026/07/30/stock-market-midday-july-30-microsoft-soars-15-boosting-tech-stocks/"},
+        {"label": "관련 업종 뉴스", "text": "반면 메타는 실적 부진과 막대한 AI 설비투자 부담(연간 최대 1450억 달러 가이던스)으로 급락해, 대형 기술주 내에서도 종목별 명암이 크게 갈렸다.", "url": "https://www.fxleaders.com/news/2026/07/30/meta-shares-tumble-to-540-range-as-earnings-miss-sparks-selloff/"},
+        {"label": "다가오는 일정", "text": "이날 장 마감 후 아마존과 애플의 실적 발표가 예정돼 있어, QQQ 구성 대형 기술주들의 변동성이 추가로 커질 가능성이 있다.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-082255995.html"}
       ]
     },
     {
       "ticker": "JEPQ",
-      "company": "JPMorgan Nasdaq ETF",
-      "price": "56.50",
-      "change_pct": "0.64",
-      "direction": "up",
+      "company": "JPMorgan Nasdaq Equity Premium Income ETF",
+      "price": "56.14",
+      "change_pct": "1.85",
+      "direction": "down",
       "fg_score": 58,
       "fg_zone_class": "neutral",
       "fg_zone_label": "중립",
       "rsi_d": "63.7",
       "rsi_d_zone": "neutral",
-      "rsi_d_arrow": "▲",
+      "rsi_d_arrow": "▼",
       "rsi_w": 58,
       "rsi_w_zone": "neutral",
-      "rsi_w_arrow": "▲",
+      "rsi_w_arrow": "▼",
       "beta": "0.83",
       "tabs": [
         {
@@ -187,8 +244,18 @@
         {
           "key": "dividend", "label": "배당",
           "rows": [
-            {"label": "배당수익률", "value": "11.15%"},
-            {"label": "배당락일", "value": "2026-07-01"}
+            {"label": "배당수익률(TTM)", "value": "11.15%"},
+            {"label": "배당주기", "value": "월배당"},
+            {"label": "배당락일", "value": "2026-07-01"},
+            {"label": "지급일", "value": "2026-07-06"}
+          ],
+          "history": [
+            {"date": "2026-07-01", "amount": "$0.63658"},
+            {"date": "2026-06-01", "amount": "$0.56444"},
+            {"date": "2026-05-01", "amount": "$0.59095"},
+            {"date": "2026-04-01", "amount": "$0.5586"},
+            {"date": "2026-03-02", "amount": "$0.509"},
+            {"date": "2026-02-02", "amount": "$0.46572"}
           ]
         },
         {
@@ -197,31 +264,32 @@
             {"label": "RSI(14일)", "value": "63.67"},
             {"label": "20일 이동평균", "value": "$59.33"},
             {"label": "50일 이동평균", "value": "$57.82"},
+            {"label": "100일 이동평균", "value": "$58.14"},
             {"label": "200일 이동평균", "value": "$57.67"}
           ]
         }
       ],
       "news": [
-        {"label": "오늘의 최대 뉴스", "text": "반도체 급락 여파 속에서도 커버드콜 오버레이 전략으로 JEPQ의 변동성이 일부 상쇄됨.", "url": "https://stockanalysis.com/etf/jepq/"},
-        {"label": "관련 업종 뉴스", "text": "전일 매도세 이후 장 전부터 매수세 유입.", "url": "https://stockanalysis.com/etf/jepq/"},
-        {"label": "다가오는 일정", "text": "월 배당 배당락일 8/1 예상(월배당).", "url": "https://stockanalysis.com/etf/jepq/dividend/"}
+        {"label": "오늘의 최대 뉴스", "text": "특별한 악재성 뉴스보다는, 이미 매도한 콜옵션의 행사가에 상승분이 묶이는 커버드콜 구조상 나스닥 급등분을 온전히 따라가지 못해 하락한 것으로 보인다.", "url": "https://www.mutualfunds.com/options-and-income-channel/jepi-vs-jepq-vs-xyld-how-to-decide/"},
+        {"label": "관련 업종 뉴스", "text": "JEPQ 등 커버드콜 ETF는 변동성이 낮고 지수가 급등하는 강세장에서는 구조적으로 지수 대비 수익률이 뒤처지는 경향이 있다는 분석이 반복적으로 제기돼왔다.", "url": "https://seekingalpha.com/article/4923346-jepq-a-smarter-way-to-stay-invested-in-tech-after-the-nasdaq-rally"},
+        {"label": "다가오는 일정", "text": "JEPQ는 매월 분배금을 지급하는 구조로, 다음 월간 분배금 발표가 예정돼 있다.", "url": "https://am.jpmorgan.com/content/dam/jpm-am-aem/americas/us/en/literature/fact-sheet/etfs/FS-JEPQ.PDF"}
       ]
     },
     {
       "ticker": "JEPI",
-      "company": "JPMorgan Equity ETF",
-      "price": "57.08",
-      "change_pct": "0.28",
-      "direction": "up",
+      "company": "JPMorgan Equity Premium Income ETF",
+      "price": "56.92",
+      "change_pct": "0.97",
+      "direction": "down",
       "fg_score": 50,
       "fg_zone_class": "neutral",
       "fg_zone_label": "중립",
       "rsi_d": "43.4",
       "rsi_d_zone": "neutral",
-      "rsi_d_arrow": "▲",
+      "rsi_d_arrow": "▼",
       "rsi_w": 47,
       "rsi_w_zone": "neutral",
-      "rsi_w_arrow": "▲",
+      "rsi_w_arrow": "▼",
       "beta": "0.54",
       "tabs": [
         {
@@ -236,8 +304,18 @@
         {
           "key": "dividend", "label": "배당",
           "rows": [
-            {"label": "배당수익률", "value": "8.03%"},
-            {"label": "배당락일", "value": "2026-07-01"}
+            {"label": "배당수익률(TTM)", "value": "8.03%"},
+            {"label": "배당주기", "value": "월배당"},
+            {"label": "배당락일", "value": "2026-07-01"},
+            {"label": "지급일", "value": "2026-07-06"}
+          ],
+          "history": [
+            {"date": "2026-07-01", "amount": "$0.3872"},
+            {"date": "2026-06-01", "amount": "$0.3892"},
+            {"date": "2026-05-01", "amount": "$0.4476"},
+            {"date": "2026-04-01", "amount": "$0.4205"},
+            {"date": "2026-03-02", "amount": "$0.3513"},
+            {"date": "2026-02-02", "amount": "$0.3444"}
           ]
         },
         {
@@ -246,14 +324,142 @@
             {"label": "RSI(14일)", "value": "43.40"},
             {"label": "20일 이동평균", "value": "$57.40"},
             {"label": "50일 이동평균", "value": "$57.59"},
+            {"label": "100일 이동평균", "value": "$57.89"},
             {"label": "200일 이동평균", "value": "$57.37"}
           ]
         }
       ],
       "news": [
-        {"label": "오늘의 최대 뉴스", "text": "S&P500 +1.29% 상승에도 저베타·배당 전략 특성상 상승폭은 지수 대비 완만.", "url": "https://stockanalysis.com/etf/jepi/"},
-        {"label": "관련 업종 뉴스", "text": "메타 -9% 실적 부진에도 방어적 배당주 중심 포트폴리오는 상대적으로 안정적.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"},
-        {"label": "다가오는 일정", "text": "월 배당 배당락일 8/1 예상(월배당).", "url": "https://stockanalysis.com/etf/jepi/dividend/"}
+        {"label": "오늘의 최대 뉴스", "text": "JEPQ와 마찬가지로 콜옵션 매도로 상단이 제한되는 구조 때문에, S&P500이 급등한 날에도 JEPI는 오히려 하락하는 현상이 나타났다.", "url": "https://invezz.com/news/2026/05/26/jepi-etf-stock-is-falling-as-the-sp-500-soars-is-the-8-yield-an-illusion/"},
+        {"label": "관련 업종 뉴스", "text": "JEPI는 주식 익스포저를 낮추고 구조화노트(ELN)를 활용해 변동성을 완화하는 대신, 강세장에서는 지수 상승률을 따라가지 못하는 구조적 한계를 갖고 있다.", "url": "https://www.mutualfunds.com/options-and-income-channel/jepi-vs-jepq-vs-xyld-how-to-decide/"},
+        {"label": "다가오는 일정", "text": "JEPI 역시 매월 분배금을 지급하며, 다음 월간 분배금 발표가 다가오고 있다.", "url": "https://am.jpmorgan.com/content/dam/jpm-am-aem/americas/us/en/literature/fact-sheet/etfs/FS-JEPI.PDF"}
+      ]
+    },
+    {
+      "ticker": "IMVT",
+      "company": "Immunovant, Inc.",
+      "price": "39.41",
+      "change_pct": "0.10",
+      "direction": "up",
+      "fg_score": 52,
+      "fg_zone_class": "neutral",
+      "fg_zone_label": "중립",
+      "rsi_d": "53.6",
+      "rsi_d_zone": "neutral",
+      "rsi_d_arrow": "▲",
+      "rsi_w": 51,
+      "rsi_w_zone": "neutral",
+      "rsi_w_arrow": "▲",
+      "beta": "0.77",
+      "tabs": [
+        {
+          "key": "overview", "label": "개요",
+          "rows": [
+            {"label": "시가총액", "value": "$8.13B"},
+            {"label": "PER", "value": "N/A (적자)"},
+            {"label": "EPS (TTM)", "value": "-$2.77"},
+            {"label": "52주 범위", "value": "$14.32 - $41.23"},
+            {"label": "금일 범위", "value": "$38.70 - $39.87"},
+            {"label": "시가", "value": "$39.80"},
+            {"label": "전일종가", "value": "$39.37"},
+            {"label": "거래량", "value": "727,080"},
+            {"label": "평균거래량", "value": "1,004,182"},
+            {"label": "발행주식수", "value": "206.40M"},
+            {"label": "베타", "value": "0.77"}
+          ]
+        },
+        {
+          "key": "earnings", "label": "실적",
+          "rows": [
+            {"label": "매출(TTM)", "value": "N/A (임상단계, 매출 없음)"},
+            {"label": "순이익(TTM)", "value": "-$505.61M"},
+            {"label": "애널리스트 의견", "value": "Buy (16명)"},
+            {"label": "목표주가", "value": "$47.53 (+20.6%)"},
+            {"label": "다음 실적발표일", "value": "2026-08-06 (개장 전)"}
+          ],
+          "quarters": [
+            {"period": "FY26 Q4 (2026-03 마감)", "eps_actual": "-$0.73", "eps_est": "-$0.60", "eps_result": "miss", "rev_actual": "N/A", "rev_est": "N/A", "rev_result": "N/A"},
+            {"period": "FY26 Q3 (2025-12 마감)", "eps_actual": "-$0.61", "eps_est": "-$0.72", "eps_result": "beat", "rev_actual": "N/A", "rev_est": "N/A", "rev_result": "N/A"},
+            {"period": "FY26 Q2 (2025-09 마감)", "eps_actual": "-$0.73", "eps_est": "-$0.72", "eps_result": "miss", "rev_actual": "N/A", "rev_est": "N/A", "rev_result": "N/A"},
+            {"period": "FY26 Q1 (2025-06 마감)", "eps_actual": "-$0.60", "eps_est": "-$0.69", "eps_result": "beat", "rev_actual": "N/A", "rev_est": "N/A", "rev_result": "N/A"},
+            {"period": "FY25 Q4 (2025-03 마감)", "eps_actual": "-$0.64", "eps_est": "-$0.72", "eps_result": "beat", "rev_actual": "N/A", "rev_est": "N/A", "rev_result": "N/A"},
+            {"period": "FY25 Q3 (2024-12 마감)", "eps_actual": "-$0.76", "eps_est": "-$0.68", "eps_result": "miss", "rev_actual": "N/A", "rev_est": "N/A", "rev_result": "N/A"}
+          ]
+        }
+      ],
+      "news": [
+        {"label": "오늘의 최대 뉴스", "text": "구겐하임이 목표주가를 62달러로, 씨티그룹이 61달러로 상향하는 등 최근 애널리스트들의 목표가 상향이 이어지며 컨센서스는 '완만한 매수'(평균 목표가 42.11달러)를 유지하고 있다.", "url": "https://www.themarketsdaily.com/2026/07/30/immunovant-imvt-projected-to-announce-earnings-on-thursday.html"},
+        {"label": "관련 업종 뉴스", "text": "앞서 5월 이뮤노반트는 갑상선안병증 대상 배토클리맙(batoclimab) 3상 2건이 모두 주요 평가지표를 충족하지 못하자 개발을 중단하고, 후속 후보물질 IMVT-1402에 역량을 집중하는 전략 전환을 발표했다.", "url": "https://www.stocktitan.net/sec-filings/IMVT/8-k-immunovant-inc-reports-material-event-66adaa2d1add.html"},
+        {"label": "다가오는 일정", "text": "이뮤노반트는 8월 6일 장 개장 전 2026 회계연도 1분기(6월 30일 마감) 실적 및 사업 업데이트를 발표할 예정이다.", "url": "https://www.globenewswire.com/news-release/2026/07/23/3332562/0/en/immunovant-to-report-financial-results-for-the-first-quarter-ended-june-30-2026-and-provide-business-update-on-thursday-august-6-2026.html"}
+      ]
+    },
+    {
+      "ticker": "BMNR",
+      "company": "Bitmine Immersion Technologies, Inc.",
+      "price": "16.59",
+      "change_pct": "5.58",
+      "direction": "down",
+      "fg_score": 46,
+      "fg_zone_class": "neutral",
+      "fg_zone_label": "중립",
+      "rsi_d": "53.3",
+      "rsi_d_zone": "neutral",
+      "rsi_d_arrow": "▼",
+      "rsi_w": 50,
+      "rsi_w_zone": "neutral",
+      "rsi_w_arrow": "▼",
+      "beta": "1.67",
+      "tabs": [
+        {
+          "key": "overview", "label": "개요",
+          "rows": [
+            {"label": "시가총액", "value": "$10.01B"},
+            {"label": "PER", "value": "N/A (적자)"},
+            {"label": "EPS (TTM)", "value": "-$24.68"},
+            {"label": "52주 범위", "value": "$12.80 - $71.74"},
+            {"label": "금일 범위", "value": "$16.53 - $17.73"},
+            {"label": "시가", "value": "$17.49"},
+            {"label": "전일종가", "value": "$17.57"},
+            {"label": "거래량", "value": "32.44M"},
+            {"label": "평균거래량(20일)", "value": "34.63M"},
+            {"label": "발행주식수", "value": "603.23M"},
+            {"label": "ETH 보유량", "value": "약 579만 ETH (총 암호자산+현금 약 $11.8B, 2026-07-27 기준)"},
+            {"label": "베타", "value": "1.67"}
+          ]
+        },
+        {
+          "key": "dividend", "label": "배당",
+          "rows": [
+            {"label": "연간 배당금", "value": "$0.01"},
+            {"label": "배당수익률", "value": "0.06%"},
+            {"label": "배당락일", "value": "2025-12-08"}
+          ],
+          "footnote": "2025년 대형 암호화폐 기업 최초로 배당을 선언했으나, 상징적 수준의 배당금으로 실질 수익률은 미미함."
+        },
+        {
+          "key": "earnings", "label": "실적",
+          "rows": [
+            {"label": "매출(TTM)", "value": "$61.20M"},
+            {"label": "순이익(TTM)", "value": "-$8.77B"},
+            {"label": "애널리스트 의견", "value": "Strong Buy (3-4명)"},
+            {"label": "목표주가", "value": "$31.87 (+92.1%)"},
+            {"label": "다음 실적발표일", "value": "2026-11-20 (예상, 회계연도 8월 결산)"}
+          ],
+          "quarters": [
+            {"period": "FQ 2026-05 마감", "eps_actual": "-$0.15", "eps_est": "-$0.04", "eps_result": "miss", "rev_actual": "$46.5M", "rev_est": "N/A", "rev_result": "N/A"},
+            {"period": "FQ 2026-02 마감", "eps_actual": "-$8.40", "eps_est": "N/A", "eps_result": "N/A", "rev_actual": "$11.0M", "rev_est": "N/A", "rev_result": "N/A"},
+            {"period": "FQ 2025-11 마감", "eps_actual": "-$15.98", "eps_est": "N/A", "eps_result": "N/A", "rev_actual": "$2.29M", "rev_est": "N/A", "rev_result": "N/A"},
+            {"period": "FQ 2025-08 마감 (사업전환 분기)", "eps_actual": "$15.94", "eps_est": "N/A", "eps_result": "N/A", "rev_actual": "$1.32M", "rev_est": "N/A", "rev_result": "N/A"},
+            {"period": "FQ 2025-05 마감 (전환 이전)", "eps_actual": "-$0.31", "eps_est": "N/A", "eps_result": "N/A", "rev_actual": "$2.05M", "rev_est": "N/A", "rev_result": "N/A"},
+            {"period": "FQ 2025-02 마감 (전환 이전)", "eps_actual": "-$0.58", "eps_est": "N/A", "eps_result": "N/A", "rev_actual": "$1.52M", "rev_est": "N/A", "rev_result": "N/A"}
+          ],
+          "footnote": "2025년 중반 비트코인 채굴에서 이더리움(ETH) 트레저리 전략으로 사업모델을 전환. GAAP EPS는 보유 ETH의 시가평가 손익(ASU 2023-08)에 따라 분기별 변동성이 매우 크며, 전환 이전 분기는 참고용. 컨센서스 추정치가 확립되지 않아 예상치(N/A)가 많음."
+        }
+      ],
+      "news": [
+        {"label": "오늘의 최대 뉴스", "text": "연준의 매파적 금리 동결과 중동 지정학적 긴장으로 위험자산 회피 심리가 커지며 이더리움이 2000달러 아래로 밀렸고, 최대 이더리움 보유 기업인 비트마인 주가도 함께 하락했다.", "url": "https://sundayguardianlive.com/business/ethereum-price-today-july-30-why-is-ethereum-eth-down-today-feds-hawkish-outlook-and-geopolitical-tensions-keep-crypto-below-2000-check-latest-prices-in-usd-inr-gbp-euro-and-jpy-249697/"},
+        {"label": "관련 업종 뉴스", "text": "비트마인은 570만 개 이상의 이더리움(약 111억~115억 달러 규모)을 보유한 최대 ETH 트레저리 기업으로, 올해 들어 이더리움 현물 ETF에서 13억 달러 이상 자금이 유출되는 등 이더리움 관련 자산 전반이 약세를 보이고 있다.", "url": "https://www.benzinga.com/markets/equities/26/07/60268987/tom-lees-bitmine-faces-massive-unrealized-loss-as-eth-and-bmnr-stock-tumble"},
+        {"label": "다가오는 일정", "text": "비트마인은 매주 이더리움 보유량과 총 자산 현황을 정기 공시하고 있어, 다음 주간 업데이트 발표가 예정돼 있다.", "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-announces-eth-holdings-reach-5-78-million-tokens-and-total-crypto-and-total-cash-holdings-of-11-5-billion-302829332.html"}
       ]
     }
   ]

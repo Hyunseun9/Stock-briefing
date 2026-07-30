@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#f9f9f7">
 <title>미국주식 브리핑 — 2026년 7월 30일</title>
 <style>
   .viz-root {
@@ -22,28 +24,10 @@
     --meter-track:    #e1e0d9;
     --gauge-track:    #e7e6e1;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:where(:not([data-theme="light"])) .viz-root {
-      color-scheme: dark;
-      --page:           #0d0d0d;
-      --surface-1:      #1a1a19;
-      --text-primary:   #ffffff;
-      --text-secondary: #c3c2b7;
-      --text-muted:     #898781;
-      --gridline:       #2c2c2a;
-      --border:         rgba(255,255,255,0.10);
-      --good:           #0ca30c;
-      --good-bg:        #123312;
-      --critical:       #e66767;
-      --critical-bg:    #3a1c1c;
-      --series-blue:    #3987e5;
-      --meter-track:    #2c2c2a;
-      --gauge-track:    #2c2c2a;
-    }
-  }
+  /* Fixed light theme regardless of device/browser dark-mode setting. */
 
   * { box-sizing: border-box; }
-  html, body { overflow-x: hidden; max-width: 100%; }
+  html, body { overflow-x: hidden; max-width: 100%; color-scheme: light; }
   body {
     margin: 0;
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -89,16 +73,16 @@
   }
   h1 { font-size: 22px; font-weight: 700; margin: 0 0 16px; line-height: 1.3; }
 
-  .index-row { display: flex; gap: 7px; margin-bottom: 10px; }
+  .index-row { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 10px; }
   .index-tile {
-    flex: 1; display: flex; align-items: baseline; justify-content: space-between; gap: 6px;
+    display: flex; flex-direction: column; gap: 3px;
     background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
     padding: 7px 10px; min-width: 0;
   }
-  .index-name { font-size: 11px; color: var(--text-muted); flex-shrink: 0; }
-  .index-nums { display: flex; align-items: baseline; gap: 5px; min-width: 0; overflow: hidden; }
-  .index-value { font-size: 12.5px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .index-delta { font-size: 11px; font-weight: 600; flex-shrink: 0; white-space: nowrap; }
+  .index-name { font-size: 11px; color: var(--text-muted); }
+  .index-nums { display: flex; align-items: baseline; gap: 6px; min-width: 0; overflow: hidden; }
+  .index-value { font-size: 13.5px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .index-delta { font-size: 12px; font-weight: 600; flex-shrink: 0; white-space: nowrap; }
   .index-delta.up { color: var(--good); }
   .index-delta.down { color: var(--critical); }
 
@@ -204,12 +188,6 @@
     color: var(--text-muted); min-width: 30px;
   }
 
-  footer {
-    margin-top: 20px; font-size: 11.5px; color: var(--text-muted); line-height: 1.6;
-    border-top: 1px solid var(--gridline); padding-top: 14px;
-  }
-  footer b { color: var(--text-secondary); }
-
   /* Ticker detail drawer */
   .drawer-overlay {
     display: none; position: fixed; inset: 0; background: rgba(11,11,11,0.35); z-index: 50;
@@ -242,16 +220,51 @@
     padding: 8px 0; border-bottom: 1px solid var(--gridline); font-size: 13px;
   }
   .detail-row:last-child { border-bottom: none; }
-  .detail-label { color: var(--text-muted); }
+  .detail-label { color: var(--text-muted); white-space: nowrap; flex-shrink: 0; }
   .detail-value { font-weight: 700; color: var(--text-primary); text-align: right; font-variant-numeric: tabular-nums; }
 
+  .mini-section-title {
+    font-size: 12px; font-weight: 700; color: var(--text-secondary);
+    margin: 18px 0 6px;
+  }
+  .div-history-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 12.5px; padding: 6px 0; border-bottom: 1px solid var(--gridline);
+  }
+  .div-history-row:last-child { border-bottom: none; }
+  .div-history-row .dhr-date { color: var(--text-muted); }
+  .div-history-row .dhr-amount { font-weight: 700; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+
+  .quarter-block { padding: 9px 0; border-bottom: 1px solid var(--gridline); }
+  .quarter-block:last-child { border-bottom: none; }
+  .quarter-period { font-size: 12px; font-weight: 700; color: var(--text-primary); margin-bottom: 5px; }
+  .quarter-line {
+    display: flex; align-items: baseline; gap: 6px;
+    font-size: 12px; color: var(--text-secondary); margin-bottom: 3px; flex-wrap: wrap;
+  }
+  .quarter-line:last-child { margin-bottom: 0; }
+  .quarter-line .qline-label { color: var(--text-muted); flex-shrink: 0; min-width: 30px; }
+  .result-badge {
+    font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 999px;
+    white-space: nowrap;
+  }
+  .result-badge.beat { color: var(--good); background: var(--good-bg); }
+  .result-badge.miss { color: var(--critical); background: var(--critical-bg); }
+  .result-badge.inline { color: var(--text-secondary); background: var(--page); }
+  .tab-footnote {
+    font-size: 10.5px; color: var(--text-muted); line-height: 1.55; margin: 14px 0 0;
+  }
+
   @media (max-width: 480px) {
-    .ticker-block { width: auto; flex: 1 1 auto; min-width: 0; }
-    .fg-strip { order: 3; width: 100%; }
+    .ticker-block { width: auto; flex: 1 1 auto; min-width: 0; order: 1; }
     .price-block { order: 2; }
-    .news-btn { order: 4; }
-    .index-row { flex-direction: column; }
-    .index-tile { width: 100%; }
+    .news-btn { order: 3; margin-left: 0; }
+    .fg-strip { order: 4; width: 100%; padding: 3px 8px; gap: 6px; }
+    .fg-gauge-svg svg { width: 42px; height: 24px; }
+    .fg-text-score { font-size: 16px; }
+    .fg-text-zone { font-size: 11.5px; }
+    .fg-stats { gap: 1px; }
+    .stat-line { font-size: 11px; gap: 8px; }
   }
 </style>
 </head>
@@ -279,22 +292,29 @@
         <div class="index-tile">
           <span class="index-name">나스닥</span>
           <span class="index-nums">
-            <span class="index-value">25,015.87</span>
-            <span class="index-delta up">▲2.34%</span>
+            <span class="index-value">25,122.18</span>
+            <span class="index-delta up">▲2.78%</span>
+          </span>
+        </div>
+        <div class="index-tile">
+          <span class="index-name">S&P500</span>
+          <span class="index-nums">
+            <span class="index-value">7,437.63</span>
+            <span class="index-delta up">▲1.66%</span>
           </span>
         </div>
         <div class="index-tile">
           <span class="index-name">다우존스</span>
           <span class="index-nums">
-            <span class="index-value">52,058.95</span>
-            <span class="index-delta up">▲0.90%</span>
+            <span class="index-value">52,208.06</span>
+            <span class="index-delta up">▲1.19%</span>
           </span>
         </div>
         <div class="index-tile">
           <span class="index-name">러셀2000</span>
           <span class="index-nums">
-            <span class="index-value">2,930.07</span>
-            <span class="index-delta up">▲0.82%</span>
+            <span class="index-value">2,933.18</span>
+            <span class="index-delta up">▲0.92%</span>
           </span>
         </div>
       </div>
@@ -323,7 +343,7 @@
           <div class="fg-stats">
             <div class="stat-line">
               <span class="stat-label">일봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>42.5</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>43.1</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">주봉 RSI</span>
@@ -336,16 +356,16 @@
           </div>
         </div>
         <div class="price-block">
-          <div class="price">$194.82</div>
-          <div class="delta up">▲ 2.22%</div>
+          <div class="price">$195.04</div>
+          <div class="delta up">▲ 2.65%</div>
         </div>
         <label for="news-nvda" class="news-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></label>
       </div>
 
       <div class="news-body">
-        <p><b>오늘의 최대 뉴스:</b> 개별 뉴스보다 마이크로소프트 실적 훈풍에 동반 반등, +2.22%. <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
-        <p><b>관련 업종 뉴스:</b> 전일 나스닥100 조정 국면 진입 우려를 딛고 반도체·빅테크 전반 하루만에 반등. <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
-        <p><b>다가오는 일정:</b> 이번 주 아마존·애플 실적 발표 예정 - 클라우드/AI 인프라 지출 지속 여부 주목. NVDA 자체 실적은 8/26. <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>오늘의 최대 뉴스:</b> 마이크로소프트 등 빅테크의 AI·클라우드 실적 호조에 힘입어 엔비디아를 비롯한 반도체·AI 관련주가 일제히 반등, 지난주 낙폭(-9.5%)의 일부를 만회했다. <a class="src-link" href="https://www.fxleaders.com/news/2026/07/30/nvidia-nvda-announces-q2-conference-call-as-stock-stabilizes/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>관련 업종 뉴스:</b> 중국이 엔비디아 H200 칩의 자국 기업 구매 승인 물량을 요청량의 절반 이하로 제한하기로 하면서 반도체 업종에는 여전히 정책 불확실성이 남아있다. <a class="src-link" href="https://capital.com/en-int/analysis/nvidia-nvda-stock-forecast" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>다가오는 일정:</b> 엔비디아는 오는 8월 26일 2분기 실적 발표 컨퍼런스콜을 진행할 예정이다. <a class="src-link" href="https://www.fxleaders.com/news/2026/07/30/nvidia-nvda-announces-q2-conference-call-as-stock-stabilizes/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
       </div>
     </div>
     <div class="card">
@@ -380,16 +400,16 @@
           </div>
         </div>
         <div class="price-block">
-          <div class="price">$34.82</div>
-          <div class="delta up">▲ 8.83%</div>
+          <div class="price">$35.77</div>
+          <div class="delta up">▲ 11.82%</div>
         </div>
         <label for="news-ionq" class="news-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></label>
       </div>
 
       <div class="news-body">
-        <p><b>오늘의 최대 뉴스:</b> 벤치마크, 양자컴퓨팅 담당 커버리지 재개하며 매수(Buy) 의견·목표주가 $60 제시. <a class="src-link" href="https://stockanalysis.com/stocks/ionq/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
-        <p><b>관련 업종 뉴스:</b> 블랙록, IonQ 지분 5.3% 보유 공시 - 기관 매수세 부각. <a class="src-link" href="https://stockanalysis.com/stocks/ionq/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
-        <p><b>다가오는 일정:</b> SkyWater 인수 7/31 거래 종결 예정, 8/5 2분기 실적 발표. <a class="src-link" href="https://stockanalysis.com/stocks/ionq/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>오늘의 최대 뉴스:</b> 아이온큐가 18억 달러 규모 스카이워터(SkyWater) 파운드리 인수에 대한 최종 규제 승인을 받아 7월 31일 딜 종결을 앞두고 있다는 소식에 주가가 급등했다. <a class="src-link" href="https://www.techtimes.com/articles/322085/20260729/ionq-clears-last-regulatory-hurdle-skywater-closes-friday-ending-foreign-chip-dependency.htm" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>관련 업종 뉴스:</b> 리제티, D-웨이브 등 양자컴퓨팅 관련주들이 최근 한 달간 30% 급락한 뒤 이번 주 반등하는 등 업종 전반의 변동성이 매우 크게 나타나고 있다. <a class="src-link" href="https://247wallst.com/investing/2026/07/29/ionq-rigetti-and-d-wave-quantum-are-down-30-in-a-month-is-more-pain-coming-for-quantum-computing-stocks/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>다가오는 일정:</b> 아이온큐는 스카이워터와의 합병 이후 첫 합동 실적 발표를 8월 5일에 진행할 예정이다. <a class="src-link" href="https://www.techtimes.com/articles/322085/20260729/ionq-clears-last-regulatory-hurdle-skywater-closes-friday-ending-foreign-chip-dependency.htm" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
       </div>
     </div>
     <div class="card">
@@ -424,16 +444,16 @@
           </div>
         </div>
         <div class="price-block">
-          <div class="price">$681.81</div>
-          <div class="delta up">▲ 3.03%</div>
+          <div class="price">$683.55</div>
+          <div class="delta up">▲ 3.30%</div>
         </div>
         <label for="news-qqq" class="news-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></label>
       </div>
 
       <div class="news-body">
-        <p><b>오늘의 최대 뉴스:</b> 마이크로소프트 +16% 급등(애저 매출 첫 1000억달러 돌파)에 힘입어 구성종목 전반 강세. <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
-        <p><b>관련 업종 뉴스:</b> 전일 연준 매파적 동결로 급락했던 기술주, 하루만에 낙폭 대부분 만회. <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
-        <p><b>다가오는 일정:</b> 아마존·애플 실적 발표 대기 중(이번 주). <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>오늘의 최대 뉴스:</b> 마이크로소프트의 애저 매출이 분기 최초로 1000억 달러를 돌파했다는 소식에 나스닥100을 추종하는 QQQ가 강하게 상승했다. <a class="src-link" href="https://www.fool.com/coverage/stock-market-today/2026/07/30/stock-market-midday-july-30-microsoft-soars-15-boosting-tech-stocks/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>관련 업종 뉴스:</b> 반면 메타는 실적 부진과 막대한 AI 설비투자 부담(연간 최대 1450억 달러 가이던스)으로 급락해, 대형 기술주 내에서도 종목별 명암이 크게 갈렸다. <a class="src-link" href="https://www.fxleaders.com/news/2026/07/30/meta-shares-tumble-to-540-range-as-earnings-miss-sparks-selloff/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>다가오는 일정:</b> 이날 장 마감 후 아마존과 애플의 실적 발표가 예정돼 있어, QQQ 구성 대형 기술주들의 변동성이 추가로 커질 가능성이 있다. <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
       </div>
     </div>
     <div class="card">
@@ -441,7 +461,7 @@
       <div class="card-head">
         <div class="ticker-block" data-ticker="JEPQ">
           <span class="ticker">JEPQ<span class="chev">›</span></span>
-          <span class="company">JPMorgan Nasdaq ETF</span>
+          <span class="company">JPMorgan Nasdaq Equity Premium Income ETF</span>
         </div>
         <div class="fg-strip">
           <div class="fg-left">
@@ -455,11 +475,11 @@
           <div class="fg-stats">
             <div class="stat-line">
               <span class="stat-label">일봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>63.7</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>63.7</b><span class="trend-arrow">▼</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">주봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>58</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>58</b><span class="trend-arrow">▼</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">베타</span>
@@ -468,16 +488,16 @@
           </div>
         </div>
         <div class="price-block">
-          <div class="price">$56.50</div>
-          <div class="delta up">▲ 0.64%</div>
+          <div class="price">$56.14</div>
+          <div class="delta down">▼ 1.85%</div>
         </div>
         <label for="news-jepq" class="news-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></label>
       </div>
 
       <div class="news-body">
-        <p><b>오늘의 최대 뉴스:</b> 반도체 급락 여파 속에서도 커버드콜 오버레이 전략으로 JEPQ의 변동성이 일부 상쇄됨. <a class="src-link" href="https://stockanalysis.com/etf/jepq/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
-        <p><b>관련 업종 뉴스:</b> 전일 매도세 이후 장 전부터 매수세 유입. <a class="src-link" href="https://stockanalysis.com/etf/jepq/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
-        <p><b>다가오는 일정:</b> 월 배당 배당락일 8/1 예상(월배당). <a class="src-link" href="https://stockanalysis.com/etf/jepq/dividend/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>오늘의 최대 뉴스:</b> 특별한 악재성 뉴스보다는, 이미 매도한 콜옵션의 행사가에 상승분이 묶이는 커버드콜 구조상 나스닥 급등분을 온전히 따라가지 못해 하락한 것으로 보인다. <a class="src-link" href="https://www.mutualfunds.com/options-and-income-channel/jepi-vs-jepq-vs-xyld-how-to-decide/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>관련 업종 뉴스:</b> JEPQ 등 커버드콜 ETF는 변동성이 낮고 지수가 급등하는 강세장에서는 구조적으로 지수 대비 수익률이 뒤처지는 경향이 있다는 분석이 반복적으로 제기돼왔다. <a class="src-link" href="https://seekingalpha.com/article/4923346-jepq-a-smarter-way-to-stay-invested-in-tech-after-the-nasdaq-rally" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>다가오는 일정:</b> JEPQ는 매월 분배금을 지급하는 구조로, 다음 월간 분배금 발표가 예정돼 있다. <a class="src-link" href="https://am.jpmorgan.com/content/dam/jpm-am-aem/americas/us/en/literature/fact-sheet/etfs/FS-JEPQ.PDF" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
       </div>
     </div>
     <div class="card">
@@ -485,7 +505,7 @@
       <div class="card-head">
         <div class="ticker-block" data-ticker="JEPI">
           <span class="ticker">JEPI<span class="chev">›</span></span>
-          <span class="company">JPMorgan Equity ETF</span>
+          <span class="company">JPMorgan Equity Premium Income ETF</span>
         </div>
         <div class="fg-strip">
           <div class="fg-left">
@@ -499,11 +519,11 @@
           <div class="fg-stats">
             <div class="stat-line">
               <span class="stat-label">일봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>43.4</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>43.4</b><span class="trend-arrow">▼</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">주봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>47</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>47</b><span class="trend-arrow">▼</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">베타</span>
@@ -512,22 +532,106 @@
           </div>
         </div>
         <div class="price-block">
-          <div class="price">$57.08</div>
-          <div class="delta up">▲ 0.28%</div>
+          <div class="price">$56.92</div>
+          <div class="delta down">▼ 0.97%</div>
         </div>
         <label for="news-jepi" class="news-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></label>
       </div>
 
       <div class="news-body">
-        <p><b>오늘의 최대 뉴스:</b> S&P500 +1.29% 상승에도 저베타·배당 전략 특성상 상승폭은 지수 대비 완만. <a class="src-link" href="https://stockanalysis.com/etf/jepi/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
-        <p><b>관련 업종 뉴스:</b> 메타 -9% 실적 부진에도 방어적 배당주 중심 포트폴리오는 상대적으로 안정적. <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
-        <p><b>다가오는 일정:</b> 월 배당 배당락일 8/1 예상(월배당). <a class="src-link" href="https://stockanalysis.com/etf/jepi/dividend/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>오늘의 최대 뉴스:</b> JEPQ와 마찬가지로 콜옵션 매도로 상단이 제한되는 구조 때문에, S&P500이 급등한 날에도 JEPI는 오히려 하락하는 현상이 나타났다. <a class="src-link" href="https://invezz.com/news/2026/05/26/jepi-etf-stock-is-falling-as-the-sp-500-soars-is-the-8-yield-an-illusion/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>관련 업종 뉴스:</b> JEPI는 주식 익스포저를 낮추고 구조화노트(ELN)를 활용해 변동성을 완화하는 대신, 강세장에서는 지수 상승률을 따라가지 못하는 구조적 한계를 갖고 있다. <a class="src-link" href="https://www.mutualfunds.com/options-and-income-channel/jepi-vs-jepq-vs-xyld-how-to-decide/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>다가오는 일정:</b> JEPI 역시 매월 분배금을 지급하며, 다음 월간 분배금 발표가 다가오고 있다. <a class="src-link" href="https://am.jpmorgan.com/content/dam/jpm-am-aem/americas/us/en/literature/fact-sheet/etfs/FS-JEPI.PDF" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
       </div>
     </div>
+    <div class="card">
+      <input type="checkbox" id="news-imvt" class="news-toggle">
+      <div class="card-head">
+        <div class="ticker-block" data-ticker="IMVT">
+          <span class="ticker">IMVT<span class="chev">›</span></span>
+          <span class="company">Immunovant, Inc.</span>
+        </div>
+        <div class="fg-strip">
+          <div class="fg-left">
+            <div class="fg-gauge-svg" data-gauge data-score="52"></div>
+            <div class="fg-text">
+              <span class="fg-text-score zone-neutral">52</span>
+              <span class="fg-text-zone">중립</span>
+            </div>
+          </div>
+          <div class="fg-divider"></div>
+          <div class="fg-stats">
+            <div class="stat-line">
+              <span class="stat-label">일봉 RSI</span>
+              <span class="stat-value zone-neutral"><b>53.6</b><span class="trend-arrow">▲</span></span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">주봉 RSI</span>
+              <span class="stat-value zone-neutral"><b>51</b><span class="trend-arrow">▲</span></span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">베타</span>
+              <span class="stat-value"><b>0.77</b></span>
+            </div>
+          </div>
+        </div>
+        <div class="price-block">
+          <div class="price">$39.41</div>
+          <div class="delta up">▲ 0.10%</div>
+        </div>
+        <label for="news-imvt" class="news-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></label>
+      </div>
 
-    <footer>
-      다음 발송: 평일 오후 5시(미국 동부시간)
-    </footer>
+      <div class="news-body">
+        <p><b>오늘의 최대 뉴스:</b> 구겐하임이 목표주가를 62달러로, 씨티그룹이 61달러로 상향하는 등 최근 애널리스트들의 목표가 상향이 이어지며 컨센서스는 '완만한 매수'(평균 목표가 42.11달러)를 유지하고 있다. <a class="src-link" href="https://www.themarketsdaily.com/2026/07/30/immunovant-imvt-projected-to-announce-earnings-on-thursday.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>관련 업종 뉴스:</b> 앞서 5월 이뮤노반트는 갑상선안병증 대상 배토클리맙(batoclimab) 3상 2건이 모두 주요 평가지표를 충족하지 못하자 개발을 중단하고, 후속 후보물질 IMVT-1402에 역량을 집중하는 전략 전환을 발표했다. <a class="src-link" href="https://www.stocktitan.net/sec-filings/IMVT/8-k-immunovant-inc-reports-material-event-66adaa2d1add.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>다가오는 일정:</b> 이뮤노반트는 8월 6일 장 개장 전 2026 회계연도 1분기(6월 30일 마감) 실적 및 사업 업데이트를 발표할 예정이다. <a class="src-link" href="https://www.globenewswire.com/news-release/2026/07/23/3332562/0/en/immunovant-to-report-financial-results-for-the-first-quarter-ended-june-30-2026-and-provide-business-update-on-thursday-august-6-2026.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+      </div>
+    </div>
+    <div class="card">
+      <input type="checkbox" id="news-bmnr" class="news-toggle">
+      <div class="card-head">
+        <div class="ticker-block" data-ticker="BMNR">
+          <span class="ticker">BMNR<span class="chev">›</span></span>
+          <span class="company">Bitmine Immersion Technologies, Inc.</span>
+        </div>
+        <div class="fg-strip">
+          <div class="fg-left">
+            <div class="fg-gauge-svg" data-gauge data-score="46"></div>
+            <div class="fg-text">
+              <span class="fg-text-score zone-neutral">46</span>
+              <span class="fg-text-zone">중립</span>
+            </div>
+          </div>
+          <div class="fg-divider"></div>
+          <div class="fg-stats">
+            <div class="stat-line">
+              <span class="stat-label">일봉 RSI</span>
+              <span class="stat-value zone-neutral"><b>53.3</b><span class="trend-arrow">▼</span></span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">주봉 RSI</span>
+              <span class="stat-value zone-neutral"><b>50</b><span class="trend-arrow">▼</span></span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">베타</span>
+              <span class="stat-value"><b>1.67</b></span>
+            </div>
+          </div>
+        </div>
+        <div class="price-block">
+          <div class="price">$16.59</div>
+          <div class="delta down">▼ 5.58%</div>
+        </div>
+        <label for="news-bmnr" class="news-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></label>
+      </div>
+
+      <div class="news-body">
+        <p><b>오늘의 최대 뉴스:</b> 연준의 매파적 금리 동결과 중동 지정학적 긴장으로 위험자산 회피 심리가 커지며 이더리움이 2000달러 아래로 밀렸고, 최대 이더리움 보유 기업인 비트마인 주가도 함께 하락했다. <a class="src-link" href="https://sundayguardianlive.com/business/ethereum-price-today-july-30-why-is-ethereum-eth-down-today-feds-hawkish-outlook-and-geopolitical-tensions-keep-crypto-below-2000-check-latest-prices-in-usd-inr-gbp-euro-and-jpy-249697/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>관련 업종 뉴스:</b> 비트마인은 570만 개 이상의 이더리움(약 111억~115억 달러 규모)을 보유한 최대 ETH 트레저리 기업으로, 올해 들어 이더리움 현물 ETF에서 13억 달러 이상 자금이 유출되는 등 이더리움 관련 자산 전반이 약세를 보이고 있다. <a class="src-link" href="https://www.benzinga.com/markets/equities/26/07/60268987/tom-lees-bitmine-faces-massive-unrealized-loss-as-eth-and-bmnr-stock-tumble" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>다가오는 일정:</b> 비트마인은 매주 이더리움 보유량과 총 자산 현황을 정기 공시하고 있어, 다음 주간 업데이트 발표가 예정돼 있다. <a class="src-link" href="https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-announces-eth-holdings-reach-5-78-million-tokens-and-total-crypto-and-total-cash-holdings-of-11-5-billion-302829332.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+      </div>
+    </div>
   </div>
 
   <div class="drawer-overlay" id="drawerOverlay"></div>
@@ -543,20 +647,44 @@
       </div>
       <div class="tab-panel" data-tab-panel="NVDA-overview">
         <div class="detail-row">
-          <span class="detail-label">PER</span>
-          <span class="detail-value">29.10</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">EPS</span>
-          <span class="detail-value">$6.53</span>
-        </div>
-        <div class="detail-row">
           <span class="detail-label">시가총액</span>
           <span class="detail-value">$4.72T</span>
         </div>
         <div class="detail-row">
+          <span class="detail-label">PER</span>
+          <span class="detail-value">29.10</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Forward PER</span>
+          <span class="detail-value">19.07</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">EPS (TTM)</span>
+          <span class="detail-value">$6.53</span>
+        </div>
+        <div class="detail-row">
           <span class="detail-label">52주 범위</span>
           <span class="detail-value">$164.07 - $236.54</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">금일 범위</span>
+          <span class="detail-value">$191.52 - $197.25</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">시가</span>
+          <span class="detail-value">$193.45</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">전일종가</span>
+          <span class="detail-value">$190.01</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">거래량</span>
+          <span class="detail-value">127.48M</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">발행주식수</span>
+          <span class="detail-value">24.22B</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">베타</span>
@@ -566,11 +694,48 @@
       <div class="tab-panel" data-tab-panel="NVDA-dividend" hidden>
         <div class="detail-row">
           <span class="detail-label">배당수익률</span>
-          <span class="detail-value">0.52%</span>
+          <span class="detail-value">0.51%</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">연간 배당금</span>
           <span class="detail-value">$1.00</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">배당성향</span>
+          <span class="detail-value">4.29%</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">배당주기</span>
+          <span class="detail-value">분기</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">배당락일</span>
+          <span class="detail-value">2026-06-04</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">지급일</span>
+          <span class="detail-value">2026-06-26</span>
+        </div>
+        <div class="mini-section-title">배당 내역 (최근 5회)</div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-06-04</span>
+          <span class="dhr-amount">$0.25</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-03-11</span>
+          <span class="dhr-amount">$0.01</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2025-12-04</span>
+          <span class="dhr-amount">$0.01</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2025-09-11</span>
+          <span class="dhr-amount">$0.01</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2025-06-11</span>
+          <span class="dhr-amount">$0.01</span>
         </div>
       </div>
       <div class="tab-panel" data-tab-panel="NVDA-earnings" hidden>
@@ -588,11 +753,100 @@
         </div>
         <div class="detail-row">
           <span class="detail-label">목표주가</span>
-          <span class="detail-value">$302.83 (+55.4%)</span>
+          <span class="detail-value">$302.83 (+55.3%)</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">다음 실적발표일</span>
           <span class="detail-value">2026-08-26</span>
+        </div>
+        <div class="mini-section-title">분기별 실적 (최근 8개)</div>
+        <div class="quarter-block">
+          <div class="quarter-period">2027 Q1</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>$1.87 / 예상 $1.76</span>
+<span class="result-badge beat">상회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$81.62B / 예상 $78.42B</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2026 Q4</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>$1.62 / 예상 $1.54</span>
+<span class="result-badge beat">상회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$68.13B / 예상 $65.56B</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2026 Q3</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>$1.30 / 예상 $1.23</span>
+<span class="result-badge beat">상회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$57.01B / 예상 $54.66B</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2026 Q2</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>$1.05 / 예상 $1.01</span>
+<span class="result-badge beat">상회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$46.74B / 예상 $45.65B</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2026 Q1</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>$0.81 / 예상 $0.87</span>
+<span class="result-badge miss">하회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$44.06B / 예상 $43.09B</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2025 Q4</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>$0.89 / 예상 $0.84</span>
+<span class="result-badge beat">상회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$39.33B / 예상 $38.16B</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2025 Q3</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>$0.81 / 예상 $0.69</span>
+<span class="result-badge beat">상회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$35.08B / 예상 $33.15B</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2025 Q2</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>$0.68 / 예상 $0.64</span>
+<span class="result-badge beat">상회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$30.04B / 예상 $28.74B</span>
+<span class="result-badge beat">상회</span>          </div>
         </div>
       </div>
     </div>
@@ -605,20 +859,44 @@
       </div>
       <div class="tab-panel" data-tab-panel="IONQ-overview">
         <div class="detail-row">
-          <span class="detail-label">PER</span>
-          <span class="detail-value">39.19</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">EPS</span>
-          <span class="detail-value">$0.92</span>
-        </div>
-        <div class="detail-row">
           <span class="detail-label">시가총액</span>
-          <span class="detail-value">$13.44B</span>
+          <span class="detail-value">$13.35B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">PER</span>
+          <span class="detail-value">38.82</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">EPS (TTM)</span>
+          <span class="detail-value">$0.92</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">52주 범위</span>
           <span class="detail-value">$25.89 - $84.64</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">금일 범위</span>
+          <span class="detail-value">$33.00 - $36.18</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">시가</span>
+          <span class="detail-value">$33.17</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">전일종가</span>
+          <span class="detail-value">$31.99</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">거래량</span>
+          <span class="detail-value">23.03M</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">평균거래량</span>
+          <span class="detail-value">18.31M</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">발행주식수</span>
+          <span class="detail-value">373.27M</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">베타</span>
@@ -628,11 +906,11 @@
       <div class="tab-panel" data-tab-panel="IONQ-earnings" hidden>
         <div class="detail-row">
           <span class="detail-label">매출(TTM)</span>
-          <span class="detail-value">$187.12M (+334.6%)</span>
+          <span class="detail-value">$187.12M</span>
         </div>
         <div class="detail-row">
-          <span class="detail-label">순이익</span>
-          <span class="detail-value">$308.51M</span>
+          <span class="detail-label">순이익(TTM)</span>
+          <span class="detail-value">$327.23M</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">애널리스트 의견</span>
@@ -640,12 +918,113 @@
         </div>
         <div class="detail-row">
           <span class="detail-label">목표주가</span>
-          <span class="detail-value">$69.11 (+91.9%)</span>
+          <span class="detail-value">$69.11 (+93.2%)</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">다음 실적발표일</span>
           <span class="detail-value">2026-08-05</span>
         </div>
+        <div class="mini-section-title">분기별 실적 (최근 9개)</div>
+        <div class="quarter-block">
+          <div class="quarter-period">2026 Q1</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.34 / 예상 -$0.26</span>
+<span class="result-badge miss">하회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$64.67M / 예상 $49.75M</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2025 Q4</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.20 / 예상 -$0.31</span>
+<span class="result-badge beat">상회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$61.9M / 예상 $40.38M</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2025 Q3</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$3.58 / 예상 -$0.44</span>
+<span class="result-badge miss">하회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$39.9M / 예상 $26.99M</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2025 Q2</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.70 / 예상 -$0.13</span>
+<span class="result-badge miss">하회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$20.7M / 예상 $17.23M</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2025 Q1</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.14 / 예상 -$0.28</span>
+<span class="result-badge beat">상회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$7.57M / 예상 $7.51M</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2024 Q4</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.93 / 예상 -$0.23</span>
+<span class="result-badge miss">하회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$11.7M / 예상 $10.6M</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2024 Q3</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.24 / 예상 -$0.22</span>
+<span class="result-badge miss">하회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$12.4M / 예상 $10.56M</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2024 Q2</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.18 / 예상 -$0.22</span>
+<span class="result-badge beat">상회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$11.38M / 예상 $8.66M</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">2024 Q1</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.19 / 예상 -$0.26</span>
+<span class="result-badge beat">상회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$7.58M / 예상 $7.08M</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <p class="tab-footnote">TTM 순이익·EPS·PER은 워런트 공정가치 평가익 등 비영업적 요인의 영향이 커서 실제 흑자 전환을 의미하지 않는다. 핵심 영업손실은 지속 중이며, GAAP 기준 EPS로 일부 분기는 대규모 비경상 손익을 포함한다.</p>
       </div>
     </div>
     <div class="drawer-panel" id="drawer-QQQ" hidden>
@@ -680,8 +1059,41 @@
           <span class="detail-value">0.44%</span>
         </div>
         <div class="detail-row">
+          <span class="detail-label">배당주기</span>
+          <span class="detail-value">분기</span>
+        </div>
+        <div class="detail-row">
           <span class="detail-label">배당락일</span>
           <span class="detail-value">2026-06-22</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">지급일</span>
+          <span class="detail-value">2026-07-10</span>
+        </div>
+        <div class="mini-section-title">배당 내역 (최근 6회)</div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-06-22</span>
+          <span class="dhr-amount">$0.81349</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-03-23</span>
+          <span class="dhr-amount">$0.73282</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2025-12-22</span>
+          <span class="dhr-amount">$0.79408</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2025-09-22</span>
+          <span class="dhr-amount">$0.69395</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2025-06-23</span>
+          <span class="dhr-amount">$0.59111</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2025-03-24</span>
+          <span class="dhr-amount">$0.71571</span>
         </div>
       </div>
       <div class="tab-panel" data-tab-panel="QQQ-indicators" hidden>
@@ -698,6 +1110,10 @@
           <span class="detail-value">$718.75</span>
         </div>
         <div class="detail-row">
+          <span class="detail-label">100일 이동평균</span>
+          <span class="detail-value">$670.89</span>
+        </div>
+        <div class="detail-row">
           <span class="detail-label">200일 이동평균</span>
           <span class="detail-value">$642.79</span>
         </div>
@@ -705,7 +1121,7 @@
     </div>
     <div class="drawer-panel" id="drawer-JEPQ" hidden>
       <p class="drawer-title">JEPQ</p>
-      <p class="drawer-sub">JPMorgan Nasdaq ETF</p>
+      <p class="drawer-sub">JPMorgan Nasdaq Equity Premium Income ETF</p>
       <div class="tab-bar">
         <button class="tab-btn active" data-tab-btn="JEPQ-overview" type="button">개요</button>
         <button class="tab-btn" data-tab-btn="JEPQ-dividend" type="button">배당</button>
@@ -731,12 +1147,45 @@
       </div>
       <div class="tab-panel" data-tab-panel="JEPQ-dividend" hidden>
         <div class="detail-row">
-          <span class="detail-label">배당수익률</span>
+          <span class="detail-label">배당수익률(TTM)</span>
           <span class="detail-value">11.15%</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">배당주기</span>
+          <span class="detail-value">월배당</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">배당락일</span>
           <span class="detail-value">2026-07-01</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">지급일</span>
+          <span class="detail-value">2026-07-06</span>
+        </div>
+        <div class="mini-section-title">배당 내역 (최근 6회)</div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-07-01</span>
+          <span class="dhr-amount">$0.63658</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-06-01</span>
+          <span class="dhr-amount">$0.56444</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-05-01</span>
+          <span class="dhr-amount">$0.59095</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-04-01</span>
+          <span class="dhr-amount">$0.5586</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-03-02</span>
+          <span class="dhr-amount">$0.509</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-02-02</span>
+          <span class="dhr-amount">$0.46572</span>
         </div>
       </div>
       <div class="tab-panel" data-tab-panel="JEPQ-indicators" hidden>
@@ -753,6 +1202,10 @@
           <span class="detail-value">$57.82</span>
         </div>
         <div class="detail-row">
+          <span class="detail-label">100일 이동평균</span>
+          <span class="detail-value">$58.14</span>
+        </div>
+        <div class="detail-row">
           <span class="detail-label">200일 이동평균</span>
           <span class="detail-value">$57.67</span>
         </div>
@@ -760,7 +1213,7 @@
     </div>
     <div class="drawer-panel" id="drawer-JEPI" hidden>
       <p class="drawer-title">JEPI</p>
-      <p class="drawer-sub">JPMorgan Equity ETF</p>
+      <p class="drawer-sub">JPMorgan Equity Premium Income ETF</p>
       <div class="tab-bar">
         <button class="tab-btn active" data-tab-btn="JEPI-overview" type="button">개요</button>
         <button class="tab-btn" data-tab-btn="JEPI-dividend" type="button">배당</button>
@@ -786,12 +1239,45 @@
       </div>
       <div class="tab-panel" data-tab-panel="JEPI-dividend" hidden>
         <div class="detail-row">
-          <span class="detail-label">배당수익률</span>
+          <span class="detail-label">배당수익률(TTM)</span>
           <span class="detail-value">8.03%</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">배당주기</span>
+          <span class="detail-value">월배당</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">배당락일</span>
           <span class="detail-value">2026-07-01</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">지급일</span>
+          <span class="detail-value">2026-07-06</span>
+        </div>
+        <div class="mini-section-title">배당 내역 (최근 6회)</div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-07-01</span>
+          <span class="dhr-amount">$0.3872</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-06-01</span>
+          <span class="dhr-amount">$0.3892</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-05-01</span>
+          <span class="dhr-amount">$0.4476</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-04-01</span>
+          <span class="dhr-amount">$0.4205</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-03-02</span>
+          <span class="dhr-amount">$0.3513</span>
+        </div>
+        <div class="div-history-row">
+          <span class="dhr-date">2026-02-02</span>
+          <span class="dhr-amount">$0.3444</span>
         </div>
       </div>
       <div class="tab-panel" data-tab-panel="JEPI-indicators" hidden>
@@ -808,9 +1294,296 @@
           <span class="detail-value">$57.59</span>
         </div>
         <div class="detail-row">
+          <span class="detail-label">100일 이동평균</span>
+          <span class="detail-value">$57.89</span>
+        </div>
+        <div class="detail-row">
           <span class="detail-label">200일 이동평균</span>
           <span class="detail-value">$57.37</span>
         </div>
+      </div>
+    </div>
+    <div class="drawer-panel" id="drawer-IMVT" hidden>
+      <p class="drawer-title">IMVT</p>
+      <p class="drawer-sub">Immunovant, Inc.</p>
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab-btn="IMVT-overview" type="button">개요</button>
+        <button class="tab-btn" data-tab-btn="IMVT-earnings" type="button">실적</button>
+      </div>
+      <div class="tab-panel" data-tab-panel="IMVT-overview">
+        <div class="detail-row">
+          <span class="detail-label">시가총액</span>
+          <span class="detail-value">$8.13B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">PER</span>
+          <span class="detail-value">N/A (적자)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">EPS (TTM)</span>
+          <span class="detail-value">-$2.77</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">52주 범위</span>
+          <span class="detail-value">$14.32 - $41.23</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">금일 범위</span>
+          <span class="detail-value">$38.70 - $39.87</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">시가</span>
+          <span class="detail-value">$39.80</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">전일종가</span>
+          <span class="detail-value">$39.37</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">거래량</span>
+          <span class="detail-value">727,080</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">평균거래량</span>
+          <span class="detail-value">1,004,182</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">발행주식수</span>
+          <span class="detail-value">206.40M</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">베타</span>
+          <span class="detail-value">0.77</span>
+        </div>
+      </div>
+      <div class="tab-panel" data-tab-panel="IMVT-earnings" hidden>
+        <div class="detail-row">
+          <span class="detail-label">매출(TTM)</span>
+          <span class="detail-value">N/A (임상단계, 매출 없음)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">순이익(TTM)</span>
+          <span class="detail-value">-$505.61M</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">애널리스트 의견</span>
+          <span class="detail-value">Buy (16명)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">목표주가</span>
+          <span class="detail-value">$47.53 (+20.6%)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">다음 실적발표일</span>
+          <span class="detail-value">2026-08-06 (개장 전)</span>
+        </div>
+        <div class="mini-section-title">분기별 실적 (최근 6개)</div>
+        <div class="quarter-block">
+          <div class="quarter-period">FY26 Q4 (2026-03 마감)</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.73 / 예상 -$0.60</span>
+<span class="result-badge miss">하회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">FY26 Q3 (2025-12 마감)</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.61 / 예상 -$0.72</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">FY26 Q2 (2025-09 마감)</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.73 / 예상 -$0.72</span>
+<span class="result-badge miss">하회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">FY26 Q1 (2025-06 마감)</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.60 / 예상 -$0.69</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">FY25 Q4 (2025-03 마감)</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.64 / 예상 -$0.72</span>
+<span class="result-badge beat">상회</span>          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">FY25 Q3 (2024-12 마감)</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.76 / 예상 -$0.68</span>
+<span class="result-badge miss">하회</span>          </div>
+        </div>
+      </div>
+    </div>
+    <div class="drawer-panel" id="drawer-BMNR" hidden>
+      <p class="drawer-title">BMNR</p>
+      <p class="drawer-sub">Bitmine Immersion Technologies, Inc.</p>
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab-btn="BMNR-overview" type="button">개요</button>
+        <button class="tab-btn" data-tab-btn="BMNR-dividend" type="button">배당</button>
+        <button class="tab-btn" data-tab-btn="BMNR-earnings" type="button">실적</button>
+      </div>
+      <div class="tab-panel" data-tab-panel="BMNR-overview">
+        <div class="detail-row">
+          <span class="detail-label">시가총액</span>
+          <span class="detail-value">$10.01B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">PER</span>
+          <span class="detail-value">N/A (적자)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">EPS (TTM)</span>
+          <span class="detail-value">-$24.68</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">52주 범위</span>
+          <span class="detail-value">$12.80 - $71.74</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">금일 범위</span>
+          <span class="detail-value">$16.53 - $17.73</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">시가</span>
+          <span class="detail-value">$17.49</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">전일종가</span>
+          <span class="detail-value">$17.57</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">거래량</span>
+          <span class="detail-value">32.44M</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">평균거래량(20일)</span>
+          <span class="detail-value">34.63M</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">발행주식수</span>
+          <span class="detail-value">603.23M</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">ETH 보유량</span>
+          <span class="detail-value">약 579만 ETH (총 암호자산+현금 약 $11.8B, 2026-07-27 기준)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">베타</span>
+          <span class="detail-value">1.67</span>
+        </div>
+      </div>
+      <div class="tab-panel" data-tab-panel="BMNR-dividend" hidden>
+        <div class="detail-row">
+          <span class="detail-label">연간 배당금</span>
+          <span class="detail-value">$0.01</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">배당수익률</span>
+          <span class="detail-value">0.06%</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">배당락일</span>
+          <span class="detail-value">2025-12-08</span>
+        </div>
+        <p class="tab-footnote">2025년 대형 암호화폐 기업 최초로 배당을 선언했으나, 상징적 수준의 배당금으로 실질 수익률은 미미함.</p>
+      </div>
+      <div class="tab-panel" data-tab-panel="BMNR-earnings" hidden>
+        <div class="detail-row">
+          <span class="detail-label">매출(TTM)</span>
+          <span class="detail-value">$61.20M</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">순이익(TTM)</span>
+          <span class="detail-value">-$8.77B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">애널리스트 의견</span>
+          <span class="detail-value">Strong Buy (3-4명)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">목표주가</span>
+          <span class="detail-value">$31.87 (+92.1%)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">다음 실적발표일</span>
+          <span class="detail-value">2026-11-20 (예상, 회계연도 8월 결산)</span>
+        </div>
+        <div class="mini-section-title">분기별 실적 (최근 6개)</div>
+        <div class="quarter-block">
+          <div class="quarter-period">FQ 2026-05 마감</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.15 / 예상 -$0.04</span>
+<span class="result-badge miss">하회</span>          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$46.5M</span>
+          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">FQ 2026-02 마감</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$8.40</span>
+          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$11.0M</span>
+          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">FQ 2025-11 마감</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$15.98</span>
+          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$2.29M</span>
+          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">FQ 2025-08 마감 (사업전환 분기)</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>$15.94</span>
+          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$1.32M</span>
+          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">FQ 2025-05 마감 (전환 이전)</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.31</span>
+          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$2.05M</span>
+          </div>
+        </div>
+        <div class="quarter-block">
+          <div class="quarter-period">FQ 2025-02 마감 (전환 이전)</div>
+          <div class="quarter-line">
+            <span class="qline-label">EPS</span>
+            <span>-$0.58</span>
+          </div>
+          <div class="quarter-line">
+            <span class="qline-label">매출</span>
+            <span>$1.52M</span>
+          </div>
+        </div>
+        <p class="tab-footnote">2025년 중반 비트코인 채굴에서 이더리움(ETH) 트레저리 전략으로 사업모델을 전환. GAAP EPS는 보유 ETH의 시가평가 손익(ASU 2023-08)에 따라 분기별 변동성이 매우 크며, 전환 이전 분기는 참고용. 컨센서스 추정치가 확립되지 않아 예상치(N/A)가 많음.</p>
       </div>
     </div>
   </div>
@@ -987,7 +1760,7 @@
   })();
 
   /* ---- Rotating news headlines (pool of up to 5, 2 slots visible) ---- */
-  const NEWS_POOL = [{"tag": "뉴스", "text": "마이크로소프트 +16% - 애저 클라우드 매출 첫 1000억달러 돌파, 시장 반등 견인", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"}, {"tag": "뉴스", "text": "IONQ +8.83% - 벤치마크 매수의견 재개·블랙록 5.3% 지분 공시", "url": "https://stockanalysis.com/stocks/ionq/"}, {"tag": "뉴스", "text": "메타 -9% - AI 투자 회수 우려에 실적 부진, 빅테크 실적 시즌 변동성 확대", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"}, {"tag": "뉴스", "text": "전일 연준 매파적 동결로 급락했던 증시, 하루만에 낙폭 대부분 만회", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"}, {"tag": "뉴스", "text": "IONQ, SkyWater 인수 7/31 거래 종결 예정 - 8/5 2분기 실적 발표 예고", "url": "https://stockanalysis.com/stocks/ionq/"}];
+  const NEWS_POOL = [{"tag": "뉴스", "text": "마이크로소프트가 애저(Azure) 클라우드 매출이 분기 최초로 1000억 달러를 돌파했다고 발표하며 주가가 급등, 나스닥과 S&P500 랠리를 견인했다.", "url": "https://www.fool.com/coverage/stock-market-today/2026/07/30/stock-market-midday-july-30-microsoft-soars-15-boosting-tech-stocks/"}, {"tag": "뉴스", "text": "메타는 2분기 주당순이익이 시장 예상치를 크게 밑돌고 최대 1450억 달러에 달하는 연간 AI 설비투자 가이던스를 제시하며 주가가 급락, 빅테크 내 희비가 엇갈렸다.", "url": "https://www.fxleaders.com/news/2026/07/30/meta-shares-tumble-to-540-range-as-earnings-miss-sparks-selloff/"}, {"tag": "뉴스", "text": "연준이 전날(29일) 기준금리를 동결하며 30년물 국채금리가 다년 최고치인 5.20%까지 치솟았음에도, 빅테크 실적 호재에 힘입어 증시는 강세를 이어갔다.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-082255995.html"}, {"tag": "뉴스", "text": "아이온큐(IonQ)가 18억 달러 규모의 스카이워터(SkyWater) 인수에 대한 최종 규제 승인을 받았다는 소식에 양자컴퓨팅 관련주 전반이 강세를 보였다.", "url": "https://www.techtimes.com/articles/322085/20260729/ionq-clears-last-regulatory-hurdle-skywater-closes-friday-ending-foreign-chip-dependency.htm"}, {"tag": "뉴스", "text": "이날 장 마감 후 아마존과 애플의 실적 발표가 예정된 가운데, 투자자들은 PCE 물가지표 및 2분기 GDP 발표도 함께 주시하고 있다.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-082255995.html"}];
   const LINK_ICON = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
   let hlIndex = 0;
   function renderHeadlineRow(el, item) {
@@ -1011,7 +1784,7 @@
     hlIndex = (hlIndex + 2) % NEWS_POOL.length;
   }
   tickHeadlines();
-  if (NEWS_POOL.length > 2) setInterval(tickHeadlines, 5000);
+  if (NEWS_POOL.length > 2) setInterval(tickHeadlines, 9000);
 </script>
 </body>
 </html>
