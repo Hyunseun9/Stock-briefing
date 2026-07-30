@@ -43,6 +43,7 @@
   }
 
   * { box-sizing: border-box; }
+  html, body { overflow-x: hidden; max-width: 100%; }
   body {
     margin: 0;
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -90,12 +91,14 @@
 
   .index-row { display: flex; gap: 7px; margin-bottom: 10px; }
   .index-tile {
-    flex: 1; background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
-    padding: 7px 10px;
+    flex: 1; display: flex; align-items: baseline; justify-content: space-between; gap: 6px;
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 7px 10px; min-width: 0;
   }
-  .index-name { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
-  .index-value { font-size: 14.5px; font-weight: 700; font-variant-numeric: proportional-nums; }
-  .index-delta { font-size: 11.5px; font-weight: 600; margin-top: 1px; }
+  .index-name { font-size: 11px; color: var(--text-muted); flex-shrink: 0; }
+  .index-nums { display: flex; align-items: baseline; gap: 5px; min-width: 0; overflow: hidden; }
+  .index-value { font-size: 12.5px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .index-delta { font-size: 11px; font-weight: 600; flex-shrink: 0; white-space: nowrap; }
   .index-delta.up { color: var(--good); }
   .index-delta.down { color: var(--critical); }
 
@@ -105,8 +108,8 @@
   }
 
   .card-head {
-    display: flex; align-items: center;
-    margin-bottom: 0; gap: 12px;
+    display: flex; flex-wrap: wrap; align-items: center;
+    margin-bottom: 0; gap: 12px; row-gap: 8px;
   }
   .ticker-block {
     display: flex; flex-direction: column; gap: 1px;
@@ -163,7 +166,7 @@
   .news-toggle { position: absolute; opacity: 0; width: 1px; height: 1px; }
   .news-btn {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 28px; height: 28px; flex-shrink: 0; margin-left: 10px;
+    width: 28px; height: 28px; flex-shrink: 0; margin-left: auto;
     border: 1px solid var(--border); border-radius: 50%;
     background: var(--page); color: var(--text-muted);
     cursor: pointer; user-select: none;
@@ -182,15 +185,19 @@
   .news-body b { color: var(--text-primary); font-weight: 600; }
   .src-link {
     display: inline-flex; vertical-align: -2px; margin-left: 5px;
-    color: var(--text-muted); text-decoration: none;
+    color: var(--text-muted); text-decoration: none; flex-shrink: 0;
   }
   .src-link svg { display: block; }
   .src-link:hover { color: var(--series-blue); }
 
-  .headline-block { display: flex; flex-direction: column; gap: 5px; margin: 0; }
+  .headline-block { display: flex; flex-direction: column; gap: 5px; margin: 0; min-height: 44px; }
   .headline-row {
     display: flex; align-items: baseline; gap: 7px;
     font-size: 13px; color: var(--text-secondary); line-height: 1.5;
+    min-width: 0;
+  }
+  .headline-row span:not(.headline-tag) {
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
   .headline-tag {
     flex-shrink: 0; font-size: 10px; font-weight: 700; letter-spacing: 0.03em;
@@ -213,9 +220,9 @@
     background: var(--surface-1); z-index: 51; padding: 20px;
     box-shadow: -10px 0 30px rgba(0,0,0,0.18);
     transform: translateX(100%); transition: transform 0.22s ease;
-    overflow-y: auto;
+    overflow-y: auto; visibility: hidden;
   }
-  .drawer.open { transform: translateX(0); }
+  .drawer.open { transform: translateX(0); visibility: visible; }
   .drawer-close {
     width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--border);
     background: var(--page); color: var(--text-secondary); cursor: pointer;
@@ -223,6 +230,13 @@
   }
   .drawer-title { font-size: 18px; font-weight: 700; margin: 0 0 2px; }
   .drawer-sub { font-size: 12px; color: var(--text-muted); margin: 0 0 16px; }
+  .tab-bar { display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid var(--gridline); }
+  .tab-btn {
+    font-size: 13px; font-weight: 600; color: var(--text-muted); background: none; border: none;
+    padding: 8px 10px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  }
+  .tab-btn.active { color: var(--series-blue); border-bottom-color: var(--series-blue); }
+  .tab-panel[hidden] { display: none; }
   .detail-row {
     display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
     padding: 8px 0; border-bottom: 1px solid var(--gridline); font-size: 13px;
@@ -230,6 +244,15 @@
   .detail-row:last-child { border-bottom: none; }
   .detail-label { color: var(--text-muted); }
   .detail-value { font-weight: 700; color: var(--text-primary); text-align: right; font-variant-numeric: tabular-nums; }
+
+  @media (max-width: 480px) {
+    .ticker-block { width: auto; flex: 1 1 auto; min-width: 0; }
+    .fg-strip { order: 3; width: 100%; }
+    .price-block { order: 2; }
+    .news-btn { order: 4; }
+    .index-row { flex-direction: column; }
+    .index-tile { width: 100%; }
+  }
 </style>
 </head>
 <body>
@@ -255,20 +278,17 @@
       <div class="index-row">
         {% for idx in indices %}
         <div class="index-tile">
-          <div class="index-name">{{ idx.name }}</div>
-          <div class="index-value">{{ idx.value }}</div>
-          <div class="index-delta {{ idx.direction }}">{{ '▲' if idx.direction == 'up' else '▼' }} {{ idx.change_pct }}%</div>
+          <span class="index-name">{{ idx.name }}</span>
+          <span class="index-nums">
+            <span class="index-value">{{ idx.value }}</span>
+            <span class="index-delta {{ idx.direction }}">{{ '▲' if idx.direction == 'up' else '▼' }}{{ idx.change_pct }}%</span>
+          </span>
         </div>
         {% endfor %}
       </div>
       <div class="headline-block">
-        {% for hl in headlines %}
-        <div class="headline-row">
-          <span class="headline-tag">{{ hl.tag }}</span>
-          <span>{{ hl.text }}</span>
-          <a class="src-link" href="{{ hl.url }}" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-        {% endfor %}
+        <div class="headline-row" id="hlRow0"></div>
+        <div class="headline-row" id="hlRow1"></div>
       </div>
     </header>
 
@@ -331,10 +351,19 @@
     <div class="drawer-panel" id="drawer-{{ t.ticker }}" hidden>
       <p class="drawer-title">{{ t.ticker }}</p>
       <p class="drawer-sub">{{ t.company }}</p>
-      {% for d in t.details %}
-      <div class="detail-row">
-        <span class="detail-label">{{ d.label }}</span>
-        <span class="detail-value">{{ d.value }}</span>
+      <div class="tab-bar">
+        {% for tab in t.tabs %}
+        <button class="tab-btn{{ ' active' if loop.first else '' }}" data-tab-btn="{{ t.ticker }}-{{ tab.key }}" type="button">{{ tab.label }}</button>
+        {% endfor %}
+      </div>
+      {% for tab in t.tabs %}
+      <div class="tab-panel" data-tab-panel="{{ t.ticker }}-{{ tab.key }}"{{ '' if loop.first else ' hidden' }}>
+        {% for d in tab.rows %}
+        <div class="detail-row">
+          <span class="detail-label">{{ d.label }}</span>
+          <span class="detail-value">{{ d.value }}</span>
+        </div>
+        {% endfor %}
       </div>
       {% endfor %}
     </div>
@@ -443,6 +472,19 @@
   document.getElementById('drawerClose').addEventListener('click', closeDrawer);
   drawerOverlay.addEventListener('click', closeDrawer);
 
+  /* ---- Drawer tabs ---- */
+  document.querySelectorAll('[data-tab-btn]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-tab-btn');
+      const ticker = key.split('-')[0];
+      const panel = document.getElementById('drawer-' + ticker);
+      panel.querySelectorAll('[data-tab-btn]').forEach(b => b.classList.toggle('active', b === btn));
+      panel.querySelectorAll('[data-tab-panel]').forEach(p => {
+        p.hidden = p.getAttribute('data-tab-panel') !== key;
+      });
+    });
+  });
+
   /* ---- "지난 리포트" calendar popover ---- */
   const HISTORY = {{ history_json | safe }};
   const CURRENT_DATE = "{{ date }}";
@@ -498,6 +540,33 @@
     });
     render();
   })();
+
+  /* ---- Rotating news headlines (pool of up to 5, 2 slots visible) ---- */
+  const NEWS_POOL = {{ news_pool_json | safe }};
+  const LINK_ICON = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+  let hlIndex = 0;
+  function renderHeadlineRow(el, item) {
+    if (!item) { el.innerHTML = ''; return; }
+    el.style.opacity = '0';
+    setTimeout(() => {
+      el.innerHTML = '<span class="headline-tag">' + item.tag + '</span>' +
+        '<span>' + item.text + '</span>' +
+        '<a class="src-link" href="' + item.url + '" target="_blank" rel="noopener">' + LINK_ICON + '</a>';
+      el.style.opacity = '1';
+    }, 180);
+  }
+  function tickHeadlines() {
+    if (!NEWS_POOL.length) return;
+    const row0 = document.getElementById('hlRow0');
+    const row1 = document.getElementById('hlRow1');
+    row0.style.transition = 'opacity 0.18s ease';
+    row1.style.transition = 'opacity 0.18s ease';
+    renderHeadlineRow(row0, NEWS_POOL[hlIndex % NEWS_POOL.length]);
+    renderHeadlineRow(row1, NEWS_POOL.length > 1 ? NEWS_POOL[(hlIndex + 1) % NEWS_POOL.length] : null);
+    hlIndex = (hlIndex + 2) % NEWS_POOL.length;
+  }
+  tickHeadlines();
+  if (NEWS_POOL.length > 2) setInterval(tickHeadlines, 5000);
 </script>
 </body>
 </html>

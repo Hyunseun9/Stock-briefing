@@ -43,6 +43,7 @@
   }
 
   * { box-sizing: border-box; }
+  html, body { overflow-x: hidden; max-width: 100%; }
   body {
     margin: 0;
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -90,12 +91,14 @@
 
   .index-row { display: flex; gap: 7px; margin-bottom: 10px; }
   .index-tile {
-    flex: 1; background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
-    padding: 7px 10px;
+    flex: 1; display: flex; align-items: baseline; justify-content: space-between; gap: 6px;
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 7px 10px; min-width: 0;
   }
-  .index-name { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
-  .index-value { font-size: 14.5px; font-weight: 700; font-variant-numeric: proportional-nums; }
-  .index-delta { font-size: 11.5px; font-weight: 600; margin-top: 1px; }
+  .index-name { font-size: 11px; color: var(--text-muted); flex-shrink: 0; }
+  .index-nums { display: flex; align-items: baseline; gap: 5px; min-width: 0; overflow: hidden; }
+  .index-value { font-size: 12.5px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .index-delta { font-size: 11px; font-weight: 600; flex-shrink: 0; white-space: nowrap; }
   .index-delta.up { color: var(--good); }
   .index-delta.down { color: var(--critical); }
 
@@ -105,8 +108,8 @@
   }
 
   .card-head {
-    display: flex; align-items: center;
-    margin-bottom: 0; gap: 12px;
+    display: flex; flex-wrap: wrap; align-items: center;
+    margin-bottom: 0; gap: 12px; row-gap: 8px;
   }
   .ticker-block {
     display: flex; flex-direction: column; gap: 1px;
@@ -163,7 +166,7 @@
   .news-toggle { position: absolute; opacity: 0; width: 1px; height: 1px; }
   .news-btn {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 28px; height: 28px; flex-shrink: 0; margin-left: 10px;
+    width: 28px; height: 28px; flex-shrink: 0; margin-left: auto;
     border: 1px solid var(--border); border-radius: 50%;
     background: var(--page); color: var(--text-muted);
     cursor: pointer; user-select: none;
@@ -182,15 +185,19 @@
   .news-body b { color: var(--text-primary); font-weight: 600; }
   .src-link {
     display: inline-flex; vertical-align: -2px; margin-left: 5px;
-    color: var(--text-muted); text-decoration: none;
+    color: var(--text-muted); text-decoration: none; flex-shrink: 0;
   }
   .src-link svg { display: block; }
   .src-link:hover { color: var(--series-blue); }
 
-  .headline-block { display: flex; flex-direction: column; gap: 5px; margin: 0; }
+  .headline-block { display: flex; flex-direction: column; gap: 5px; margin: 0; min-height: 44px; }
   .headline-row {
     display: flex; align-items: baseline; gap: 7px;
     font-size: 13px; color: var(--text-secondary); line-height: 1.5;
+    min-width: 0;
+  }
+  .headline-row span:not(.headline-tag) {
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
   .headline-tag {
     flex-shrink: 0; font-size: 10px; font-weight: 700; letter-spacing: 0.03em;
@@ -213,9 +220,9 @@
     background: var(--surface-1); z-index: 51; padding: 20px;
     box-shadow: -10px 0 30px rgba(0,0,0,0.18);
     transform: translateX(100%); transition: transform 0.22s ease;
-    overflow-y: auto;
+    overflow-y: auto; visibility: hidden;
   }
-  .drawer.open { transform: translateX(0); }
+  .drawer.open { transform: translateX(0); visibility: visible; }
   .drawer-close {
     width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--border);
     background: var(--page); color: var(--text-secondary); cursor: pointer;
@@ -223,6 +230,13 @@
   }
   .drawer-title { font-size: 18px; font-weight: 700; margin: 0 0 2px; }
   .drawer-sub { font-size: 12px; color: var(--text-muted); margin: 0 0 16px; }
+  .tab-bar { display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid var(--gridline); }
+  .tab-btn {
+    font-size: 13px; font-weight: 600; color: var(--text-muted); background: none; border: none;
+    padding: 8px 10px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  }
+  .tab-btn.active { color: var(--series-blue); border-bottom-color: var(--series-blue); }
+  .tab-panel[hidden] { display: none; }
   .detail-row {
     display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
     padding: 8px 0; border-bottom: 1px solid var(--gridline); font-size: 13px;
@@ -230,6 +244,15 @@
   .detail-row:last-child { border-bottom: none; }
   .detail-label { color: var(--text-muted); }
   .detail-value { font-weight: 700; color: var(--text-primary); text-align: right; font-variant-numeric: tabular-nums; }
+
+  @media (max-width: 480px) {
+    .ticker-block { width: auto; flex: 1 1 auto; min-width: 0; }
+    .fg-strip { order: 3; width: 100%; }
+    .price-block { order: 2; }
+    .news-btn { order: 4; }
+    .index-row { flex-direction: column; }
+    .index-tile { width: 100%; }
+  }
 </style>
 </head>
 <body>
@@ -254,32 +277,30 @@
       <h1>미국주식 — 2026년 7월 30일</h1>
       <div class="index-row">
         <div class="index-tile">
-          <div class="index-name">나스닥</div>
-          <div class="index-value">25,015.87</div>
-          <div class="index-delta up">▲ 2.34%</div>
+          <span class="index-name">나스닥</span>
+          <span class="index-nums">
+            <span class="index-value">25,015.87</span>
+            <span class="index-delta up">▲2.34%</span>
+          </span>
         </div>
         <div class="index-tile">
-          <div class="index-name">다우존스</div>
-          <div class="index-value">52,058.95</div>
-          <div class="index-delta up">▲ 0.90%</div>
+          <span class="index-name">다우존스</span>
+          <span class="index-nums">
+            <span class="index-value">52,058.95</span>
+            <span class="index-delta up">▲0.90%</span>
+          </span>
         </div>
         <div class="index-tile">
-          <div class="index-name">러셀2000</div>
-          <div class="index-value">2,930.07</div>
-          <div class="index-delta up">▲ 0.82%</div>
+          <span class="index-name">러셀2000</span>
+          <span class="index-nums">
+            <span class="index-value">2,930.07</span>
+            <span class="index-delta up">▲0.82%</span>
+          </span>
         </div>
       </div>
       <div class="headline-block">
-        <div class="headline-row">
-          <span class="headline-tag">뉴스</span>
-          <span>마이크로소프트 +16% - 애저 클라우드 매출 첫 1000억달러 돌파, 시장 반등 견인</span>
-          <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-        <div class="headline-row">
-          <span class="headline-tag">뉴스</span>
-          <span>IONQ +8.83% - 벤치마크 매수의견 재개·블랙록 5.3% 지분 공시</span>
-          <a class="src-link" href="https://stockanalysis.com/stocks/ionq/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
+        <div class="headline-row" id="hlRow0"></div>
+        <div class="headline-row" id="hlRow1"></div>
       </div>
     </header>
 
@@ -292,9 +313,9 @@
         </div>
         <div class="fg-strip">
           <div class="fg-left">
-            <div class="fg-gauge-svg" data-gauge data-score="51"></div>
+            <div class="fg-gauge-svg" data-gauge data-score="49"></div>
             <div class="fg-text">
-              <span class="fg-text-score zone-neutral">51</span>
+              <span class="fg-text-score zone-neutral">49</span>
               <span class="fg-text-zone">중립</span>
             </div>
           </div>
@@ -302,11 +323,11 @@
           <div class="fg-stats">
             <div class="stat-line">
               <span class="stat-label">일봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>55</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>42.5</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">주봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>49</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>47</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">베타</span>
@@ -315,16 +336,16 @@
           </div>
         </div>
         <div class="price-block">
-          <div class="price">$193.28</div>
-          <div class="delta up">▲ 1.72%</div>
+          <div class="price">$194.82</div>
+          <div class="delta up">▲ 2.22%</div>
         </div>
         <label for="news-nvda" class="news-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></label>
       </div>
 
       <div class="news-body">
-        <p><b>오늘의 최대 뉴스:</b> 개별 뉴스보다 마이크로소프트 실적 훈풍에 동반 반등, +1.72%. <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>오늘의 최대 뉴스:</b> 개별 뉴스보다 마이크로소프트 실적 훈풍에 동반 반등, +2.22%. <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
         <p><b>관련 업종 뉴스:</b> 전일 나스닥100 조정 국면 진입 우려를 딛고 반도체·빅테크 전반 하루만에 반등. <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
-        <p><b>다가오는 일정:</b> 이번 주 아마존·애플 실적 발표 예정 - 클라우드/AI 인프라 지출 지속 여부 주목. <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>다가오는 일정:</b> 이번 주 아마존·애플 실적 발표 예정 - 클라우드/AI 인프라 지출 지속 여부 주목. NVDA 자체 실적은 8/26. <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
       </div>
     </div>
     <div class="card">
@@ -336,21 +357,21 @@
         </div>
         <div class="fg-strip">
           <div class="fg-left">
-            <div class="fg-gauge-svg" data-gauge data-score="52"></div>
+            <div class="fg-gauge-svg" data-gauge data-score="38"></div>
             <div class="fg-text">
-              <span class="fg-text-score zone-neutral">52</span>
-              <span class="fg-text-zone">중립</span>
+              <span class="fg-text-score zone-fear">38</span>
+              <span class="fg-text-zone">공포</span>
             </div>
           </div>
           <div class="fg-divider"></div>
           <div class="fg-stats">
             <div class="stat-line">
               <span class="stat-label">일봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>50</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-oversold"><b>29.9</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">주봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>58</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>42</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">베타</span>
@@ -380,9 +401,9 @@
         </div>
         <div class="fg-strip">
           <div class="fg-left">
-            <div class="fg-gauge-svg" data-gauge data-score="50"></div>
+            <div class="fg-gauge-svg" data-gauge data-score="47"></div>
             <div class="fg-text">
-              <span class="fg-text-score zone-neutral">50</span>
+              <span class="fg-text-score zone-neutral">47</span>
               <span class="fg-text-zone">중립</span>
             </div>
           </div>
@@ -390,11 +411,11 @@
           <div class="fg-stats">
             <div class="stat-line">
               <span class="stat-label">일봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>48</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>41.8</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">주봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>46</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>45</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">베타</span>
@@ -424,9 +445,9 @@
         </div>
         <div class="fg-strip">
           <div class="fg-left">
-            <div class="fg-gauge-svg" data-gauge data-score="47"></div>
+            <div class="fg-gauge-svg" data-gauge data-score="58"></div>
             <div class="fg-text">
-              <span class="fg-text-score zone-neutral">47</span>
+              <span class="fg-text-score zone-neutral">58</span>
               <span class="fg-text-zone">중립</span>
             </div>
           </div>
@@ -434,11 +455,11 @@
           <div class="fg-stats">
             <div class="stat-line">
               <span class="stat-label">일봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>46</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>63.7</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">주봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>47</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>58</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">베타</span>
@@ -454,7 +475,7 @@
       </div>
 
       <div class="news-body">
-        <p><b>오늘의 최대 뉴스:</b> 나스닥100 반등에도 커버드콜 오버레이 구조상 상승폭은 지수 대비 제한적일 전망 (장전 +0.64%, 정규장 수치는 변동 가능). <a class="src-link" href="https://stockanalysis.com/etf/jepq/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>오늘의 최대 뉴스:</b> 반도체 급락 여파 속에서도 커버드콜 오버레이 전략으로 JEPQ의 변동성이 일부 상쇄됨. <a class="src-link" href="https://stockanalysis.com/etf/jepq/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
         <p><b>관련 업종 뉴스:</b> 전일 매도세 이후 장 전부터 매수세 유입. <a class="src-link" href="https://stockanalysis.com/etf/jepq/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
         <p><b>다가오는 일정:</b> 월 배당 배당락일 8/1 예상(월배당). <a class="src-link" href="https://stockanalysis.com/etf/jepq/dividend/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
       </div>
@@ -468,9 +489,9 @@
         </div>
         <div class="fg-strip">
           <div class="fg-left">
-            <div class="fg-gauge-svg" data-gauge data-score="55"></div>
+            <div class="fg-gauge-svg" data-gauge data-score="50"></div>
             <div class="fg-text">
-              <span class="fg-text-score zone-neutral">55</span>
+              <span class="fg-text-score zone-neutral">50</span>
               <span class="fg-text-zone">중립</span>
             </div>
           </div>
@@ -478,11 +499,11 @@
           <div class="fg-stats">
             <div class="stat-line">
               <span class="stat-label">일봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>55</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>43.4</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">주봉 RSI</span>
-              <span class="stat-value zone-neutral"><b>52</b><span class="trend-arrow">▲</span></span>
+              <span class="stat-value zone-neutral"><b>47</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
               <span class="stat-label">베타</span>
@@ -498,7 +519,7 @@
       </div>
 
       <div class="news-body">
-        <p><b>오늘의 최대 뉴스:</b> S&P500 +1.29% 상승에도 저베타·배당 전략 특성상 상승폭은 지수 대비 완만할 전망 (장전 +0.28%, 정규장 수치는 변동 가능). <a class="src-link" href="https://stockanalysis.com/etf/jepi/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>오늘의 최대 뉴스:</b> S&P500 +1.29% 상승에도 저베타·배당 전략 특성상 상승폭은 지수 대비 완만. <a class="src-link" href="https://stockanalysis.com/etf/jepi/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
         <p><b>관련 업종 뉴스:</b> 메타 -9% 실적 부진에도 방어적 배당주 중심 포트폴리오는 상대적으로 안정적. <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
         <p><b>다가오는 일정:</b> 월 배당 배당락일 8/1 예상(월배당). <a class="src-link" href="https://stockanalysis.com/etf/jepi/dividend/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
       </div>
@@ -515,129 +536,281 @@
     <div class="drawer-panel" id="drawer-NVDA" hidden>
       <p class="drawer-title">NVDA</p>
       <p class="drawer-sub">NVIDIA Corporation</p>
-      <div class="detail-row">
-        <span class="detail-label">PER</span>
-        <span class="detail-value">29.10</span>
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab-btn="NVDA-overview" type="button">개요</button>
+        <button class="tab-btn" data-tab-btn="NVDA-dividend" type="button">배당</button>
+        <button class="tab-btn" data-tab-btn="NVDA-earnings" type="button">실적</button>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">EPS</span>
-        <span class="detail-value">$6.53</span>
+      <div class="tab-panel" data-tab-panel="NVDA-overview">
+        <div class="detail-row">
+          <span class="detail-label">PER</span>
+          <span class="detail-value">29.10</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">EPS</span>
+          <span class="detail-value">$6.53</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">시가총액</span>
+          <span class="detail-value">$4.72T</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">52주 범위</span>
+          <span class="detail-value">$164.07 - $236.54</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">베타</span>
+          <span class="detail-value">2.21</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">시가총액</span>
-        <span class="detail-value">$4.70T</span>
+      <div class="tab-panel" data-tab-panel="NVDA-dividend" hidden>
+        <div class="detail-row">
+          <span class="detail-label">배당수익률</span>
+          <span class="detail-value">0.52%</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">연간 배당금</span>
+          <span class="detail-value">$1.00</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">52주 범위</span>
-        <span class="detail-value">$164.07 - $236.54</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">배당수익률</span>
-        <span class="detail-value">0.52%</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">다음 실적발표일</span>
-        <span class="detail-value">2026-08-26</span>
+      <div class="tab-panel" data-tab-panel="NVDA-earnings" hidden>
+        <div class="detail-row">
+          <span class="detail-label">매출(TTM)</span>
+          <span class="detail-value">$253.49B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">순이익(TTM)</span>
+          <span class="detail-value">$159.61B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">애널리스트 의견</span>
+          <span class="detail-value">Strong Buy (61명)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">목표주가</span>
+          <span class="detail-value">$302.83 (+55.4%)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">다음 실적발표일</span>
+          <span class="detail-value">2026-08-26</span>
+        </div>
       </div>
     </div>
     <div class="drawer-panel" id="drawer-IONQ" hidden>
       <p class="drawer-title">IONQ</p>
       <p class="drawer-sub">IonQ, Inc.</p>
-      <div class="detail-row">
-        <span class="detail-label">PER</span>
-        <span class="detail-value">37.79</span>
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab-btn="IONQ-overview" type="button">개요</button>
+        <button class="tab-btn" data-tab-btn="IONQ-earnings" type="button">실적</button>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">EPS</span>
-        <span class="detail-value">$0.92</span>
+      <div class="tab-panel" data-tab-panel="IONQ-overview">
+        <div class="detail-row">
+          <span class="detail-label">PER</span>
+          <span class="detail-value">39.19</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">EPS</span>
+          <span class="detail-value">$0.92</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">시가총액</span>
+          <span class="detail-value">$13.44B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">52주 범위</span>
+          <span class="detail-value">$25.89 - $84.64</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">베타</span>
+          <span class="detail-value">3.23</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">시가총액</span>
-        <span class="detail-value">$13.0B</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">52주 범위</span>
-        <span class="detail-value">$25.89 - $84.64</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">배당</span>
-        <span class="detail-value">없음</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">다음 실적발표일</span>
-        <span class="detail-value">2026-08-05</span>
+      <div class="tab-panel" data-tab-panel="IONQ-earnings" hidden>
+        <div class="detail-row">
+          <span class="detail-label">매출(TTM)</span>
+          <span class="detail-value">$187.12M (+334.6%)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">순이익</span>
+          <span class="detail-value">$308.51M</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">애널리스트 의견</span>
+          <span class="detail-value">Strong Buy</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">목표주가</span>
+          <span class="detail-value">$69.11 (+91.9%)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">다음 실적발표일</span>
+          <span class="detail-value">2026-08-05</span>
+        </div>
       </div>
     </div>
     <div class="drawer-panel" id="drawer-QQQ" hidden>
       <p class="drawer-title">QQQ</p>
       <p class="drawer-sub">Invesco QQQ Trust</p>
-      <div class="detail-row">
-        <span class="detail-label">운용보수</span>
-        <span class="detail-value">0.18%</span>
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab-btn="QQQ-overview" type="button">개요</button>
+        <button class="tab-btn" data-tab-btn="QQQ-dividend" type="button">배당</button>
+        <button class="tab-btn" data-tab-btn="QQQ-indicators" type="button">지표</button>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">배당수익률</span>
-        <span class="detail-value">0.44%</span>
+      <div class="tab-panel" data-tab-panel="QQQ-overview">
+        <div class="detail-row">
+          <span class="detail-label">운용보수</span>
+          <span class="detail-value">0.18%</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">순자산(AUM)</span>
+          <span class="detail-value">$455.51B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">52주 범위</span>
+          <span class="detail-value">$551.68 - $748.65</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">베타</span>
+          <span class="detail-value">1.23</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">배당락일</span>
-        <span class="detail-value">2026-06-22</span>
+      <div class="tab-panel" data-tab-panel="QQQ-dividend" hidden>
+        <div class="detail-row">
+          <span class="detail-label">배당수익률</span>
+          <span class="detail-value">0.44%</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">배당락일</span>
+          <span class="detail-value">2026-06-22</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">순자산(AUM)</span>
-        <span class="detail-value">$455.51B</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">52주 범위</span>
-        <span class="detail-value">$551.68 - $748.65</span>
+      <div class="tab-panel" data-tab-panel="QQQ-indicators" hidden>
+        <div class="detail-row">
+          <span class="detail-label">RSI(14일)</span>
+          <span class="detail-value">41.82</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">20일 이동평균</span>
+          <span class="detail-value">$713.32</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">50일 이동평균</span>
+          <span class="detail-value">$718.75</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">200일 이동평균</span>
+          <span class="detail-value">$642.79</span>
+        </div>
       </div>
     </div>
     <div class="drawer-panel" id="drawer-JEPQ" hidden>
       <p class="drawer-title">JEPQ</p>
       <p class="drawer-sub">JPMorgan Nasdaq ETF</p>
-      <div class="detail-row">
-        <span class="detail-label">운용보수</span>
-        <span class="detail-value">0.35%</span>
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab-btn="JEPQ-overview" type="button">개요</button>
+        <button class="tab-btn" data-tab-btn="JEPQ-dividend" type="button">배당</button>
+        <button class="tab-btn" data-tab-btn="JEPQ-indicators" type="button">지표</button>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">배당수익률</span>
-        <span class="detail-value">11.15%</span>
+      <div class="tab-panel" data-tab-panel="JEPQ-overview">
+        <div class="detail-row">
+          <span class="detail-label">운용보수</span>
+          <span class="detail-value">0.35%</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">순자산(AUM)</span>
+          <span class="detail-value">$38.86B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">52주 범위</span>
+          <span class="detail-value">$53.51 - $61.72</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">베타</span>
+          <span class="detail-value">0.83</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">배당락일</span>
-        <span class="detail-value">2026-07-01</span>
+      <div class="tab-panel" data-tab-panel="JEPQ-dividend" hidden>
+        <div class="detail-row">
+          <span class="detail-label">배당수익률</span>
+          <span class="detail-value">11.15%</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">배당락일</span>
+          <span class="detail-value">2026-07-01</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">순자산(AUM)</span>
-        <span class="detail-value">$38.86B</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">52주 범위</span>
-        <span class="detail-value">$53.51 - $61.72</span>
+      <div class="tab-panel" data-tab-panel="JEPQ-indicators" hidden>
+        <div class="detail-row">
+          <span class="detail-label">RSI(14일)</span>
+          <span class="detail-value">63.67</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">20일 이동평균</span>
+          <span class="detail-value">$59.33</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">50일 이동평균</span>
+          <span class="detail-value">$57.82</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">200일 이동평균</span>
+          <span class="detail-value">$57.67</span>
+        </div>
       </div>
     </div>
     <div class="drawer-panel" id="drawer-JEPI" hidden>
       <p class="drawer-title">JEPI</p>
       <p class="drawer-sub">JPMorgan Equity ETF</p>
-      <div class="detail-row">
-        <span class="detail-label">운용보수</span>
-        <span class="detail-value">0.35%</span>
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab-btn="JEPI-overview" type="button">개요</button>
+        <button class="tab-btn" data-tab-btn="JEPI-dividend" type="button">배당</button>
+        <button class="tab-btn" data-tab-btn="JEPI-indicators" type="button">지표</button>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">배당수익률</span>
-        <span class="detail-value">8.03%</span>
+      <div class="tab-panel" data-tab-panel="JEPI-overview">
+        <div class="detail-row">
+          <span class="detail-label">운용보수</span>
+          <span class="detail-value">0.35%</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">순자산(AUM)</span>
+          <span class="detail-value">$45.34B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">52주 범위</span>
+          <span class="detail-value">$55.10 - $59.90</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">베타</span>
+          <span class="detail-value">0.54</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">배당락일</span>
-        <span class="detail-value">2026-07-01</span>
+      <div class="tab-panel" data-tab-panel="JEPI-dividend" hidden>
+        <div class="detail-row">
+          <span class="detail-label">배당수익률</span>
+          <span class="detail-value">8.03%</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">배당락일</span>
+          <span class="detail-value">2026-07-01</span>
+        </div>
       </div>
-      <div class="detail-row">
-        <span class="detail-label">순자산(AUM)</span>
-        <span class="detail-value">$45.34B</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">52주 범위</span>
-        <span class="detail-value">$55.10 - $59.90</span>
+      <div class="tab-panel" data-tab-panel="JEPI-indicators" hidden>
+        <div class="detail-row">
+          <span class="detail-label">RSI(14일)</span>
+          <span class="detail-value">43.40</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">20일 이동평균</span>
+          <span class="detail-value">$57.40</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">50일 이동평균</span>
+          <span class="detail-value">$57.59</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">200일 이동평균</span>
+          <span class="detail-value">$57.37</span>
+        </div>
       </div>
     </div>
   </div>
@@ -744,6 +917,19 @@
   document.getElementById('drawerClose').addEventListener('click', closeDrawer);
   drawerOverlay.addEventListener('click', closeDrawer);
 
+  /* ---- Drawer tabs ---- */
+  document.querySelectorAll('[data-tab-btn]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-tab-btn');
+      const ticker = key.split('-')[0];
+      const panel = document.getElementById('drawer-' + ticker);
+      panel.querySelectorAll('[data-tab-btn]').forEach(b => b.classList.toggle('active', b === btn));
+      panel.querySelectorAll('[data-tab-panel]').forEach(p => {
+        p.hidden = p.getAttribute('data-tab-panel') !== key;
+      });
+    });
+  });
+
   /* ---- "지난 리포트" calendar popover ---- */
   const HISTORY = [{"label": "2026-07-30", "url": "reports/2026-07-30.html"}];
   const CURRENT_DATE = "2026-07-30";
@@ -799,6 +985,33 @@
     });
     render();
   })();
+
+  /* ---- Rotating news headlines (pool of up to 5, 2 slots visible) ---- */
+  const NEWS_POOL = [{"tag": "뉴스", "text": "마이크로소프트 +16% - 애저 클라우드 매출 첫 1000억달러 돌파, 시장 반등 견인", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"}, {"tag": "뉴스", "text": "IONQ +8.83% - 벤치마크 매수의견 재개·블랙록 5.3% 지분 공시", "url": "https://stockanalysis.com/stocks/ionq/"}, {"tag": "뉴스", "text": "메타 -9% - AI 투자 회수 우려에 실적 부진, 빅테크 실적 시즌 변동성 확대", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"}, {"tag": "뉴스", "text": "전일 연준 매파적 동결로 급락했던 증시, 하루만에 낙폭 대부분 만회", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"}, {"tag": "뉴스", "text": "IONQ, SkyWater 인수 7/31 거래 종결 예정 - 8/5 2분기 실적 발표 예고", "url": "https://stockanalysis.com/stocks/ionq/"}];
+  const LINK_ICON = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+  let hlIndex = 0;
+  function renderHeadlineRow(el, item) {
+    if (!item) { el.innerHTML = ''; return; }
+    el.style.opacity = '0';
+    setTimeout(() => {
+      el.innerHTML = '<span class="headline-tag">' + item.tag + '</span>' +
+        '<span>' + item.text + '</span>' +
+        '<a class="src-link" href="' + item.url + '" target="_blank" rel="noopener">' + LINK_ICON + '</a>';
+      el.style.opacity = '1';
+    }, 180);
+  }
+  function tickHeadlines() {
+    if (!NEWS_POOL.length) return;
+    const row0 = document.getElementById('hlRow0');
+    const row1 = document.getElementById('hlRow1');
+    row0.style.transition = 'opacity 0.18s ease';
+    row1.style.transition = 'opacity 0.18s ease';
+    renderHeadlineRow(row0, NEWS_POOL[hlIndex % NEWS_POOL.length]);
+    renderHeadlineRow(row1, NEWS_POOL.length > 1 ? NEWS_POOL[(hlIndex + 1) % NEWS_POOL.length] : null);
+    hlIndex = (hlIndex + 2) % NEWS_POOL.length;
+  }
+  tickHeadlines();
+  if (NEWS_POOL.length > 2) setInterval(tickHeadlines, 5000);
 </script>
 </body>
 </html>

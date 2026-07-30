@@ -43,8 +43,8 @@ def main():
         date=date,
         date_kr=data["date_kr"],
         indices=data["indices"],
-        headlines=data["headlines"],
         tickers=data["tickers"],
+        news_pool_json=json.dumps(data["news_pool"], ensure_ascii=False),
     )
 
     # --- Render reports/<date>.html (nested one level under reports/) ---
