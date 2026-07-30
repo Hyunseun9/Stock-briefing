@@ -41,23 +41,6 @@
       --gauge-track:    #2c2c2a;
     }
   }
-  :root[data-theme="dark"] .viz-root {
-    color-scheme: dark;
-    --page:           #0d0d0d;
-    --surface-1:      #1a1a19;
-    --text-primary:   #ffffff;
-    --text-secondary: #c3c2b7;
-    --text-muted:     #898781;
-    --gridline:       #2c2c2a;
-    --border:         rgba(255,255,255,0.10);
-    --good:           #0ca30c;
-    --good-bg:        #123312;
-    --critical:       #e66767;
-    --critical-bg:    #3a1c1c;
-    --series-blue:    #3987e5;
-    --meter-track:    #2c2c2a;
-    --gauge-track:    #2c2c2a;
-  }
 
   * { box-sizing: border-box; }
   body {
@@ -67,35 +50,55 @@
     color: var(--text-primary);
   }
   .wrap { max-width: 640px; margin: 0 auto; padding: 28px 20px 40px; }
-  .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; gap: 10px; }
-  .theme-btn {
+  .top-bar { display: flex; justify-content: flex-end; margin-bottom: 8px; position: relative; }
+  .cal-btn {
+    display: inline-flex; align-items: center; gap: 6px;
     font-size: 12px; color: var(--text-secondary); background: var(--surface-1);
     border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; cursor: pointer;
   }
-  .archive-nav { position: relative; }
-  .archive-toggle {
-    font-size: 12px; color: var(--text-secondary); background: var(--surface-1);
-    border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; cursor: pointer;
+  .cal-btn svg { display: block; }
+  .cal-popover {
+    display: none; position: absolute; right: 0; top: 34px; z-index: 20;
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px;
+    padding: 10px; width: 240px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.16);
   }
-  .archive-input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-  .archive-list {
-    display: none; position: absolute; right: 0; top: 32px; z-index: 10;
-    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
-    padding: 8px; max-height: 260px; overflow-y: auto; min-width: 160px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  .cal-popover.open { display: block; }
+  .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .cal-month-label { font-size: 13px; font-weight: 700; }
+  .cal-nav-btn {
+    width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--border); border-radius: 6px; background: var(--page);
+    color: var(--text-secondary); cursor: pointer;
   }
-  .archive-input:checked ~ .archive-nav .archive-list { display: block; }
-  .archive-list a {
-    display: block; padding: 6px 8px; font-size: 12.5px; color: var(--text-secondary);
-    text-decoration: none; border-radius: 6px; white-space: nowrap;
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .cal-dow { font-size: 10px; color: var(--text-muted); text-align: center; padding: 2px 0; }
+  .cal-day {
+    font-size: 11.5px; text-align: center; padding: 5px 0; border-radius: 6px;
+    color: var(--text-muted); text-decoration: none;
   }
-  .archive-list a:hover { background: var(--page); color: var(--text-primary); }
+  a.cal-day.has-report { color: var(--text-primary); font-weight: 700; background: var(--page); cursor: pointer; }
+  a.cal-day.has-report:hover { background: var(--series-blue); color: #fff; }
+  .cal-day.current { outline: 1.5px solid var(--series-blue); }
+
   header { margin-bottom: 24px; }
   .eyebrow {
     font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--series-blue);
     text-transform: uppercase; margin: 0 0 6px;
   }
   h1 { font-size: 22px; font-weight: 700; margin: 0 0 16px; line-height: 1.3; }
+
+  .index-row { display: flex; gap: 7px; margin-bottom: 10px; }
+  .index-tile {
+    flex: 1; background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 7px 10px;
+  }
+  .index-name { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
+  .index-value { font-size: 14.5px; font-weight: 700; font-variant-numeric: proportional-nums; }
+  .index-delta { font-size: 11.5px; font-weight: 600; margin-top: 1px; }
+  .index-delta.up { color: var(--good); }
+  .index-delta.down { color: var(--critical); }
+
   .card {
     background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px;
     padding: 10px 18px; margin-bottom: 7px;
@@ -108,8 +111,10 @@
   .ticker-block {
     display: flex; flex-direction: column; gap: 1px;
     flex: 0 0 132px; width: 132px; overflow: hidden;
+    cursor: pointer;
   }
   .ticker { font-size: 18px; font-weight: 700; line-height: 1.2; }
+  .ticker .chev { font-size: 11px; color: var(--text-muted); margin-left: 2px; font-weight: 500; }
   .company {
     font-size: 11.5px; color: var(--text-muted); line-height: 1.25;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
@@ -197,30 +202,74 @@
     border-top: 1px solid var(--gridline); padding-top: 14px;
   }
   footer b { color: var(--text-secondary); }
+
+  /* Ticker detail drawer */
+  .drawer-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(11,11,11,0.35); z-index: 50;
+  }
+  .drawer-overlay.open { display: block; }
+  .drawer {
+    position: fixed; top: 0; right: 0; height: 100%; width: min(340px, 86vw);
+    background: var(--surface-1); z-index: 51; padding: 20px;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.18);
+    transform: translateX(100%); transition: transform 0.22s ease;
+    overflow-y: auto;
+  }
+  .drawer.open { transform: translateX(0); }
+  .drawer-close {
+    width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--border);
+    background: var(--page); color: var(--text-secondary); cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; margin-bottom: 14px;
+  }
+  .drawer-title { font-size: 18px; font-weight: 700; margin: 0 0 2px; }
+  .drawer-sub { font-size: 12px; color: var(--text-muted); margin: 0 0 16px; }
+  .detail-row {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    padding: 8px 0; border-bottom: 1px solid var(--gridline); font-size: 13px;
+  }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-label { color: var(--text-muted); }
+  .detail-value { font-weight: 700; color: var(--text-primary); text-align: right; font-variant-numeric: tabular-nums; }
 </style>
 </head>
 <body>
 <div class="viz-root">
   <div class="wrap">
     <div class="top-bar">
-      <label class="archive-toggle" for="archive-open">지난 리포트 ▾</label>
-      <input type="checkbox" id="archive-open" class="archive-input">
-      <div class="archive-nav">
-        <div class="archive-list">
-<a href="reports/2026-07-30.html">2026-07-30</a>
+      <button class="cal-btn" id="calBtn" type="button">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        지난 리포트
+      </button>
+      <div class="cal-popover" id="calPopover">
+        <div class="cal-header">
+          <button class="cal-nav-btn" id="calPrev" type="button">‹</button>
+          <span class="cal-month-label" id="calMonthLabel"></span>
+          <button class="cal-nav-btn" id="calNext" type="button">›</button>
         </div>
+        <div class="cal-grid" id="calGrid"></div>
       </div>
-      <button class="theme-btn" onclick="toggleTheme()">라이트 / 다크</button>
     </div>
     <header>
       <p class="eyebrow">일일 주식 브리핑</p>
       <h1>미국주식 — 2026년 7월 30일</h1>
-      <div class="headline-block">
-        <div class="headline-row">
-          <span class="headline-tag">시황</span>
-          <span>나스닥 +2.34%·다우 +0.90%·러셀2000 +0.82% - 전일 급락분 하루만에 대부분 만회</span>
-          <a class="src-link" href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      <div class="index-row">
+        <div class="index-tile">
+          <div class="index-name">나스닥</div>
+          <div class="index-value">25,015.87</div>
+          <div class="index-delta up">▲ 2.34%</div>
         </div>
+        <div class="index-tile">
+          <div class="index-name">다우존스</div>
+          <div class="index-value">52,058.95</div>
+          <div class="index-delta up">▲ 0.90%</div>
+        </div>
+        <div class="index-tile">
+          <div class="index-name">러셀2000</div>
+          <div class="index-value">2,930.07</div>
+          <div class="index-delta up">▲ 0.82%</div>
+        </div>
+      </div>
+      <div class="headline-block">
         <div class="headline-row">
           <span class="headline-tag">뉴스</span>
           <span>마이크로소프트 +16% - 애저 클라우드 매출 첫 1000억달러 돌파, 시장 반등 견인</span>
@@ -237,8 +286,8 @@
     <div class="card">
       <input type="checkbox" id="news-nvda" class="news-toggle">
       <div class="card-head">
-        <div class="ticker-block">
-          <span class="ticker">NVDA</span>
+        <div class="ticker-block" data-ticker="NVDA">
+          <span class="ticker">NVDA<span class="chev">›</span></span>
           <span class="company">NVIDIA Corporation</span>
         </div>
         <div class="fg-strip">
@@ -281,8 +330,8 @@
     <div class="card">
       <input type="checkbox" id="news-ionq" class="news-toggle">
       <div class="card-head">
-        <div class="ticker-block">
-          <span class="ticker">IONQ</span>
+        <div class="ticker-block" data-ticker="IONQ">
+          <span class="ticker">IONQ<span class="chev">›</span></span>
           <span class="company">IonQ, Inc.</span>
         </div>
         <div class="fg-strip">
@@ -325,8 +374,8 @@
     <div class="card">
       <input type="checkbox" id="news-qqq" class="news-toggle">
       <div class="card-head">
-        <div class="ticker-block">
-          <span class="ticker">QQQ</span>
+        <div class="ticker-block" data-ticker="QQQ">
+          <span class="ticker">QQQ<span class="chev">›</span></span>
           <span class="company">Invesco QQQ Trust</span>
         </div>
         <div class="fg-strip">
@@ -369,8 +418,8 @@
     <div class="card">
       <input type="checkbox" id="news-jepq" class="news-toggle">
       <div class="card-head">
-        <div class="ticker-block">
-          <span class="ticker">JEPQ</span>
+        <div class="ticker-block" data-ticker="JEPQ">
+          <span class="ticker">JEPQ<span class="chev">›</span></span>
           <span class="company">JPMorgan Nasdaq ETF</span>
         </div>
         <div class="fg-strip">
@@ -413,8 +462,8 @@
     <div class="card">
       <input type="checkbox" id="news-jepi" class="news-toggle">
       <div class="card-head">
-        <div class="ticker-block">
-          <span class="ticker">JEPI</span>
+        <div class="ticker-block" data-ticker="JEPI">
+          <span class="ticker">JEPI<span class="chev">›</span></span>
           <span class="company">JPMorgan Equity ETF</span>
         </div>
         <div class="fg-strip">
@@ -456,20 +505,145 @@
     </div>
 
     <footer>
-      <b>RSI·공포탐욕지수 안내:</b> 표준화된 공식이 없어 CNN Fear &amp; Greed Index 방법론을 개별 종목에 맞게 커스텀 적용한 근사치입니다 (모멘텀·RSI·변동성·52주 위치·거래량 5개 항목 평균). 정밀한 과거 가격 이력 기반 계산 파이프라인은 아직 없어 참고용 보조 지표로만 활용해주세요.<br><br>
-      다음 발송: 평일 오후 5시(미국 동부시간) · <a class="src-link" href="index.html" style="margin-left:0">홈으로</a>
+      다음 발송: 평일 오후 5시(미국 동부시간)
     </footer>
   </div>
-</div>
-<script>
-  function toggleTheme() {
-    const root = document.documentElement;
-    const current = root.getAttribute('data-theme');
-    if (current === 'dark') root.setAttribute('data-theme', 'light');
-    else if (current === 'light') root.removeAttribute('data-theme');
-    else root.setAttribute('data-theme', 'dark');
-  }
 
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer" id="drawer">
+    <button class="drawer-close" id="drawerClose" type="button">✕</button>
+    <div class="drawer-panel" id="drawer-NVDA" hidden>
+      <p class="drawer-title">NVDA</p>
+      <p class="drawer-sub">NVIDIA Corporation</p>
+      <div class="detail-row">
+        <span class="detail-label">PER</span>
+        <span class="detail-value">29.10</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">EPS</span>
+        <span class="detail-value">$6.53</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">시가총액</span>
+        <span class="detail-value">$4.70T</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">52주 범위</span>
+        <span class="detail-value">$164.07 - $236.54</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">배당수익률</span>
+        <span class="detail-value">0.52%</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">다음 실적발표일</span>
+        <span class="detail-value">2026-08-26</span>
+      </div>
+    </div>
+    <div class="drawer-panel" id="drawer-IONQ" hidden>
+      <p class="drawer-title">IONQ</p>
+      <p class="drawer-sub">IonQ, Inc.</p>
+      <div class="detail-row">
+        <span class="detail-label">PER</span>
+        <span class="detail-value">37.79</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">EPS</span>
+        <span class="detail-value">$0.92</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">시가총액</span>
+        <span class="detail-value">$13.0B</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">52주 범위</span>
+        <span class="detail-value">$25.89 - $84.64</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">배당</span>
+        <span class="detail-value">없음</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">다음 실적발표일</span>
+        <span class="detail-value">2026-08-05</span>
+      </div>
+    </div>
+    <div class="drawer-panel" id="drawer-QQQ" hidden>
+      <p class="drawer-title">QQQ</p>
+      <p class="drawer-sub">Invesco QQQ Trust</p>
+      <div class="detail-row">
+        <span class="detail-label">운용보수</span>
+        <span class="detail-value">0.18%</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">배당수익률</span>
+        <span class="detail-value">0.44%</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">배당락일</span>
+        <span class="detail-value">2026-06-22</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">순자산(AUM)</span>
+        <span class="detail-value">$455.51B</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">52주 범위</span>
+        <span class="detail-value">$551.68 - $748.65</span>
+      </div>
+    </div>
+    <div class="drawer-panel" id="drawer-JEPQ" hidden>
+      <p class="drawer-title">JEPQ</p>
+      <p class="drawer-sub">JPMorgan Nasdaq ETF</p>
+      <div class="detail-row">
+        <span class="detail-label">운용보수</span>
+        <span class="detail-value">0.35%</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">배당수익률</span>
+        <span class="detail-value">11.15%</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">배당락일</span>
+        <span class="detail-value">2026-07-01</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">순자산(AUM)</span>
+        <span class="detail-value">$38.86B</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">52주 범위</span>
+        <span class="detail-value">$53.51 - $61.72</span>
+      </div>
+    </div>
+    <div class="drawer-panel" id="drawer-JEPI" hidden>
+      <p class="drawer-title">JEPI</p>
+      <p class="drawer-sub">JPMorgan Equity ETF</p>
+      <div class="detail-row">
+        <span class="detail-label">운용보수</span>
+        <span class="detail-value">0.35%</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">배당수익률</span>
+        <span class="detail-value">8.03%</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">배당락일</span>
+        <span class="detail-value">2026-07-01</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">순자산(AUM)</span>
+        <span class="detail-value">$45.34B</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">52주 범위</span>
+        <span class="detail-value">$55.10 - $59.90</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
   function polar(cx, cy, r, angleDeg) {
     const a = angleDeg * Math.PI / 180;
     return { x: cx + r * Math.cos(a), y: cy - r * Math.sin(a) };
@@ -551,6 +725,80 @@
     const score = Number(el.getAttribute('data-score'));
     el.appendChild(buildGauge(score));
   });
+
+  /* ---- Ticker detail drawer ---- */
+  const drawerOverlay = document.getElementById('drawerOverlay');
+  const drawer = document.getElementById('drawer');
+  function openDrawer(ticker) {
+    document.querySelectorAll('.drawer-panel').forEach(p => { p.hidden = (p.id !== 'drawer-' + ticker); });
+    drawerOverlay.classList.add('open');
+    drawer.classList.add('open');
+  }
+  function closeDrawer() {
+    drawerOverlay.classList.remove('open');
+    drawer.classList.remove('open');
+  }
+  document.querySelectorAll('.ticker-block[data-ticker]').forEach(el => {
+    el.addEventListener('click', () => openDrawer(el.getAttribute('data-ticker')));
+  });
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+  drawerOverlay.addEventListener('click', closeDrawer);
+
+  /* ---- "지난 리포트" calendar popover ---- */
+  const HISTORY = [{"label": "2026-07-30", "url": "reports/2026-07-30.html"}];
+  const CURRENT_DATE = "2026-07-30";
+  const calBtn = document.getElementById('calBtn');
+  const calPopover = document.getElementById('calPopover');
+  calBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    calPopover.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if (!calPopover.contains(e.target) && e.target !== calBtn && !calBtn.contains(e.target)) {
+      calPopover.classList.remove('open');
+    }
+  });
+
+  (function initCalendar() {
+    const dateMap = new Map(HISTORY.map(h => [h.label, h.url]));
+    const [cy, cm] = CURRENT_DATE.split('-').map(Number);
+    let viewYear = cy, viewMonth = cm - 1;
+    const grid = document.getElementById('calGrid');
+    const label = document.getElementById('calMonthLabel');
+    const DOW = ['일', '월', '화', '수', '목', '금', '토'];
+
+    function render() {
+      label.textContent = viewYear + '년 ' + (viewMonth + 1) + '월';
+      grid.innerHTML = '';
+      DOW.forEach(d => {
+        const el = document.createElement('div');
+        el.className = 'cal-dow';
+        el.textContent = d;
+        grid.appendChild(el);
+      });
+      const firstDay = new Date(viewYear, viewMonth, 1).getDay();
+      const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+      for (let i = 0; i < firstDay; i++) grid.appendChild(document.createElement('div'));
+      for (let d = 1; d <= daysInMonth; d++) {
+        const mm = String(viewMonth + 1).padStart(2, '0');
+        const dd = String(d).padStart(2, '0');
+        const key = viewYear + '-' + mm + '-' + dd;
+        const hasReport = dateMap.has(key);
+        const cell = document.createElement(hasReport ? 'a' : 'div');
+        cell.textContent = String(d);
+        cell.className = 'cal-day' + (hasReport ? ' has-report' : '') + (key === CURRENT_DATE ? ' current' : '');
+        if (hasReport) cell.href = dateMap.get(key);
+        grid.appendChild(cell);
+      }
+    }
+    document.getElementById('calPrev').addEventListener('click', () => {
+      viewMonth--; if (viewMonth < 0) { viewMonth = 11; viewYear--; } render();
+    });
+    document.getElementById('calNext').addEventListener('click', () => {
+      viewMonth++; if (viewMonth > 11) { viewMonth = 0; viewYear++; } render();
+    });
+    render();
+  })();
 </script>
 </body>
 </html>

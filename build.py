@@ -12,8 +12,8 @@ from jinja2 import Environment, FileSystemLoader
 REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
-def build_history(exclude_date=None):
-    """Return sorted (desc) list of {date, label} for all existing reports/*.html files."""
+def build_history():
+    """Return sorted (desc) list of date strings for all existing reports/*.html files."""
     files = glob.glob(os.path.join(REPO_ROOT, "reports", "*.html"))
     dates = sorted(
         (os.path.splitext(os.path.basename(f))[0] for f in files),
@@ -39,15 +39,21 @@ def main():
     # in this same run, so glob won't see it yet -> add manually then dedupe).
     all_dates = sorted(set(build_history() + [date]), reverse=True)
 
+    common = dict(
+        date=date,
+        date_kr=data["date_kr"],
+        indices=data["indices"],
+        headlines=data["headlines"],
+        tickers=data["tickers"],
+    )
+
     # --- Render reports/<date>.html (nested one level under reports/) ---
     # sibling files inside reports/, and the current day's own file just points to itself (fine)
     report_history = [{"label": d, "url": f"{d}.html"} for d in all_dates]
     report_html = tmpl.render(
-        date_kr=data["date_kr"],
-        headlines=data["headlines"],
-        tickers=data["tickers"],
         history=report_history,
-        home_url="../index.html",
+        history_json=json.dumps(report_history, ensure_ascii=False),
+        **common,
     )
     os.makedirs(os.path.join(REPO_ROOT, "reports"), exist_ok=True)
     report_path = os.path.join(REPO_ROOT, "reports", f"{date}.html")
@@ -58,11 +64,9 @@ def main():
     # --- Render index.html (root) ---
     index_history = [{"label": d, "url": f"reports/{d}.html"} for d in all_dates]
     index_html = tmpl.render(
-        date_kr=data["date_kr"],
-        headlines=data["headlines"],
-        tickers=data["tickers"],
         history=index_history,
-        home_url="index.html",
+        history_json=json.dumps(index_history, ensure_ascii=False),
+        **common,
     )
     index_path = os.path.join(REPO_ROOT, "index.html")
     with open(index_path, "w", encoding="utf-8") as f:

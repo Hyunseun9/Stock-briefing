@@ -1,12 +1,12 @@
 {
   "date": "2026-07-30",
   "date_kr": "2026년 7월 30일",
+  "indices": [
+    {"name": "나스닥", "value": "25,015.87", "change_pct": "2.34", "direction": "up"},
+    {"name": "다우존스", "value": "52,058.95", "change_pct": "0.90", "direction": "up"},
+    {"name": "러셀2000", "value": "2,930.07", "change_pct": "0.82", "direction": "up"}
+  ],
   "headlines": [
-    {
-      "tag": "시황",
-      "text": "나스닥 +2.34%·다우 +0.90%·러셀2000 +0.82% - 전일 급락분 하루만에 대부분 만회",
-      "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"
-    },
     {
       "tag": "뉴스",
       "text": "마이크로소프트 +16% - 애저 클라우드 매출 첫 1000억달러 돌파, 시장 반등 견인",
@@ -35,6 +35,14 @@
       "rsi_w_zone": "neutral",
       "rsi_w_arrow": "▲",
       "beta": "2.21",
+      "details": [
+        {"label": "PER", "value": "29.10"},
+        {"label": "EPS", "value": "$6.53"},
+        {"label": "시가총액", "value": "$4.70T"},
+        {"label": "52주 범위", "value": "$164.07 - $236.54"},
+        {"label": "배당수익률", "value": "0.52%"},
+        {"label": "다음 실적발표일", "value": "2026-08-26"}
+      ],
       "news": [
         {"label": "오늘의 최대 뉴스", "text": "개별 뉴스보다 마이크로소프트 실적 훈풍에 동반 반등, +1.72%.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"},
         {"label": "관련 업종 뉴스", "text": "전일 나스닥100 조정 국면 진입 우려를 딛고 반도체·빅테크 전반 하루만에 반등.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"},
@@ -57,6 +65,14 @@
       "rsi_w_zone": "neutral",
       "rsi_w_arrow": "▲",
       "beta": "3.23",
+      "details": [
+        {"label": "PER", "value": "37.79"},
+        {"label": "EPS", "value": "$0.92"},
+        {"label": "시가총액", "value": "$13.0B"},
+        {"label": "52주 범위", "value": "$25.89 - $84.64"},
+        {"label": "배당", "value": "없음"},
+        {"label": "다음 실적발표일", "value": "2026-08-05"}
+      ],
       "news": [
         {"label": "오늘의 최대 뉴스", "text": "벤치마크, 양자컴퓨팅 담당 커버리지 재개하며 매수(Buy) 의견·목표주가 $60 제시.", "url": "https://stockanalysis.com/stocks/ionq/"},
         {"label": "관련 업종 뉴스", "text": "블랙록, IonQ 지분 5.3% 보유 공시 - 기관 매수세 부각.", "url": "https://stockanalysis.com/stocks/ionq/"},
@@ -79,6 +95,13 @@
       "rsi_w_zone": "neutral",
       "rsi_w_arrow": "▲",
       "beta": "1.23",
+      "details": [
+        {"label": "운용보수", "value": "0.18%"},
+        {"label": "배당수익률", "value": "0.44%"},
+        {"label": "배당락일", "value": "2026-06-22"},
+        {"label": "순자산(AUM)", "value": "$455.51B"},
+        {"label": "52주 범위", "value": "$551.68 - $748.65"}
+      ],
       "news": [
         {"label": "오늘의 최대 뉴스", "text": "마이크로소프트 +16% 급등(애저 매출 첫 1000억달러 돌파)에 힘입어 구성종목 전반 강세.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"},
         {"label": "관련 업종 뉴스", "text": "전일 연준 매파적 동결로 급락했던 기술주, 하루만에 낙폭 대부분 만회.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"},
@@ -101,6 +124,13 @@
       "rsi_w_zone": "neutral",
       "rsi_w_arrow": "▲",
       "beta": "0.83",
+      "details": [
+        {"label": "운용보수", "value": "0.35%"},
+        {"label": "배당수익률", "value": "11.15%"},
+        {"label": "배당락일", "value": "2026-07-01"},
+        {"label": "순자산(AUM)", "value": "$38.86B"},
+        {"label": "52주 범위", "value": "$53.51 - $61.72"}
+      ],
       "news": [
         {"label": "오늘의 최대 뉴스", "text": "나스닥100 반등에도 커버드콜 오버레이 구조상 상승폭은 지수 대비 제한적일 전망 (장전 +0.64%, 정규장 수치는 변동 가능).", "url": "https://stockanalysis.com/etf/jepq/"},
         {"label": "관련 업종 뉴스", "text": "전일 매도세 이후 장 전부터 매수세 유입.", "url": "https://stockanalysis.com/etf/jepq/"},
@@ -123,6 +153,13 @@
       "rsi_w_zone": "neutral",
       "rsi_w_arrow": "▲",
       "beta": "0.54",
+      "details": [
+        {"label": "운용보수", "value": "0.35%"},
+        {"label": "배당수익률", "value": "8.03%"},
+        {"label": "배당락일", "value": "2026-07-01"},
+        {"label": "순자산(AUM)", "value": "$45.34B"},
+        {"label": "52주 범위", "value": "$55.10 - $59.90"}
+      ],
       "news": [
         {"label": "오늘의 최대 뉴스", "text": "S&P500 +1.29% 상승에도 저베타·배당 전략 특성상 상승폭은 지수 대비 완만할 전망 (장전 +0.28%, 정규장 수치는 변동 가능).", "url": "https://stockanalysis.com/etf/jepi/"},
         {"label": "관련 업종 뉴스", "text": "메타 -9% 실적 부진에도 방어적 배당주 중심 포트폴리오는 상대적으로 안정적.", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-treasury-yields-microsoft-082255995.html"},
