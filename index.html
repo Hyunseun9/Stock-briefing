@@ -94,6 +94,10 @@
   .section-divider::before, .section-divider::after {
     content: ''; flex: 1; height: 1px; background: var(--gridline);
   }
+  .section-divider-meta {
+    font-weight: 400; letter-spacing: normal; font-size: 10px;
+    color: var(--text-muted); opacity: 0.85;
+  }
 
   .card {
     background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px;
@@ -117,6 +121,10 @@
   .ticker .chev { font-size: 11px; color: var(--text-muted); margin-left: 2px; font-weight: 500; }
   .company {
     font-size: 11.5px; color: var(--text-muted); line-height: 1.25;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .dominance-tag {
+    display: block; font-size: 10.5px; font-weight: 600; color: var(--text-muted);
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   .price-block { grid-area: price; text-align: right; min-width: 0; }
@@ -282,6 +290,8 @@
     .fg-stats { gap: 0px; }
     .stat-line { font-size: 10px; gap: 6px; }
     .stat-label { font-size: 10px; }
+    .section-divider > span { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+    .section-divider-meta { font-size: 9px; }
   }
 </style>
 </head>
@@ -662,7 +672,7 @@
     </div>
 
 
-    <div class="section-divider"><span>코인</span></div>
+    <div class="section-divider"><span>코인<span class="section-divider-meta"> · 업데이트 오전 2:44 (ET) · BTC 도미넌스 60.1%</span></span></div>
 
         <div class="card">
       <input type="checkbox" id="news-btc" class="news-toggle">
@@ -670,7 +680,7 @@
         <div class="ticker-block" data-ticker="BTC">
           <span class="ticker">BTC<span class="chev">›</span></span>
           <span class="company">Bitcoin</span>
-        </div>
+<span class="dominance-tag">점유율 60.1%</span>        </div>
         <div class="fg-strip">
           <div class="fg-left">
             <div class="fg-gauge-svg" data-gauge data-score="28"></div>
@@ -690,8 +700,8 @@
               <span class="stat-value zone-neutral"><b>53</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
-              <span class="stat-label">시총순위</span>
-              <span class="stat-value"><b>#1</b></span>
+              <span class="stat-label">월봉 RSI</span>
+              <span class="stat-value zone-neutral"><b>51</b><span class="trend-arrow">▲</span></span>
             </div>
           </div>
         </div>
@@ -715,7 +725,7 @@
         <div class="ticker-block" data-ticker="ETH">
           <span class="ticker">ETH<span class="chev">›</span></span>
           <span class="company">Ethereum</span>
-        </div>
+<span class="dominance-tag">점유율 9.9%</span>        </div>
         <div class="fg-strip">
           <div class="fg-left">
             <div class="fg-gauge-svg" data-gauge data-score="28"></div>
@@ -735,8 +745,8 @@
               <span class="stat-value zone-neutral"><b>53</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
-              <span class="stat-label">시총순위</span>
-              <span class="stat-value"><b>#2</b></span>
+              <span class="stat-label">월봉 RSI</span>
+              <span class="stat-value zone-neutral"><b>52</b><span class="trend-arrow">▲</span></span>
             </div>
           </div>
         </div>
@@ -760,7 +770,7 @@
         <div class="ticker-block" data-ticker="XRP">
           <span class="ticker">XRP<span class="chev">›</span></span>
           <span class="company">XRP (Ripple)</span>
-        </div>
+<span class="dominance-tag">점유율 2.6%</span>        </div>
         <div class="fg-strip">
           <div class="fg-left">
             <div class="fg-gauge-svg" data-gauge data-score="28"></div>
@@ -780,8 +790,8 @@
               <span class="stat-value zone-neutral"><b>47</b><span class="trend-arrow">▲</span></span>
             </div>
             <div class="stat-line">
-              <span class="stat-label">시총순위</span>
-              <span class="stat-value"><b>#6</b></span>
+              <span class="stat-label">월봉 RSI</span>
+              <span class="stat-value zone-neutral"><b>48</b><span class="trend-arrow">▲</span></span>
             </div>
           </div>
         </div>

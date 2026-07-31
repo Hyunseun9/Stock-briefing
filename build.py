@@ -74,6 +74,7 @@ def main():
         date_kr=data["date_kr"],
         indices=data["indices"],
         tickers=data["tickers"],
+        crypto_meta=data.get("crypto_meta"),
         news_pool_json=json.dumps(data["news_pool"], ensure_ascii=False),
     )
 

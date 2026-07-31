@@ -94,6 +94,10 @@
   .section-divider::before, .section-divider::after {
     content: ''; flex: 1; height: 1px; background: var(--gridline);
   }
+  .section-divider-meta {
+    font-weight: 400; letter-spacing: normal; font-size: 10px;
+    color: var(--text-muted); opacity: 0.85;
+  }
 
   .card {
     background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px;
@@ -117,6 +121,10 @@
   .ticker .chev { font-size: 11px; color: var(--text-muted); margin-left: 2px; font-weight: 500; }
   .company {
     font-size: 11.5px; color: var(--text-muted); line-height: 1.25;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .dominance-tag {
+    display: block; font-size: 10.5px; font-weight: 600; color: var(--text-muted);
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   .price-block { grid-area: price; text-align: right; min-width: 0; }
@@ -282,6 +290,8 @@
     .fg-stats { gap: 0px; }
     .stat-line { font-size: 10px; gap: 6px; }
     .stat-label { font-size: 10px; }
+    .section-divider > span { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+    .section-divider-meta { font-size: 9px; }
   }
 </style>
 </head>
@@ -310,6 +320,7 @@
         <div class="ticker-block" data-ticker="{{ t.ticker }}">
           <span class="ticker">{{ t.ticker }}<span class="chev">›</span></span>
           <span class="company">{{ t.company }}</span>
+          {% if t.type == 'coin' and t.dominance %}<span class="dominance-tag">점유율 {{ t.dominance }}</span>{% endif %}
         </div>
         <div class="fg-strip">
           <div class="fg-left">
@@ -331,8 +342,8 @@
             </div>
             {% if t.type == 'coin' %}
             <div class="stat-line">
-              <span class="stat-label">시총순위</span>
-              <span class="stat-value"><b>#{{ t.rank }}</b></span>
+              <span class="stat-label">월봉 RSI</span>
+              <span class="stat-value zone-{{ t.rsi_m_zone }}"><b>{{ t.rsi_m }}</b><span class="trend-arrow">{{ t.rsi_m_arrow }}</span></span>
             </div>
             {% else %}
             <div class="stat-line">
@@ -390,7 +401,7 @@
     {% endfor %}
 
     {% if tickers|selectattr('type', 'equalto', 'coin')|list %}
-    <div class="section-divider"><span>코인</span></div>
+    <div class="section-divider"><span>코인<span class="section-divider-meta">{% if crypto_meta %} · 업데이트 {{ crypto_meta.updated_at }} · BTC 도미넌스 {{ crypto_meta.btc_dominance }}{% endif %}</span></span></div>
     {% endif %}
 
     {% for t in tickers if t.type == 'coin' %}
