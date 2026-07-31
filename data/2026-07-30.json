@@ -205,7 +205,7 @@
             },
             {
               "label": "다음 분기 예상 실적",
-              "value": "EPS $1.65 · 매출 $86.4B (컨센서스, 2027 Q2)"
+              "value": "N/A (소스 미정 — ToS 검토 중)"
             }
           ],
           "quarters": [
@@ -396,7 +396,7 @@
             },
             {
               "label": "다음 분기 예상 실적",
-              "value": "EPS -$0.51 · 매출 $54.9M (컨센서스)"
+              "value": "N/A (소스 미정 — ToS 검토 중)"
             }
           ],
           "quarters": [
@@ -513,12 +513,6 @@
       "fg_score": 47,
       "fg_zone_class": "neutral",
       "fg_zone_label": "중립",
-      "rsi_d": "41.8",
-      "rsi_d_zone": "neutral",
-      "rsi_d_arrow": "▲",
-      "rsi_w": 45,
-      "rsi_w_zone": "neutral",
-      "rsi_w_arrow": "▲",
       "beta": "1.23",
       "tabs": [
         {
@@ -590,32 +584,6 @@
               "amount": "$0.71571"
             }
           ]
-        },
-        {
-          "key": "indicators",
-          "label": "지표",
-          "rows": [
-            {
-              "label": "RSI(14일)",
-              "value": "41.82"
-            },
-            {
-              "label": "20일 이동평균",
-              "value": "$713.32"
-            },
-            {
-              "label": "50일 이동평균",
-              "value": "$718.75"
-            },
-            {
-              "label": "100일 이동평균",
-              "value": "$670.89"
-            },
-            {
-              "label": "200일 이동평균",
-              "value": "$642.79"
-            }
-          ]
         }
       ],
       "news": [
@@ -646,12 +614,6 @@
       "fg_score": 58,
       "fg_zone_class": "neutral",
       "fg_zone_label": "중립",
-      "rsi_d": "63.7",
-      "rsi_d_zone": "neutral",
-      "rsi_d_arrow": "▲",
-      "rsi_w": 58,
-      "rsi_w_zone": "neutral",
-      "rsi_w_arrow": "▲",
       "beta": "0.83",
       "tabs": [
         {
@@ -723,32 +685,6 @@
               "amount": "$0.46572"
             }
           ]
-        },
-        {
-          "key": "indicators",
-          "label": "지표",
-          "rows": [
-            {
-              "label": "RSI(14일)",
-              "value": "63.67"
-            },
-            {
-              "label": "20일 이동평균",
-              "value": "$59.33"
-            },
-            {
-              "label": "50일 이동평균",
-              "value": "$57.82"
-            },
-            {
-              "label": "100일 이동평균",
-              "value": "$58.14"
-            },
-            {
-              "label": "200일 이동평균",
-              "value": "$57.67"
-            }
-          ]
         }
       ],
       "news": [
@@ -779,12 +715,6 @@
       "fg_score": 50,
       "fg_zone_class": "neutral",
       "fg_zone_label": "중립",
-      "rsi_d": "43.4",
-      "rsi_d_zone": "neutral",
-      "rsi_d_arrow": "▲",
-      "rsi_w": 47,
-      "rsi_w_zone": "neutral",
-      "rsi_w_arrow": "▲",
       "beta": "0.54",
       "tabs": [
         {
@@ -854,32 +784,6 @@
             {
               "date": "2026-02-02",
               "amount": "$0.3444"
-            }
-          ]
-        },
-        {
-          "key": "indicators",
-          "label": "지표",
-          "rows": [
-            {
-              "label": "RSI(14일)",
-              "value": "43.40"
-            },
-            {
-              "label": "20일 이동평균",
-              "value": "$57.40"
-            },
-            {
-              "label": "50일 이동평균",
-              "value": "$57.59"
-            },
-            {
-              "label": "100일 이동평균",
-              "value": "$57.89"
-            },
-            {
-              "label": "200일 이동평균",
-              "value": "$57.37"
             }
           ]
         }
@@ -996,7 +900,7 @@
             },
             {
               "label": "다음 분기 예상 실적",
-              "value": "EPS -$0.78 (컨센서스)"
+              "value": "N/A (소스 미정 — ToS 검토 중)"
             }
           ],
           "quarters": [
@@ -1192,7 +1096,7 @@
             },
             {
               "label": "다음 분기 예상 실적",
-              "value": "N/A (분석 커버리지 부족)"
+              "value": "N/A (소스 미정 — ToS 검토 중)"
             }
           ],
           "quarters": [
