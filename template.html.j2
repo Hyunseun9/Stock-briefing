@@ -336,16 +336,11 @@
               <span class="stat-label">일봉 RSI</span>
               <span class="stat-value zone-{{ t.rsi_d_zone }}"><b>{{ t.rsi_d }}</b><span class="trend-arrow">{{ t.rsi_d_arrow }}</span></span>
             </div>
+            {% if t.type != 'coin' %}
             <div class="stat-line">
               <span class="stat-label">주봉 RSI</span>
               <span class="stat-value zone-{{ t.rsi_w_zone }}"><b>{{ t.rsi_w }}</b><span class="trend-arrow">{{ t.rsi_w_arrow }}</span></span>
             </div>
-            {% if t.type == 'coin' %}
-            <div class="stat-line">
-              <span class="stat-label">월봉 RSI</span>
-              <span class="stat-value zone-{{ t.rsi_m_zone }}"><b>{{ t.rsi_m }}</b><span class="trend-arrow">{{ t.rsi_m_arrow }}</span></span>
-            </div>
-            {% else %}
             <div class="stat-line">
               <span class="stat-label">베타</span>
               <span class="stat-value"><b>{{ t.beta }}</b></span>
