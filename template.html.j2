@@ -141,12 +141,12 @@
   }
   .fg-left { display: flex; align-items: center; gap: 8px; }
   .fg-gauge-svg { flex-shrink: 0; line-height: 0; display: flex; }
-  .fg-text { display: flex; align-items: baseline; gap: 6px; }
-  .fg-text-score { font-size: 20px; font-weight: 700; line-height: 1; font-variant-numeric: proportional-nums; }
+  .fg-text { display: flex; align-items: baseline; gap: 6px; flex-shrink: 0; }
+  .fg-text-score { font-size: 20px; font-weight: 700; line-height: 1; font-variant-numeric: proportional-nums; white-space: nowrap; }
   .fg-text-score.zone-fear { color: var(--critical); }
   .fg-text-score.zone-neutral { color: var(--text-secondary); }
   .fg-text-score.zone-greed { color: var(--good); }
-  .fg-text-zone { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+  .fg-text-zone { font-size: 13px; font-weight: 600; color: var(--text-secondary); white-space: nowrap; }
   .fg-divider { width: 1px; align-self: stretch; background: var(--gridline); }
 
   .fg-stats { display: flex; flex-direction: column; gap: 3px; }
@@ -329,10 +329,17 @@
               <span class="stat-label">주봉 RSI</span>
               <span class="stat-value zone-{{ t.rsi_w_zone }}"><b>{{ t.rsi_w }}</b><span class="trend-arrow">{{ t.rsi_w_arrow }}</span></span>
             </div>
+            {% if t.type == 'coin' %}
+            <div class="stat-line">
+              <span class="stat-label">시총순위</span>
+              <span class="stat-value"><b>#{{ t.rank }}</b></span>
+            </div>
+            {% else %}
             <div class="stat-line">
               <span class="stat-label">베타</span>
               <span class="stat-value"><b>{{ t.beta }}</b></span>
             </div>
+            {% endif %}
           </div>
         </div>
         <div class="price-block">
@@ -370,7 +377,7 @@
       </div>
     </header>
 
-    {% for t in tickers if t.type != 'etf' %}
+    {% for t in tickers if t.type == 'stock' %}
     {{ ticker_card(t) }}
     {% endfor %}
 
@@ -379,6 +386,14 @@
     {% endif %}
 
     {% for t in tickers if t.type == 'etf' %}
+    {{ ticker_card(t) }}
+    {% endfor %}
+
+    {% if tickers|selectattr('type', 'equalto', 'coin')|list %}
+    <div class="section-divider"><span>코인</span></div>
+    {% endif %}
+
+    {% for t in tickers if t.type == 'coin' %}
     {{ ticker_card(t) }}
     {% endfor %}
   </div>

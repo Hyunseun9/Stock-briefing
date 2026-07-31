@@ -472,6 +472,142 @@
         {"label": "관련 업종 뉴스", "text": "비트마인은 579만 개 이상의 이더리움(전체 발행량의 약 4.8%)을 보유한 최대 ETH 트레저리 기업으로, 이더리움 가격 변동에 주가가 크게 연동되는 구조다.", "url": "https://www.benzinga.com/markets/equities/26/07/60268987/tom-lees-bitmine-faces-massive-unrealized-loss-as-eth-and-bmnr-stock-tumble"},
         {"label": "다가오는 일정", "text": "비트마인은 매주 이더리움 보유량과 총 자산 현황을 정기 공시하고 있어, 다음 주간 업데이트 발표가 예정돼 있다.", "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-announces-eth-holdings-reach-5-79-million-tokens-and-total-crypto-and-total-cash-holdings-of-11-8-billion-302834876.html"}
       ]
+    },
+    {
+      "ticker": "BTC",
+      "type": "coin",
+      "company": "Bitcoin",
+      "price": "63,912.50",
+      "change_pct": "0.53",
+      "direction": "up",
+      "fg_score": 28,
+      "fg_zone_class": "fear",
+      "fg_zone_label": "공포",
+      "rank": "1",
+      "rsi_d": "55.4",
+      "rsi_d_zone": "neutral",
+      "rsi_d_arrow": "▲",
+      "rsi_w": 53,
+      "rsi_w_zone": "neutral",
+      "rsi_w_arrow": "▲",
+      "tabs": [
+        {
+          "key": "overview", "label": "개요",
+          "rows": [
+            {"label": "시가총액", "value": "$1.28T"},
+            {"label": "24시간 거래량", "value": "$25.35B"},
+            {"label": "시가총액 순위", "value": "#1"},
+            {"label": "순환공급량", "value": "20.05M BTC"},
+            {"label": "최대공급량", "value": "21M BTC"},
+            {"label": "사상최고가(ATH)", "value": "$126,198.07 (2025-10-06)"},
+            {"label": "사상최저가(ATL)", "value": "$0.04865 (2010-07-14)"}
+          ]
+        },
+        {
+          "key": "indicators", "label": "지표",
+          "rows": [
+            {"label": "RSI(14일)", "value": "55.4"},
+            {"label": "50일 이동평균", "value": "$63,550.80"},
+            {"label": "200일 이동평균", "value": "$73,156.40"}
+          ]
+        }
+      ],
+      "news": [
+        {"label": "오늘의 최대 뉴스", "text": "연준 FOMC 회의 이후 매수세가 유입되며 비트코인 현물 ETF가 나흘 만에 순유입(약 3210만 달러)으로 전환했다.", "url": "https://www.benzinga.com/crypto/cryptocurrency/26/07/60817794/bitcoin-ethereum-xrp-dogecoin-hold-steady-on-post-fed-meeting-thursday"},
+        {"label": "관련 업종 뉴스", "text": "베센트 재무장관의 클래리티법(CLARITY Act) 추진 소식에 규제 명확성 기대감이 커졌고, 일부 트레이더는 6만달러 재하락 시 역헤드앤숄더 패턴 완성 후 7.4만달러 목표가를 거론했다.", "url": "https://www.benzinga.com/crypto/cryptocurrency/26/07/60817794/bitcoin-ethereum-xrp-dogecoin-hold-steady-on-post-fed-meeting-thursday"},
+        {"label": "다가오는 일정", "text": "24시간 동안 약 8만9000명 트레이더에 걸쳐 2억7416만 달러 규모의 청산이 발생하는 등 변동성은 여전히 큰 상태다.", "url": "https://www.benzinga.com/crypto/cryptocurrency/26/07/60817794/bitcoin-ethereum-xrp-dogecoin-hold-steady-on-post-fed-meeting-thursday"}
+      ]
+    },
+    {
+      "ticker": "ETH",
+      "type": "coin",
+      "company": "Ethereum",
+      "price": "1,843.89",
+      "change_pct": "0.52",
+      "direction": "up",
+      "fg_score": 28,
+      "fg_zone_class": "fear",
+      "fg_zone_label": "공포",
+      "rank": "2",
+      "rsi_d": "56.3",
+      "rsi_d_zone": "neutral",
+      "rsi_d_arrow": "▲",
+      "rsi_w": 53,
+      "rsi_w_zone": "neutral",
+      "rsi_w_arrow": "▲",
+      "tabs": [
+        {
+          "key": "overview", "label": "개요",
+          "rows": [
+            {"label": "시가총액", "value": "$222.52B"},
+            {"label": "24시간 거래량", "value": "$7.27B"},
+            {"label": "시가총액 순위", "value": "#2"},
+            {"label": "순환공급량", "value": "120.68M ETH"},
+            {"label": "최대공급량", "value": "무제한"},
+            {"label": "사상최고가(ATH)", "value": "$4,953.73 (2025-08-24)"},
+            {"label": "사상최저가(ATL)", "value": "$0.4209 (2015-10-21)"},
+            {"label": "스테이킹 수익률", "value": "약 3~5% (검증인 기준, 추정치)"}
+          ]
+        },
+        {
+          "key": "indicators", "label": "지표",
+          "rows": [
+            {"label": "RSI(14일)", "value": "56.3"},
+            {"label": "50일 이동평균", "value": "$1,769.10"},
+            {"label": "200일 이동평균", "value": "$2,113.50"}
+          ]
+        }
+      ],
+      "news": [
+        {"label": "오늘의 최대 뉴스", "text": "연준 회의 이후 크립토 전반이 반등했지만 이더리움 현물 ETF는 같은 기간 1870만 달러 순유출을 기록하며 비트코인 대비 상대적으로 부진했다.", "url": "https://www.benzinga.com/crypto/cryptocurrency/26/07/60817794/bitcoin-ethereum-xrp-dogecoin-hold-steady-on-post-fed-meeting-thursday"},
+        {"label": "관련 업종 뉴스", "text": "이더리움 자체의 개별 호재는 뚜렷하지 않았고, 전반적인 크립토 시장 심리 개선에 동반해 완만하게 상승했다.", "url": "https://www.benzinga.com/crypto/cryptocurrency/26/07/60817794/bitcoin-ethereum-xrp-dogecoin-hold-steady-on-post-fed-meeting-thursday"},
+        {"label": "다가오는 일정", "text": "이더리움 스테이킹 수익률은 연 3~5%대(검증인 기준 추정치)로 유지되고 있다.", "url": "https://ethereum.org/en/staking/"}
+      ]
+    },
+    {
+      "ticker": "XRP",
+      "type": "coin",
+      "company": "XRP (Ripple)",
+      "price": "1.10",
+      "change_pct": "1.03",
+      "direction": "up",
+      "fg_score": 28,
+      "fg_zone_class": "fear",
+      "fg_zone_label": "공포",
+      "rank": "6",
+      "rsi_d": "45.2",
+      "rsi_d_zone": "neutral",
+      "rsi_d_arrow": "▲",
+      "rsi_w": 47,
+      "rsi_w_zone": "neutral",
+      "rsi_w_arrow": "▲",
+      "tabs": [
+        {
+          "key": "overview", "label": "개요",
+          "rows": [
+            {"label": "시가총액", "value": "$68.42B"},
+            {"label": "24시간 거래량", "value": "$633.29M"},
+            {"label": "시가총액 순위", "value": "#6"},
+            {"label": "순환공급량", "value": "62.46B XRP"},
+            {"label": "최대공급량", "value": "100B XRP"},
+            {"label": "사상최고가(ATH)", "value": "$3.84 (2018-01-04)"},
+            {"label": "사상최저가(ATL)", "value": "$0.002802 (2014-07-07)"}
+          ]
+        },
+        {
+          "key": "indicators", "label": "지표",
+          "rows": [
+            {"label": "RSI(14일)", "value": "45.2"},
+            {"label": "50일 이동평균", "value": "$1.10"},
+            {"label": "200일 이동평균", "value": "$1.40"}
+          ]
+        }
+      ],
+      "news": [
+        {"label": "오늘의 최대 뉴스", "text": "특별한 개별 뉴스 없이 전반적인 크립토 시장 심리 개선에 동반해 약 1.03% 완만하게 상승 마감했다.", "url": "https://www.benzinga.com/crypto/cryptocurrency/26/07/60817794/bitcoin-ethereum-xrp-dogecoin-hold-steady-on-post-fed-meeting-thursday"},
+        {"label": "관련 업종 뉴스", "text": "도지코인 등 주요 알트코인들도 함께 반등하며 시장 전반의 위험선호 심리가 개선되는 모습을 보였다.", "url": "https://www.benzinga.com/crypto/cryptocurrency/26/07/60827004/bitcoin-ethereum-xrp-spike-dogecoin-flat-amid-sharp-crypto-recovery"},
+        {"label": "다가오는 일정", "text": "크립토 공포탐욕지수는 연준 회의 이후 다소 개선됐지만 여전히 '공포' 구간(28)에 머물러 있어 변동성에 유의할 필요가 있다.", "url": "https://alternative.me/crypto/fear-and-greed-index/"}
+      ]
     }
   ]
 }

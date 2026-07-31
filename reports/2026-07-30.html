@@ -141,12 +141,12 @@
   }
   .fg-left { display: flex; align-items: center; gap: 8px; }
   .fg-gauge-svg { flex-shrink: 0; line-height: 0; display: flex; }
-  .fg-text { display: flex; align-items: baseline; gap: 6px; }
-  .fg-text-score { font-size: 20px; font-weight: 700; line-height: 1; font-variant-numeric: proportional-nums; }
+  .fg-text { display: flex; align-items: baseline; gap: 6px; flex-shrink: 0; }
+  .fg-text-score { font-size: 20px; font-weight: 700; line-height: 1; font-variant-numeric: proportional-nums; white-space: nowrap; }
   .fg-text-score.zone-fear { color: var(--critical); }
   .fg-text-score.zone-neutral { color: var(--text-secondary); }
   .fg-text-score.zone-greed { color: var(--good); }
-  .fg-text-zone { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+  .fg-text-zone { font-size: 13px; font-weight: 600; color: var(--text-secondary); white-space: nowrap; }
   .fg-divider { width: 1px; align-self: stretch; background: var(--gridline); }
 
   .fg-stats { display: flex; flex-direction: column; gap: 3px; }
@@ -658,6 +658,144 @@
         <p><b>오늘의 최대 뉴스:</b> S&P500(+1.66%) 강세에 JEPI도 상승 마감했지만, 콜옵션 매도로 상단이 제한되는 구조와 낮은 베타(0.54) 탓에 지수 대비 상승폭은 크게 제한적이었다. <a class="src-link" href="https://www.fool.com/coverage/stock-market-today/2026/07/30/stock-market-midday-july-30-microsoft-soars-15-boosting-tech-stocks/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
         <p><b>관련 업종 뉴스:</b> JEPI는 주식 익스포저를 낮추고 구조화노트(ELN)를 활용해 변동성을 완화하는 대신, 강세장에서는 지수 상승률을 따라가지 못하는 구조적 한계를 갖고 있다. <a class="src-link" href="https://www.mutualfunds.com/options-and-income-channel/jepi-vs-jepq-vs-xyld-how-to-decide/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
         <p><b>다가오는 일정:</b> JEPI 역시 매월 분배금을 지급하며, 다음 월간 분배금 발표가 다가오고 있다. <a class="src-link" href="https://am.jpmorgan.com/content/dam/jpm-am-aem/americas/us/en/literature/fact-sheet/etfs/FS-JEPI.PDF" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+      </div>
+    </div>
+
+
+    <div class="section-divider"><span>코인</span></div>
+
+        <div class="card">
+      <input type="checkbox" id="news-btc" class="news-toggle">
+      <div class="card-head">
+        <div class="ticker-block" data-ticker="BTC">
+          <span class="ticker">BTC<span class="chev">›</span></span>
+          <span class="company">Bitcoin</span>
+        </div>
+        <div class="fg-strip">
+          <div class="fg-left">
+            <div class="fg-gauge-svg" data-gauge data-score="28"></div>
+            <div class="fg-text">
+              <span class="fg-text-score zone-fear">28</span>
+              <span class="fg-text-zone">공포</span>
+            </div>
+          </div>
+          <div class="fg-divider"></div>
+          <div class="fg-stats">
+            <div class="stat-line">
+              <span class="stat-label">일봉 RSI</span>
+              <span class="stat-value zone-neutral"><b>55.4</b><span class="trend-arrow">▲</span></span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">주봉 RSI</span>
+              <span class="stat-value zone-neutral"><b>53</b><span class="trend-arrow">▲</span></span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">시총순위</span>
+              <span class="stat-value"><b>#1</b></span>
+            </div>
+          </div>
+        </div>
+        <div class="price-block">
+          <div class="price">$63,912.50</div>
+          <div class="delta up">▲ 0.53%</div>
+        </div>
+        <label for="news-btc" class="news-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></label>
+      </div>
+
+      <div class="news-body">
+        <p><b>오늘의 최대 뉴스:</b> 연준 FOMC 회의 이후 매수세가 유입되며 비트코인 현물 ETF가 나흘 만에 순유입(약 3210만 달러)으로 전환했다. <a class="src-link" href="https://www.benzinga.com/crypto/cryptocurrency/26/07/60817794/bitcoin-ethereum-xrp-dogecoin-hold-steady-on-post-fed-meeting-thursday" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>관련 업종 뉴스:</b> 베센트 재무장관의 클래리티법(CLARITY Act) 추진 소식에 규제 명확성 기대감이 커졌고, 일부 트레이더는 6만달러 재하락 시 역헤드앤숄더 패턴 완성 후 7.4만달러 목표가를 거론했다. <a class="src-link" href="https://www.benzinga.com/crypto/cryptocurrency/26/07/60817794/bitcoin-ethereum-xrp-dogecoin-hold-steady-on-post-fed-meeting-thursday" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>다가오는 일정:</b> 24시간 동안 약 8만9000명 트레이더에 걸쳐 2억7416만 달러 규모의 청산이 발생하는 등 변동성은 여전히 큰 상태다. <a class="src-link" href="https://www.benzinga.com/crypto/cryptocurrency/26/07/60817794/bitcoin-ethereum-xrp-dogecoin-hold-steady-on-post-fed-meeting-thursday" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+      </div>
+    </div>
+
+        <div class="card">
+      <input type="checkbox" id="news-eth" class="news-toggle">
+      <div class="card-head">
+        <div class="ticker-block" data-ticker="ETH">
+          <span class="ticker">ETH<span class="chev">›</span></span>
+          <span class="company">Ethereum</span>
+        </div>
+        <div class="fg-strip">
+          <div class="fg-left">
+            <div class="fg-gauge-svg" data-gauge data-score="28"></div>
+            <div class="fg-text">
+              <span class="fg-text-score zone-fear">28</span>
+              <span class="fg-text-zone">공포</span>
+            </div>
+          </div>
+          <div class="fg-divider"></div>
+          <div class="fg-stats">
+            <div class="stat-line">
+              <span class="stat-label">일봉 RSI</span>
+              <span class="stat-value zone-neutral"><b>56.3</b><span class="trend-arrow">▲</span></span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">주봉 RSI</span>
+              <span class="stat-value zone-neutral"><b>53</b><span class="trend-arrow">▲</span></span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">시총순위</span>
+              <span class="stat-value"><b>#2</b></span>
+            </div>
+          </div>
+        </div>
+        <div class="price-block">
+          <div class="price">$1,843.89</div>
+          <div class="delta up">▲ 0.52%</div>
+        </div>
+        <label for="news-eth" class="news-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></label>
+      </div>
+
+      <div class="news-body">
+        <p><b>오늘의 최대 뉴스:</b> 연준 회의 이후 크립토 전반이 반등했지만 이더리움 현물 ETF는 같은 기간 1870만 달러 순유출을 기록하며 비트코인 대비 상대적으로 부진했다. <a class="src-link" href="https://www.benzinga.com/crypto/cryptocurrency/26/07/60817794/bitcoin-ethereum-xrp-dogecoin-hold-steady-on-post-fed-meeting-thursday" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>관련 업종 뉴스:</b> 이더리움 자체의 개별 호재는 뚜렷하지 않았고, 전반적인 크립토 시장 심리 개선에 동반해 완만하게 상승했다. <a class="src-link" href="https://www.benzinga.com/crypto/cryptocurrency/26/07/60817794/bitcoin-ethereum-xrp-dogecoin-hold-steady-on-post-fed-meeting-thursday" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>다가오는 일정:</b> 이더리움 스테이킹 수익률은 연 3~5%대(검증인 기준 추정치)로 유지되고 있다. <a class="src-link" href="https://ethereum.org/en/staking/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+      </div>
+    </div>
+
+        <div class="card">
+      <input type="checkbox" id="news-xrp" class="news-toggle">
+      <div class="card-head">
+        <div class="ticker-block" data-ticker="XRP">
+          <span class="ticker">XRP<span class="chev">›</span></span>
+          <span class="company">XRP (Ripple)</span>
+        </div>
+        <div class="fg-strip">
+          <div class="fg-left">
+            <div class="fg-gauge-svg" data-gauge data-score="28"></div>
+            <div class="fg-text">
+              <span class="fg-text-score zone-fear">28</span>
+              <span class="fg-text-zone">공포</span>
+            </div>
+          </div>
+          <div class="fg-divider"></div>
+          <div class="fg-stats">
+            <div class="stat-line">
+              <span class="stat-label">일봉 RSI</span>
+              <span class="stat-value zone-neutral"><b>45.2</b><span class="trend-arrow">▲</span></span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">주봉 RSI</span>
+              <span class="stat-value zone-neutral"><b>47</b><span class="trend-arrow">▲</span></span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">시총순위</span>
+              <span class="stat-value"><b>#6</b></span>
+            </div>
+          </div>
+        </div>
+        <div class="price-block">
+          <div class="price">$1.10</div>
+          <div class="delta up">▲ 1.03%</div>
+        </div>
+        <label for="news-xrp" class="news-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></label>
+      </div>
+
+      <div class="news-body">
+        <p><b>오늘의 최대 뉴스:</b> 특별한 개별 뉴스 없이 전반적인 크립토 시장 심리 개선에 동반해 약 1.03% 완만하게 상승 마감했다. <a class="src-link" href="https://www.benzinga.com/crypto/cryptocurrency/26/07/60817794/bitcoin-ethereum-xrp-dogecoin-hold-steady-on-post-fed-meeting-thursday" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>관련 업종 뉴스:</b> 도지코인 등 주요 알트코인들도 함께 반등하며 시장 전반의 위험선호 심리가 개선되는 모습을 보였다. <a class="src-link" href="https://www.benzinga.com/crypto/cryptocurrency/26/07/60827004/bitcoin-ethereum-xrp-spike-dogecoin-flat-amid-sharp-crypto-recovery" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+        <p><b>다가오는 일정:</b> 크립토 공포탐욕지수는 연준 회의 이후 다소 개선됐지만 여전히 '공포' 구간(28)에 머물러 있어 변동성에 유의할 필요가 있다. <a class="src-link" href="https://alternative.me/crypto/fear-and-greed-index/" target="_blank" rel="noopener"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
       </div>
     </div>
 
@@ -1629,6 +1767,166 @@
           </div>
         </div>
         <p class="tab-footnote">2025년 중반 비트코인 채굴에서 이더리움(ETH) 트레저리 전략으로 사업모델을 전환. GAAP EPS는 보유 ETH의 시가평가 손익(ASU 2023-08)에 따라 분기별 변동성이 매우 크며, 전환 이전 분기는 참고용. 컨센서스 추정치가 확립되지 않아 예상치(N/A)가 많음.</p>
+      </div>
+    </div>
+    <div class="drawer-panel" id="drawer-BTC" hidden>
+      <p class="drawer-title">BTC</p>
+      <p class="drawer-sub">Bitcoin</p>
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab-btn="BTC-overview" type="button">개요</button>
+        <button class="tab-btn" data-tab-btn="BTC-indicators" type="button">지표</button>
+      </div>
+      <div class="tab-panel" data-tab-panel="BTC-overview">
+        <div class="detail-row">
+          <span class="detail-label">시가총액</span>
+          <span class="detail-value">$1.28T</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">24시간 거래량</span>
+          <span class="detail-value">$25.35B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">시가총액 순위</span>
+          <span class="detail-value">#1</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">순환공급량</span>
+          <span class="detail-value">20.05M BTC</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">최대공급량</span>
+          <span class="detail-value">21M BTC</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">사상최고가(ATH)</span>
+          <span class="detail-value">$126,198.07 (2025-10-06)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">사상최저가(ATL)</span>
+          <span class="detail-value">$0.04865 (2010-07-14)</span>
+        </div>
+      </div>
+      <div class="tab-panel" data-tab-panel="BTC-indicators" hidden>
+        <div class="detail-row">
+          <span class="detail-label">RSI(14일)</span>
+          <span class="detail-value">55.4</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">50일 이동평균</span>
+          <span class="detail-value">$63,550.80</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">200일 이동평균</span>
+          <span class="detail-value">$73,156.40</span>
+        </div>
+      </div>
+    </div>
+    <div class="drawer-panel" id="drawer-ETH" hidden>
+      <p class="drawer-title">ETH</p>
+      <p class="drawer-sub">Ethereum</p>
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab-btn="ETH-overview" type="button">개요</button>
+        <button class="tab-btn" data-tab-btn="ETH-indicators" type="button">지표</button>
+      </div>
+      <div class="tab-panel" data-tab-panel="ETH-overview">
+        <div class="detail-row">
+          <span class="detail-label">시가총액</span>
+          <span class="detail-value">$222.52B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">24시간 거래량</span>
+          <span class="detail-value">$7.27B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">시가총액 순위</span>
+          <span class="detail-value">#2</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">순환공급량</span>
+          <span class="detail-value">120.68M ETH</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">최대공급량</span>
+          <span class="detail-value">무제한</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">사상최고가(ATH)</span>
+          <span class="detail-value">$4,953.73 (2025-08-24)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">사상최저가(ATL)</span>
+          <span class="detail-value">$0.4209 (2015-10-21)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">스테이킹 수익률</span>
+          <span class="detail-value">약 3~5% (검증인 기준, 추정치)</span>
+        </div>
+      </div>
+      <div class="tab-panel" data-tab-panel="ETH-indicators" hidden>
+        <div class="detail-row">
+          <span class="detail-label">RSI(14일)</span>
+          <span class="detail-value">56.3</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">50일 이동평균</span>
+          <span class="detail-value">$1,769.10</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">200일 이동평균</span>
+          <span class="detail-value">$2,113.50</span>
+        </div>
+      </div>
+    </div>
+    <div class="drawer-panel" id="drawer-XRP" hidden>
+      <p class="drawer-title">XRP</p>
+      <p class="drawer-sub">XRP (Ripple)</p>
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab-btn="XRP-overview" type="button">개요</button>
+        <button class="tab-btn" data-tab-btn="XRP-indicators" type="button">지표</button>
+      </div>
+      <div class="tab-panel" data-tab-panel="XRP-overview">
+        <div class="detail-row">
+          <span class="detail-label">시가총액</span>
+          <span class="detail-value">$68.42B</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">24시간 거래량</span>
+          <span class="detail-value">$633.29M</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">시가총액 순위</span>
+          <span class="detail-value">#6</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">순환공급량</span>
+          <span class="detail-value">62.46B XRP</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">최대공급량</span>
+          <span class="detail-value">100B XRP</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">사상최고가(ATH)</span>
+          <span class="detail-value">$3.84 (2018-01-04)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">사상최저가(ATL)</span>
+          <span class="detail-value">$0.002802 (2014-07-07)</span>
+        </div>
+      </div>
+      <div class="tab-panel" data-tab-panel="XRP-indicators" hidden>
+        <div class="detail-row">
+          <span class="detail-label">RSI(14일)</span>
+          <span class="detail-value">45.2</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">50일 이동평균</span>
+          <span class="detail-value">$1.10</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">200일 이동평균</span>
+          <span class="detail-value">$1.40</span>
+        </div>
       </div>
     </div>
   </div>
