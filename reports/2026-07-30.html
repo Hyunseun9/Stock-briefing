@@ -106,7 +106,7 @@
 
   .card-head {
     display: grid;
-    grid-template-columns: 132px 1fr auto auto;
+    grid-template-columns: minmax(60px, 132px) max-content minmax(105px, auto) 28px;
     grid-template-areas: "tkr fg price news";
     align-items: center;
     gap: 10px; row-gap: 8px;
@@ -1940,7 +1940,7 @@
   });
 
   /* ---- "지난 리포트" calendar popover ---- */
-  const HISTORY = [{"label": "2026-07-30", "url": "2026-07-30.html"}];
+  const HISTORY = [{"label": "2026-07-31", "url": "2026-07-31.html"}, {"label": "2026-07-30", "url": "2026-07-30.html"}];
   const CURRENT_DATE = "2026-07-30";
   const calBtn = document.getElementById('calBtn');
   const calPopover = document.getElementById('calPopover');

@@ -50,24 +50,13 @@ def build_history():
     return dates
 
 
-def main():
-    if len(sys.argv) != 2:
-        print("usage: build.py data/<date>.json", file=sys.stderr)
-        sys.exit(1)
-
-    with open(sys.argv[1], encoding="utf-8") as f:
-        data = json.load(f)
-
+def render_report(env, tmpl, data, all_dates):
+    """Render a single date's data into reports/<date>.html, using the full,
+    current all_dates list for its calendar (so every report -- old or new --
+    always shows every known date, not just the ones that existed when that
+    particular file happened to be written)."""
     data = add_dday_to_earnings_dates(data)
-
-    date = data["date"]  # e.g. "2026-07-30"
-
-    env = Environment(loader=FileSystemLoader(REPO_ROOT), autoescape=False, trim_blocks=True, lstrip_blocks=True)
-    tmpl = env.get_template("template.html.j2")
-
-    # Ensure today's own report file exists in the history list too (it's written
-    # in this same run, so glob won't see it yet -> add manually then dedupe).
-    all_dates = sorted(set(build_history() + [date]), reverse=True)
+    date = data["date"]
 
     common = dict(
         date=date,
@@ -78,8 +67,6 @@ def main():
         news_pool_json=json.dumps(data["news_pool"], ensure_ascii=False),
     )
 
-    # --- Render reports/<date>.html (nested one level under reports/) ---
-    # sibling files inside reports/, and the current day's own file just points to itself (fine)
     report_history = [{"label": d, "url": f"{d}.html"} for d in all_dates]
     report_html = tmpl.render(
         history=report_history,
@@ -91,13 +78,52 @@ def main():
     with open(report_path, "w", encoding="utf-8") as f:
         f.write(report_html)
     print(f"wrote {report_path}")
+    return common
 
-    # --- Render index.html (root) ---
+
+def main():
+    if len(sys.argv) != 2:
+        print("usage: build.py data/<date>.json", file=sys.stderr)
+        sys.exit(1)
+
+    with open(sys.argv[1], encoding="utf-8") as f:
+        new_data = json.load(f)
+    new_date = new_data["date"]
+
+    env = Environment(loader=FileSystemLoader(REPO_ROOT), autoescape=False, trim_blocks=True, lstrip_blocks=True)
+    tmpl = env.get_template("template.html.j2")
+
+    # Ensure today's own report file is in the history list too (it may not be
+    # written to reports/ yet, so glob won't see it -> add manually then dedupe).
+    all_dates = sorted(set(build_history() + [new_date]), reverse=True)
+
+    # Re-render EVERY known date's reports/<date>.html, not just the one passed
+    # in, so every report's calendar always reflects the full, current list of
+    # dates. Otherwise a report built before today's date existed stays frozen
+    # showing only the dates that existed at the time it was built, with no way
+    # to navigate forward to newer reports (incl. "today") from it.
+    data_dir = os.path.join(REPO_ROOT, "data")
+    latest_common = None
+    for d in all_dates:
+        if d == new_date:
+            common = render_report(env, tmpl, new_data, all_dates)
+        else:
+            data_path = os.path.join(data_dir, f"{d}.json")
+            if not os.path.isfile(data_path):
+                print(f"warning: no data/{d}.json found, skipping re-render of reports/{d}.html", file=sys.stderr)
+                continue
+            with open(data_path, encoding="utf-8") as f:
+                old_data = json.load(f)
+            common = render_report(env, tmpl, old_data, all_dates)
+        if d == all_dates[0]:  # most recent date -> what index.html should show
+            latest_common = common
+
+    # --- Render index.html (root) as the most recent date ---
     index_history = [{"label": d, "url": f"reports/{d}.html"} for d in all_dates]
     index_html = tmpl.render(
         history=index_history,
         history_json=json.dumps(index_history, ensure_ascii=False),
-        **common,
+        **latest_common,
     )
     index_path = os.path.join(REPO_ROOT, "index.html")
     with open(index_path, "w", encoding="utf-8") as f:
