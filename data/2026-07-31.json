@@ -29,7 +29,7 @@
   ],
   "crypto_meta": {
     "updated_at": "오후 5:03 (ET)",
-    "btc_dominance": "60.1%"
+    "btc_dominance": "N/A (소스 확인 중)"
   },
   "news_pool": [
     {
@@ -1186,10 +1186,6 @@
       "fg_score": 25,
       "fg_zone_class": "fear",
       "fg_zone_label": "극단적 공포",
-      "rsi_d": "55.4",
-      "rsi_d_zone": "neutral",
-      "rsi_d_arrow": "▼",
-      "dominance": "60.1%",
       "tabs": [
         {
           "key": "overview",
@@ -1197,49 +1193,31 @@
           "rows": [
             {
               "label": "시가총액",
-              "value": "$1.26T"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "24시간 거래량",
-              "value": "$26.78B"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "시가총액 순위",
-              "value": "#1"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "순환공급량",
-              "value": "20.05M BTC"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "최대공급량",
-              "value": "21M BTC"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "사상최고가(ATH)",
-              "value": "$126,198.07 (2025-10-06)"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "사상최저가(ATL)",
-              "value": "$0.04865 (2010-07-14)"
-            }
-          ]
-        },
-        {
-          "key": "indicators",
-          "label": "지표",
-          "rows": [
-            {
-              "label": "RSI(14일)",
-              "value": "55.4"
-            },
-            {
-              "label": "50일 이동평균",
-              "value": "$63,550.80"
-            },
-            {
-              "label": "200일 이동평균",
-              "value": "$73,156.40"
+              "value": "N/A (소스 확인 중)"
             }
           ]
         }
@@ -1272,10 +1250,6 @@
       "fg_score": 25,
       "fg_zone_class": "fear",
       "fg_zone_label": "극단적 공포",
-      "rsi_d": "56.3",
-      "rsi_d_zone": "neutral",
-      "rsi_d_arrow": "▼",
-      "dominance": "9.9%",
       "tabs": [
         {
           "key": "overview",
@@ -1283,53 +1257,35 @@
           "rows": [
             {
               "label": "시가총액",
-              "value": "$225.34B"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "24시간 거래량",
-              "value": "$10.23B"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "시가총액 순위",
-              "value": "#2"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "순환공급량",
-              "value": "120.68M ETH"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "최대공급량",
-              "value": "무제한"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "사상최고가(ATH)",
-              "value": "$4,953.73 (2025-08-24)"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "사상최저가(ATL)",
-              "value": "$0.4209 (2015-10-21)"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "스테이킹 수익률",
               "value": "약 3~5% (검증인 기준, 추정치)"
-            }
-          ]
-        },
-        {
-          "key": "indicators",
-          "label": "지표",
-          "rows": [
-            {
-              "label": "RSI(14일)",
-              "value": "56.3"
-            },
-            {
-              "label": "50일 이동평균",
-              "value": "$1,769.10"
-            },
-            {
-              "label": "200일 이동평균",
-              "value": "$2,113.50"
             }
           ]
         }
@@ -1362,10 +1318,6 @@
       "fg_score": 25,
       "fg_zone_class": "fear",
       "fg_zone_label": "극단적 공포",
-      "rsi_d": "45.2",
-      "rsi_d_zone": "neutral",
-      "rsi_d_arrow": "▼",
-      "dominance": "2.6%",
       "tabs": [
         {
           "key": "overview",
@@ -1373,49 +1325,31 @@
           "rows": [
             {
               "label": "시가총액",
-              "value": "$66.21B"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "24시간 거래량",
-              "value": "$1.09B"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "시가총액 순위",
-              "value": "#6"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "순환공급량",
-              "value": "62.46B XRP"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "최대공급량",
-              "value": "100B XRP"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "사상최고가(ATH)",
-              "value": "$3.84 (2018-01-04)"
+              "value": "N/A (소스 확인 중)"
             },
             {
               "label": "사상최저가(ATL)",
-              "value": "$0.002802 (2014-07-07)"
-            }
-          ]
-        },
-        {
-          "key": "indicators",
-          "label": "지표",
-          "rows": [
-            {
-              "label": "RSI(14일)",
-              "value": "45.2"
-            },
-            {
-              "label": "50일 이동평균",
-              "value": "$1.10"
-            },
-            {
-              "label": "200일 이동평균",
-              "value": "$1.40"
+              "value": "N/A (소스 확인 중)"
             }
           ]
         }

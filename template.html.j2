@@ -332,7 +332,7 @@
           </div>
           <div class="fg-divider"></div>
           <div class="fg-stats">
-            {% if t.type != 'etf' %}
+            {% if t.type == 'stock' %}
             <div class="stat-line">
               <span class="stat-label">일봉 RSI</span>
               <span class="stat-value zone-{{ t.rsi_d_zone }}"><b>{{ t.rsi_d }}</b><span class="trend-arrow">{{ t.rsi_d_arrow }}</span></span>
