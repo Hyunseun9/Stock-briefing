@@ -1,0 +1,1261 @@
+{
+  "date": "2026-08-03",
+  "date_kr": "2026년 8월 3일",
+  "indices": [
+    {
+      "name": "Nasdaq",
+      "value": "N/A",
+      "change_pct": "N/A",
+      "direction": "N/A"
+    },
+    {
+      "name": "S&P 500",
+      "value": "N/A",
+      "change_pct": "N/A",
+      "direction": "N/A"
+    },
+    {
+      "name": "Dow Jones",
+      "value": "N/A",
+      "change_pct": "N/A",
+      "direction": "N/A"
+    },
+    {
+      "name": "Russell 2000",
+      "value": "N/A",
+      "change_pct": "N/A",
+      "direction": "N/A"
+    }
+  ],
+  "crypto_meta": {
+    "updated_at": "오후 3:14 (ET, 소급 조사)",
+    "btc_dominance": "N/A (소스 접속 실패)"
+  },
+  "news_pool": [
+    {
+      "tag": "뉴스",
+      "text": "8월 첫 거래일 다우·S&P500·나스닥이 동반 사상 최고치를 경신, 빅테크 강세가 나스닥 1.7% 급등을 이끌었다.",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-august-3-dow-sp-500-nasdaq-big-tech-oil-092516872.html"
+    },
+    {
+      "tag": "뉴스",
+      "text": "트럼프 대통령이 이란과의 군사작전 보류·협상 재개 가능성을 시사하며 WTI·브렌트유가 5~6%대 급락, 지정학적 리스크 완화 기대가 증시를 지지했다.",
+      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-aug-3-2026-dow-futures-climb-as-oil-slides-on-renewed-iran-talks"
+    },
+    {
+      "tag": "뉴스",
+      "text": "7월 ISM 제조업 PMI가 55.6으로 예상치(54.0)를 웃돌며 4년 만의 최고치를 기록, 제조업 경기 확장세를 시사했다.",
+      "url": "https://finance.yahoo.com/economy/articles/manufacturing-pmi-55-6-july-140000384.html"
+    },
+    {
+      "tag": "뉴스",
+      "text": "지난 7월 29일 FOMC에서 연준이 금리를 동결했지만 위원 3명이 이례적으로 반대표를 던지며 향후 정책 경로 불확실성이 커졌다.",
+      "url": "https://www.cnn.com/2026/07/29/business/live-news/federal-reserve-interest-rate-07-29-26"
+    },
+    {
+      "tag": "뉴스",
+      "text": "2분기 실적을 발표한 S&P500 기업 약 300곳 중 85%가 시장 예상치를 웃돌았고, 합산 이익 증가율이 47%를 넘어서며 최근 수년래 최고 수준의 실적 시즌으로 평가됐다.",
+      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-aug-3-2026-dow-futures-climb-as-oil-slides-on-renewed-iran-talks"
+    }
+  ],
+  "tickers": [
+    {
+      "ticker": "NVDA",
+      "type": "stock",
+      "company": "NVIDIA Corporation",
+      "price": "N/A",
+      "change_pct": "N/A",
+      "direction": "N/A",
+      "fg_score": 51,
+      "fg_zone_class": "neutral",
+      "fg_zone_label": "중립",
+      "beta": "N/A",
+      "tabs": [
+        {
+          "key": "overview",
+          "label": "개요",
+          "rows": [
+            {
+              "label": "시가총액",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "PER",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "Forward PER",
+              "value": "N/A"
+            },
+            {
+              "label": "EPS (TTM)",
+              "value": "$6.53"
+            },
+            {
+              "label": "52주 범위",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "금일 범위",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "시가",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "전일종가",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "거래량",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "발행주식수",
+              "value": "24.22B"
+            },
+            {
+              "label": "베타",
+              "value": "N/A (소스 미정)"
+            }
+          ]
+        },
+        {
+          "key": "dividend",
+          "label": "배당",
+          "rows": [
+            {
+              "label": "배당수익률",
+              "value": "0.50%"
+            },
+            {
+              "label": "연간 배당금",
+              "value": "$1.00"
+            },
+            {
+              "label": "배당성향",
+              "value": "4.29%"
+            },
+            {
+              "label": "배당주기",
+              "value": "분기"
+            },
+            {
+              "label": "배당락일",
+              "value": "2026-06-04"
+            },
+            {
+              "label": "지급일",
+              "value": "2026-06-26"
+            }
+          ],
+          "history": [
+            {
+              "date": "2026-06-04",
+              "amount": "$0.25"
+            },
+            {
+              "date": "2026-03-11",
+              "amount": "$0.01"
+            },
+            {
+              "date": "2025-12-04",
+              "amount": "$0.01"
+            },
+            {
+              "date": "2025-09-11",
+              "amount": "$0.01"
+            },
+            {
+              "date": "2025-06-11",
+              "amount": "$0.01"
+            }
+          ]
+        },
+        {
+          "key": "earnings",
+          "label": "실적",
+          "rows": [
+            {
+              "label": "매출(TTM)",
+              "value": "$253.49B"
+            },
+            {
+              "label": "순이익(TTM)",
+              "value": "$159.61B"
+            },
+            {
+              "label": "애널리스트 의견",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "목표주가",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "다음 실적발표일",
+              "value": "2026-08-26"
+            },
+            {
+              "label": "다음 분기 예상 실적",
+              "value": "N/A (소스 미정 — ToS 검토 중)"
+            }
+          ],
+          "quarters": [
+            {
+              "period": "2027 Q1",
+              "eps_actual": "$2.39",
+              "rev_actual": "$81.62B",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "2026 Q4",
+              "eps_actual": "$1.76",
+              "rev_actual": "$68.13B",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "2026 Q3",
+              "eps_actual": "$1.30",
+              "rev_actual": "$57.01B",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "2026 Q2",
+              "eps_actual": "$1.08",
+              "rev_actual": "$46.74B",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "2026 Q1",
+              "eps_actual": "$0.76",
+              "rev_actual": "$44.06B",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            }
+          ],
+          "footnote": "2026-08-03부터 EPS/매출/순이익은 NVIDIA 공식 실적 발표자료(GAAP) 기준으로 갱신. 컨센서스 추정(예상치/beat-miss 판단)은 ToS 준수 무료 소스가 없어 전부 N/A 처리."
+        }
+      ],
+      "news": [
+        {
+          "label": "오늘의 최대 뉴스",
+          "text": "8월 3일 NVDA 주가가 3.01% 상승, 대형 클라우드업체들의 블랙웰(Blackwell) 시스템 투자 확대와 수율 개선 기대가 매수세를 이끌었다.",
+          "url": "https://www.tradingkey.com/news/market-movers/262071068-market-movers-nvda-20260803"
+        },
+        {
+          "label": "관련 업종 뉴스",
+          "text": "AI 코딩 에이전트가 CUDA와 유사한 소프트웨어를 단시간에 구현할 수 있다는 사례가 알려지며 엔비디아의 소프트웨어 해자(moat) 약화 우려가 부각됐다.",
+          "url": "https://techstartups.com/2026/08/03/top-tech-news-today-august-3-2026-alibaba-amazon-amd-apple-microsoft-nvidia-more/"
+        },
+        {
+          "label": "다가오는 일정",
+          "text": "엔비디아는 2027회계연도 2분기 실적발표를 8월 26일로 예고했으며, 블랙웰 수요와 AI 인프라 투자 지속 여부가 관전 포인트다.",
+          "url": "https://www.streetinsider.com/Corporate+News/Nvidia+schedules+Q2+fiscal+2027+earnings+call+for+August+26/26836264.html"
+        }
+      ]
+    },
+    {
+      "ticker": "IONQ",
+      "type": "stock",
+      "company": "IonQ, Inc.",
+      "price": "N/A",
+      "change_pct": "N/A",
+      "direction": "N/A",
+      "fg_score": 42,
+      "fg_zone_class": "neutral",
+      "fg_zone_label": "중립",
+      "beta": "N/A",
+      "tabs": [
+        {
+          "key": "overview",
+          "label": "개요",
+          "rows": [
+            {
+              "label": "시가총액",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "PER",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "Forward PER",
+              "value": "N/A"
+            },
+            {
+              "label": "EPS (TTM)",
+              "value": "N/A (분기별 GAAP 재검증 중 — 아래 실적 탭 참고)"
+            },
+            {
+              "label": "52주 범위",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "금일 범위",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "시가",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "전일종가",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "거래량",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "발행주식수",
+              "value": "371.2M (2026 Q1 희석가중평균, 대차대조표 기준 최신값 미확인)"
+            },
+            {
+              "label": "베타",
+              "value": "N/A (소스 미정)"
+            }
+          ]
+        },
+        {
+          "key": "earnings",
+          "label": "실적",
+          "rows": [
+            {
+              "label": "매출(TTM)",
+              "value": "$187.12M"
+            },
+            {
+              "label": "순이익(TTM)",
+              "value": "N/A (분기별 GAAP 재검증 중)"
+            },
+            {
+              "label": "애널리스트 의견",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "목표주가",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "다음 실적발표일",
+              "value": "2026-08-05"
+            },
+            {
+              "label": "다음 분기 예상 실적",
+              "value": "N/A (소스 미정 — ToS 검토 중)"
+            }
+          ],
+          "quarters": [
+            {
+              "period": "2026 Q1",
+              "eps_actual": "$2.07 (GAAP, 워런트 평가익 반영)",
+              "rev_actual": "$64.70M",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "2025 Q4",
+              "eps_actual": "N/A (GAAP 재확인 안됨)",
+              "rev_actual": "$61.9M",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "2025 Q3",
+              "eps_actual": "N/A (GAAP 재확인 안됨)",
+              "rev_actual": "$39.9M",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "2025 Q2",
+              "eps_actual": "N/A (GAAP 재확인 안됨)",
+              "rev_actual": "$20.7M",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "2025 Q1",
+              "eps_actual": "N/A (GAAP 재확인 안됨)",
+              "rev_actual": "$7.57M",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            }
+          ],
+          "footnote": "IonQ는 SPAC 합병 유산인 워런트 부채의 공정가치 평가손익이 GAAP 순이익/EPS를 분기마다 크게 흔든다. 2026 Q1은 공식 발표자료 기준 GAAP EPS $2.07(워런트 평가익 반영)로 갱신했으나, 이전 분기들은 이번 소급 조사에서 GAAP 기준으로 재검증하지 못해 N/A 처리(과거엔 비-GAAP 조정치를 사용했음). 컨센서스 추정은 ToS 준수 소스 없어 전부 N/A."
+        }
+      ],
+      "news": [
+        {
+          "label": "오늘의 최대 뉴스",
+          "text": "8월 3일 아이온큐 주가가 8.6% 급등, 웨드부시가 목표주가 75달러로 커버리지를 개시했고 18억 달러 규모 스카이워터 인수가 마무리됐다.",
+          "url": "https://www.fool.com/investing/2026/08/03/why-ionq-stock-popped-today/"
+        },
+        {
+          "label": "관련 업종 뉴스",
+          "text": "최근 한 달간 30% 가까이 급락했던 양자컴퓨팅 섹터에서 아이온큐가 경쟁사 리게티보다 우위에 있다는 분석이 나오며 저가매수 심리가 살아나고 있다.",
+          "url": "https://www.foreignpolicyjournal.com/2026/08/02/ionq-nyse-ionq-pulls-ahead-of-rigetti-nasdaq-rgti-as-the-stronger-quantum-computing-buy-in-2026/"
+        },
+        {
+          "label": "다가오는 일정",
+          "text": "아이온큐는 8월 5일 장 마감 후 2분기 실적을 발표할 예정이며, 스카이워터 인수 효과와 매출 가이던스 상향 여부가 주목된다.",
+          "url": "https://www.ionq.com/news/ionq-to-report-second-quarter-2026-financial-results-on-august-5-2026"
+        }
+      ]
+    },
+    {
+      "ticker": "IMVT",
+      "type": "stock",
+      "company": "Immunovant, Inc.",
+      "price": "N/A",
+      "change_pct": "N/A",
+      "direction": "N/A",
+      "fg_score": 50,
+      "fg_zone_class": "neutral",
+      "fg_zone_label": "중립",
+      "beta": "N/A",
+      "tabs": [
+        {
+          "key": "overview",
+          "label": "개요",
+          "rows": [
+            {
+              "label": "시가총액",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "PER",
+              "value": "N/A (적자)"
+            },
+            {
+              "label": "Forward PER",
+              "value": "N/A"
+            },
+            {
+              "label": "EPS (TTM)",
+              "value": "-$2.77"
+            },
+            {
+              "label": "52주 범위",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "금일 범위",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "시가",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "전일종가",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "거래량",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "발행주식수",
+              "value": "203.94M"
+            },
+            {
+              "label": "베타",
+              "value": "N/A (소스 미정)"
+            }
+          ]
+        },
+        {
+          "key": "earnings",
+          "label": "실적",
+          "rows": [
+            {
+              "label": "매출(TTM)",
+              "value": "N/A (임상단계, 매출 없음)"
+            },
+            {
+              "label": "순이익(TTM)",
+              "value": "-$505.61M"
+            },
+            {
+              "label": "애널리스트 의견",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "목표주가",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "다음 실적발표일",
+              "value": "2026-08-06"
+            },
+            {
+              "label": "다음 분기 예상 실적",
+              "value": "N/A (소스 미정 — ToS 검토 중)"
+            }
+          ],
+          "quarters": [
+            {
+              "period": "FY26 Q4 (2026-03 마감)",
+              "eps_actual": "-$0.73",
+              "rev_actual": "N/A",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "FY26 Q3 (2025-12 마감)",
+              "eps_actual": "-$0.61",
+              "rev_actual": "N/A",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "FY26 Q2 (2025-09 마감)",
+              "eps_actual": "-$0.73",
+              "rev_actual": "N/A",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "FY26 Q1 (2025-06 마감)",
+              "eps_actual": "-$0.60",
+              "rev_actual": "N/A",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "FY25 Q4 (2025-03 마감)",
+              "eps_actual": "-$0.64",
+              "rev_actual": "N/A",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A",
+              "rev_result": "N/A"
+            }
+          ],
+          "footnote": "임상단계 바이오텍으로 매출 없음. TTM 순이익/EPS는 회사 공식 발표(FY26 10-K, 2026-03-31 마감) 기준 GAAP 수치. 컨센서스 추정은 ToS 준수 소스 없어 전부 N/A."
+        }
+      ],
+      "news": [
+        {
+          "label": "오늘의 최대 뉴스",
+          "text": "8월 3일 전후로 IMVT 단독 헤드라인은 확인되지 않아, 가장 근접한 실제 기사로 대체함(7/25) — CFO 티아고 지라오가 세금 원천징수 목적으로 자사주 약 26만 달러어치를 매도했으며, 당시 주가는 52주 최고가 부근이었다.",
+          "url": "https://m.in.investing.com/news/stock-market-news/immunovant-cfo-tiago-girao-sells-263014-in-company-stock-93CH-5513834"
+        },
+        {
+          "label": "관련 업종 뉴스",
+          "text": "IMVT-1402의 류마티스관절염 2상 호실적을 계기로 H.C.Wainwright·BofA 등이 목표주가를 상향 조정했다(7/7 기사).",
+          "url": "https://www.investing.com/news/company-news/immunovant-stock-hits-52week-high-at-3928-usd-93CH-4779660"
+        },
+        {
+          "label": "다가오는 일정",
+          "text": "임뮤노반트는 8월 6일 장 개장 전 2027회계연도 1분기 실적 및 사업 업데이트를 발표할 예정이다.",
+          "url": "https://www.stocktitan.net/news/IMVT/immunovant-to-report-financial-results-for-the-first-quarter-ended-byb1zk8yya8e.html"
+        }
+      ]
+    },
+    {
+      "ticker": "BMNR",
+      "type": "stock",
+      "company": "Bitmine Immersion Technologies, Inc.",
+      "price": "N/A",
+      "change_pct": "N/A",
+      "direction": "N/A",
+      "fg_score": 49,
+      "fg_zone_class": "neutral",
+      "fg_zone_label": "중립",
+      "beta": "N/A",
+      "tabs": [
+        {
+          "key": "overview",
+          "label": "개요",
+          "rows": [
+            {
+              "label": "시가총액",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "PER",
+              "value": "N/A (적자)"
+            },
+            {
+              "label": "Forward PER",
+              "value": "N/A"
+            },
+            {
+              "label": "EPS (TTM)",
+              "value": "-$20.88"
+            },
+            {
+              "label": "52주 범위",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "금일 범위",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "시가",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "전일종가",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "거래량",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "발행주식수",
+              "value": "N/A (소스 미정 — ATM 증자 활발해 재확인 필요)"
+            },
+            {
+              "label": "ETH 보유량",
+              "value": "약 580만 ETH (전체 발행량의 약 4.8%, 총 암호자산+현금 약 $11.3B, 2026-08-03 기준)"
+            },
+            {
+              "label": "베타",
+              "value": "N/A (소스 미정)"
+            }
+          ]
+        },
+        {
+          "key": "dividend",
+          "label": "배당",
+          "rows": [
+            {
+              "label": "연간 배당금",
+              "value": "$0.01"
+            },
+            {
+              "label": "배당수익률",
+              "value": "N/A (주가 소스 미정)"
+            },
+            {
+              "label": "배당락일",
+              "value": "2025-12-08"
+            }
+          ],
+          "footnote": "2025년 대형 암호화폐 기업 최초로 배당을 선언했으나, 상징적 수준의 배당금으로 실질 수익률은 미미함."
+        },
+        {
+          "key": "earnings",
+          "label": "실적",
+          "rows": [
+            {
+              "label": "매출(TTM)",
+              "value": "$61.20M"
+            },
+            {
+              "label": "순이익(TTM)",
+              "value": "-$8.77B"
+            },
+            {
+              "label": "애널리스트 의견",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "목표주가",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "다음 실적발표일",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "다음 분기 예상 실적",
+              "value": "N/A (소스 미정 — ToS 검토 중)"
+            }
+          ],
+          "quarters": [
+            {
+              "period": "FQ 2026-05 마감",
+              "eps_actual": "-$0.15",
+              "rev_actual": "$46.5M",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "FQ 2026-02 마감",
+              "eps_actual": "-$8.40",
+              "rev_actual": "$11.0M",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "FQ 2025-11 마감",
+              "eps_actual": "-$15.98",
+              "rev_actual": "$2.29M",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "FQ 2025-08 마감 (사업전환 분기)",
+              "eps_actual": "$15.94",
+              "rev_actual": "$1.32M",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            },
+            {
+              "period": "FQ 2025-05 마감 (전환 이전)",
+              "eps_actual": "-$0.31",
+              "rev_actual": "$2.05M",
+              "eps_est": "N/A (컨센서스 소스 미정)",
+              "eps_result": "N/A",
+              "rev_est": "N/A (컨센서스 소스 미정)",
+              "rev_result": "N/A"
+            }
+          ],
+          "footnote": "2025년 중반 비트코인 채굴에서 이더리움(ETH) 트레저리 전략으로 사업모델을 전환. GAAP EPS는 보유 ETH의 시가평가 손익에 따라 분기별 변동성이 매우 크며, 전환 이전 분기는 참고용. 컨센서스 추정치가 없어 예상치는 전부 N/A."
+        }
+      ],
+      "news": [
+        {
+          "label": "오늘의 최대 뉴스",
+          "text": "8월 3일 비트마인이 이더리움 보유량을 580만 개(전체 발행량의 4.8%)로 늘렸다고 발표, 총 암호자산·현금 보유액은 113억 달러에 달했다.",
+          "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-announces-eth-holdings-reach-5-8-million-tokens-and-total-crypto-and-total-cash-holdings-of-11-3-billion-302840749.html"
+        },
+        {
+          "label": "관련 업종 뉴스",
+          "text": "이더리움 트레저리 기업 경쟁이 가열되는 가운데 비트마인이 전체 이더리움 공급량의 5%에 근접, 스테이킹 시장의 핵심 변수로 부상했다.",
+          "url": "https://cryptoslate.com/ethereums-treasury-boom-now-has-one-company-nearing-5-of-supply/"
+        },
+        {
+          "label": "다가오는 일정",
+          "text": "비트마인의 회계연도는 8월 31일 마감되며, 전년 사례(FY25 실적 11월 21일 발표)를 감안하면 연간 실적 발표는 11월경으로 예상된다.",
+          "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-bmnr-reports-fy25-gaap-eps-of-13-39-made-in-america-validator-network-ethereum-staking-to-commence-in-early-2026-declares-annual-dividend-of-0-01--the-first-large-cap-crypto-company-to-pay-a-dividend-302623034.html"
+        }
+      ]
+    },
+    {
+      "ticker": "QQQ",
+      "type": "etf",
+      "company": "Invesco QQQ Trust",
+      "price": "N/A",
+      "change_pct": "N/A",
+      "direction": "N/A",
+      "fg_score": 52,
+      "fg_zone_class": "neutral",
+      "fg_zone_label": "중립",
+      "beta": "N/A",
+      "tabs": [
+        {
+          "key": "overview",
+          "label": "개요",
+          "rows": [
+            {
+              "label": "운용보수",
+              "value": "0.18%"
+            },
+            {
+              "label": "순자산(AUM)",
+              "value": "N/A (소스 미정 — 가격 연동 지표)"
+            },
+            {
+              "label": "52주 범위",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "베타",
+              "value": "N/A (소스 미정)"
+            }
+          ]
+        },
+        {
+          "key": "dividend",
+          "label": "배당",
+          "rows": [
+            {
+              "label": "배당수익률",
+              "value": "N/A (가격 소스 미정)"
+            },
+            {
+              "label": "배당주기",
+              "value": "분기"
+            },
+            {
+              "label": "배당락일",
+              "value": "2026-06-22"
+            },
+            {
+              "label": "지급일",
+              "value": "2026-07-10"
+            }
+          ],
+          "history": [
+            {
+              "date": "2026-06-22",
+              "amount": "$0.81349"
+            },
+            {
+              "date": "2026-03-23",
+              "amount": "$0.73282"
+            },
+            {
+              "date": "2025-12-22",
+              "amount": "$0.79408"
+            },
+            {
+              "date": "2025-09-22",
+              "amount": "$0.69395"
+            },
+            {
+              "date": "2025-06-23",
+              "amount": "$0.59111"
+            }
+          ]
+        }
+      ],
+      "news": [
+        {
+          "label": "오늘의 최대 뉴스",
+          "text": "8월 3일 나스닥100이 빅테크 강세에 힘입어 1.7% 급등하며 QQQ도 동반 강세를 보였으나, 국채금리 상승은 부담 요인으로 지목됐다.",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-august-3-dow-sp-500-nasdaq-big-tech-oil-092516872.html"
+        },
+        {
+          "label": "관련 업종 뉴스",
+          "text": "다우·S&P500도 동반 사상 최고치를 경신하며 위험자산 선호 심리가 시장 전반에 확산됐다.",
+          "url": "https://www.thestreet.com/stock-market-today/stock-market-today-aug-3-2026-dow-futures-climb-as-oil-slides-on-renewed-iran-talks"
+        },
+        {
+          "label": "다가오는 일정",
+          "text": "다음 FOMC 회의는 9월 15~16일로 예정돼 있어 향후 금리 경로에 대한 시장 관심이 QQQ 변동성에 영향을 줄 전망이다.",
+          "url": "https://www.cnn.com/2026/07/29/business/live-news/federal-reserve-interest-rate-07-29-26"
+        }
+      ]
+    },
+    {
+      "ticker": "JEPQ",
+      "type": "etf",
+      "company": "JPMorgan Nasdaq Equity Premium Income ETF",
+      "price": "N/A",
+      "change_pct": "N/A",
+      "direction": "N/A",
+      "fg_score": 51,
+      "fg_zone_class": "neutral",
+      "fg_zone_label": "중립",
+      "beta": "N/A",
+      "tabs": [
+        {
+          "key": "overview",
+          "label": "개요",
+          "rows": [
+            {
+              "label": "운용보수",
+              "value": "0.35%"
+            },
+            {
+              "label": "순자산(AUM)",
+              "value": "$34.27B (2026-06-30 공식 팩트시트 기준)"
+            },
+            {
+              "label": "52주 범위",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "베타",
+              "value": "N/A (소스 미정)"
+            }
+          ]
+        },
+        {
+          "key": "dividend",
+          "label": "배당",
+          "rows": [
+            {
+              "label": "배당수익률(TTM)",
+              "value": "10.74%"
+            },
+            {
+              "label": "배당주기",
+              "value": "월배당"
+            },
+            {
+              "label": "배당락일",
+              "value": "2026-07-01"
+            },
+            {
+              "label": "지급일",
+              "value": "2026-07-06"
+            }
+          ],
+          "history": [
+            {
+              "date": "2026-07-01",
+              "amount": "$0.63658"
+            },
+            {
+              "date": "2026-06-01",
+              "amount": "$0.56444"
+            },
+            {
+              "date": "2026-05-01",
+              "amount": "$0.59095"
+            },
+            {
+              "date": "2026-04-01",
+              "amount": "$0.5586"
+            },
+            {
+              "date": "2026-03-02",
+              "amount": "$0.509"
+            }
+          ]
+        }
+      ],
+      "news": [
+        {
+          "label": "오늘의 최대 뉴스",
+          "text": "JEPQ는 연초 이후 5.1% 상승, 최근 1년 수익률 16.8%를 기록했고 7월 분배금은 주당 0.63658달러였다(8/1 비교 분석 기사 기준).",
+          "url": "https://247wallst.com/investing/2026/08/01/jepi-vs-jepq-after-comparing-americas-two-biggest-income-etfs-one-is-the-better-buy-for-the-rest-of-2026/"
+        },
+        {
+          "label": "관련 업종 뉴스",
+          "text": "나스닥100 강세에 JEPQ도 동반 상승 흐름을 탔지만, 매도한 콜옵션에 상단이 묶이는 커버드콜 구조상 QQQ보다는 상승폭이 낮은 경향이 이어졌다.",
+          "url": "https://247wallst.com/investing/etf/2026/07/13/the-monthly-check-trap-how-jepqs-covered-call-strategy-left-investors-12-57-behind-qqq-in-just-five-years/"
+        },
+        {
+          "label": "다가오는 일정",
+          "text": "JEPQ는 매월 분배금을 지급하는 구조로, 다음 월간 분배금 발표가 예정돼 있다(운용보수 0.35%, 순자산 342.7억 달러, 2026-06-30 공식 팩트시트).",
+          "url": "https://am.jpmorgan.com/content/dam/jpm-am-aem/americas/us/en/literature/fact-sheet/etfs/FS-JEPQ.PDF"
+        }
+      ]
+    },
+    {
+      "ticker": "JEPI",
+      "type": "etf",
+      "company": "JPMorgan Equity Premium Income ETF",
+      "price": "N/A",
+      "change_pct": "N/A",
+      "direction": "N/A",
+      "fg_score": 50,
+      "fg_zone_class": "neutral",
+      "fg_zone_label": "중립",
+      "beta": "N/A",
+      "tabs": [
+        {
+          "key": "overview",
+          "label": "개요",
+          "rows": [
+            {
+              "label": "운용보수",
+              "value": "0.35%"
+            },
+            {
+              "label": "순자산(AUM)",
+              "value": "$44.59B (2026-06-30 공식 팩트시트 기준)"
+            },
+            {
+              "label": "52주 범위",
+              "value": "N/A (소스 미정)"
+            },
+            {
+              "label": "베타",
+              "value": "N/A (소스 미정)"
+            }
+          ]
+        },
+        {
+          "key": "dividend",
+          "label": "배당",
+          "rows": [
+            {
+              "label": "배당수익률(TTM)",
+              "value": "7.95%"
+            },
+            {
+              "label": "배당주기",
+              "value": "월배당"
+            },
+            {
+              "label": "배당락일",
+              "value": "2026-07-01"
+            },
+            {
+              "label": "지급일",
+              "value": "2026-07-06"
+            }
+          ],
+          "history": [
+            {
+              "date": "2026-07-01",
+              "amount": "$0.3872"
+            },
+            {
+              "date": "2026-06-01",
+              "amount": "$0.3892"
+            },
+            {
+              "date": "2026-05-01",
+              "amount": "$0.4476"
+            },
+            {
+              "date": "2026-04-01",
+              "amount": "$0.4205"
+            },
+            {
+              "date": "2026-03-02",
+              "amount": "$0.3513"
+            }
+          ]
+        }
+      ],
+      "news": [
+        {
+          "label": "오늘의 최대 뉴스",
+          "text": "JEPI는 연초 이후 3.9% 상승에 그쳤지만 저변동 종목 중심의 분산 포트폴리오로 안정성을 강조하는 흐름이 이어졌다(7월 분배금 주당 0.38716달러, 8/1 기사 기준).",
+          "url": "https://247wallst.com/investing/2026/08/01/jepi-vs-jepq-after-comparing-americas-two-biggest-income-etfs-one-is-the-better-buy-for-the-rest-of-2026/"
+        },
+        {
+          "label": "관련 업종 뉴스",
+          "text": "기술주 비중이 낮은 JEPI가 JEPQ 대비 상대적으로 부진했다는 분석이 나왔으며, 낮은 베타의 방어적 성격이 부각됐다.",
+          "url": "https://finance.yahoo.com/markets/options/articles/frankly-jepi-mid-2026-time-094510873.html"
+        },
+        {
+          "label": "다가오는 일정",
+          "text": "JEPI 역시 매월 분배금을 지급하며, 다음 월간 분배금 발표가 예정돼 있다(운용보수 0.35%, 순자산 445.9억 달러, 2026-06-30 공식 팩트시트).",
+          "url": "https://am.jpmorgan.com/content/dam/jpm-am-aem/americas/us/en/literature/fact-sheet/etfs/FS-JEPI.PDF"
+        }
+      ]
+    },
+    {
+      "ticker": "BTC",
+      "type": "coin",
+      "company": "Bitcoin",
+      "price": "63,859.57",
+      "change_pct": "0.41",
+      "direction": "up",
+      "fg_score": "N/A",
+      "fg_zone_class": "",
+      "fg_zone_label": "N/A (8/3 값 미확인)",
+      "tabs": [
+        {
+          "key": "overview",
+          "label": "개요",
+          "rows": [
+            {
+              "label": "시가총액",
+              "value": "N/A (소스 확인 중)"
+            },
+            {
+              "label": "24시간 거래량",
+              "value": "N/A (소스 확인 중)"
+            },
+            {
+              "label": "시가총액 순위",
+              "value": "N/A (소스 확인 중)"
+            },
+            {
+              "label": "순환공급량",
+              "value": "약 2,006만 BTC (2026-03-10경 2천만개 돌파 기준 추정치, 정확한 8/3 시점 소스 미확인)"
+            },
+            {
+              "label": "최대공급량",
+              "value": "2,100만 BTC (프로토콜 고정)"
+            },
+            {
+              "label": "사상최고가(ATH)",
+              "value": "N/A (소스 미정 — ToS 검토 중)"
+            },
+            {
+              "label": "사상최저가(ATL)",
+              "value": "N/A (소스 미정 — ToS 검토 중)"
+            }
+          ]
+        }
+      ],
+      "news": [
+        {
+          "label": "오늘의 최대 뉴스",
+          "text": "8월 3일 비트코인은 6만 2700달러 부근까지 밀리며 주간 3.5% 하락, 콜드카드 지갑 취약점을 악용한 1,367 BTC(약 8900만 달러) 탈취 사건이 악재로 작용했다.",
+          "url": "https://www.coindesk.com/business/2026/08/03/live-updates-traders-say-bitcoin-sell-off-from-usd65-000-points-to-thin-volume-not-panic-selling"
+        },
+        {
+          "label": "관련 업종 뉴스",
+          "text": "이란 관련 지정학적 긴장 완화에도 불구하고 비트코인·이더리움 등 암호자산 전반이 뚜렷한 모멘텀을 얻지 못하며 동반 약세를 보였다.",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-august-3-2026-prices-pulling-back-this-morning-despite-de-escalation-with-iran-131220661.html"
+        },
+        {
+          "label": "후속 뉴스",
+          "text": "비트코인 현물ETF에서 주간 약 4,000BTC가 순유출되고 마이크로스트래티지도 매수를 중단했으며, 전문가는 이번 매도세를 강제청산이 아닌 거래 정체로 해석했다.",
+          "url": "https://www.coindesk.com/business/2026/08/03/live-updates-traders-say-bitcoin-sell-off-from-usd65-000-points-to-thin-volume-not-panic-selling"
+        }
+      ]
+    },
+    {
+      "ticker": "ETH",
+      "type": "coin",
+      "company": "Ethereum",
+      "price": "1,869.24",
+      "change_pct": "0.75",
+      "direction": "down",
+      "fg_score": "N/A",
+      "fg_zone_class": "",
+      "fg_zone_label": "N/A (8/3 값 미확인)",
+      "tabs": [
+        {
+          "key": "overview",
+          "label": "개요",
+          "rows": [
+            {
+              "label": "시가총액",
+              "value": "N/A (소스 확인 중)"
+            },
+            {
+              "label": "24시간 거래량",
+              "value": "N/A (소스 확인 중)"
+            },
+            {
+              "label": "시가총액 순위",
+              "value": "N/A (소스 확인 중)"
+            },
+            {
+              "label": "순환공급량",
+              "value": "약 117.76M ETH (2026-07-07 기준 최근 확인값, 8/3 정확한 소스 미확인)"
+            },
+            {
+              "label": "최대공급량",
+              "value": "N/A (하드캡 없음 — 발행량 상한 없는 구조)"
+            },
+            {
+              "label": "사상최고가(ATH)",
+              "value": "N/A (소스 미정 — ToS 검토 중)"
+            },
+            {
+              "label": "사상최저가(ATL)",
+              "value": "N/A (소스 미정 — ToS 검토 중)"
+            },
+            {
+              "label": "스테이킹 수익률",
+              "value": "약 3~5% (검증인 기준, 추정치)"
+            }
+          ]
+        }
+      ],
+      "news": [
+        {
+          "label": "오늘의 최대 뉴스",
+          "text": "이더리움이 1,850달러 지지선 공방을 벌이며 일요일 고점 1,903달러에서 후퇴, 비트마인의 대량 보유(공급량 4.8%)가 장기 지지 요인으로 거론됐다.",
+          "url": "https://www.ccn.com/analysis/crypto/ethereum-price-prediction-eth-1850-support-1780/"
+        },
+        {
+          "label": "관련 업종 뉴스",
+          "text": "이더리움 트레저리 기업들의 매집 경쟁이 이어지며 기관 수요 확대인지 특정 기업 집중 베팅인지에 대한 논쟁이 커지고 있다.",
+          "url": "https://cryptoslate.com/ethereums-treasury-boom-now-has-one-company-nearing-5-of-supply/"
+        },
+        {
+          "label": "후속 뉴스",
+          "text": "비트마인이 하루새 이더리움 1만 399개를 추가 매입해 총 580만 개를 보유하게 됐고, 이 중 약 85%를 스테이킹해 연간 약 2억 4700만 달러의 보상 수익을 추산했다.",
+          "url": "https://themarketperiodical.com/2026/08/03/ethereum-price-prediction-as-bitmine-adds-10399-eth-and-expands-staking/"
+        }
+      ]
+    },
+    {
+      "ticker": "XRP",
+      "type": "coin",
+      "company": "XRP (Ripple)",
+      "price": "1.08",
+      "change_pct": "0.49",
+      "direction": "down",
+      "fg_score": "N/A",
+      "fg_zone_class": "",
+      "fg_zone_label": "N/A (8/3 값 미확인)",
+      "tabs": [
+        {
+          "key": "overview",
+          "label": "개요",
+          "rows": [
+            {
+              "label": "시가총액",
+              "value": "N/A (소스 확인 중)"
+            },
+            {
+              "label": "24시간 거래량",
+              "value": "N/A (소스 확인 중)"
+            },
+            {
+              "label": "시가총액 순위",
+              "value": "N/A (소스 확인 중)"
+            },
+            {
+              "label": "순환공급량",
+              "value": "약 600억 XRP (2026년 초 기준 최근 확인값, 8/3 정확한 소스 미확인)"
+            },
+            {
+              "label": "최대공급량",
+              "value": "1,000억 XRP (프로토콜 고정, 추가 발행 불가)"
+            },
+            {
+              "label": "사상최고가(ATH)",
+              "value": "N/A (소스 미정 — ToS 검토 중)"
+            },
+            {
+              "label": "사상최저가(ATL)",
+              "value": "N/A (소스 미정 — ToS 검토 중)"
+            }
+          ]
+        }
+      ],
+      "news": [
+        {
+          "label": "오늘의 최대 뉴스",
+          "text": "8월 3일 XRP는 1.07달러 부근에서 1.01~1.04달러 지지선을 시험 중이며, 연초 대비 약 40% 하락해 반등 때마다 매도세가 나오는 약세 흐름이 지속됐다.",
+          "url": "https://www.ccn.com/analysis/crypto/xrp-price-1-breakdown-etf-inflows/"
+        },
+        {
+          "label": "관련 업종 뉴스",
+          "text": "7월 31일 XRP 현물ETF에 769만 달러가 순유입되며 누적 자산이 9억 8900만 달러로 늘었으나, 비트코인·이더리움 ETF 대비 유입 규모는 작았다.",
+          "url": "https://www.kucoin.com/news/flash/xrp-spot-etfs-see-7-69m-net-inflow-on-july-31"
+        },
+        {
+          "label": "후속 뉴스",
+          "text": "7월 한 달간 XRP ETF에는 2,729만 달러가 유입돼 4개월 연속 순유입을 이어갔지만 비트코인·이더리움 대비 규모는 작았으며, RLUSD 스테이블코인 성장이 긍정 요인으로 언급됐다.",
+          "url": "https://www.ccn.com/analysis/crypto/xrp-price-1-breakdown-etf-inflows/"
+        }
+      ]
+    }
+  ]
+}
