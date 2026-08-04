@@ -356,8 +356,8 @@
           </div>
         </div>
         <div class="price-block">
-          <div class="price">${{ t.price }}</div>
-          <div class="delta {{ t.direction }}">{{ '▲' if t.direction == 'up' else '▼' }} {{ t.change_pct }}%</div>
+          <div class="price">{{ '$' + t.price if t.price != 'N/A' else 'N/A' }}</div>
+          <div class="delta {{ t.direction if t.direction in ['up', 'down'] else '' }}">{{ '▲' if t.direction == 'up' else ('▼' if t.direction == 'down' else '') }} {{ t.change_pct if t.change_pct == 'N/A' else (t.change_pct + '%') }}</div>
         </div>
         <label for="news-{{ t.ticker|lower }}" class="news-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></label>
       </div>
@@ -379,7 +379,7 @@
           <span class="index-name">{{ idx.name }}</span>
           <span class="index-nums">
             <span class="index-value">{{ idx.value }}</span>
-            <span class="index-delta {{ idx.direction }}">{{ '▲' if idx.direction == 'up' else '▼' }}{{ idx.change_pct }}%</span>
+            <span class="index-delta {{ idx.direction if idx.direction in ['up', 'down'] else '' }}">{{ '▲' if idx.direction == 'up' else ('▼' if idx.direction == 'down' else '') }}{{ idx.change_pct if idx.change_pct == 'N/A' else (idx.change_pct + '%') }}</span>
           </span>
         </div>
         {% endfor %}
